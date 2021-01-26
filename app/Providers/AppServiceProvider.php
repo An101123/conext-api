@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Repositories\LocalConextRepository;
+use App\Repositories\LocalConextRepositoryInterface;
+use App\Services\LocalConextService;
+use App\Services\LocalConextServiceInterface;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +18,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(LocalConextRepositoryInterface::class, LocalConextRepository::class);
+        $this->app->bind(LocalConextServiceInterface::class, LocalConextService::class);
     }
 
     /**
@@ -23,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Schema::defaultStringLength(191);
     }
 }
