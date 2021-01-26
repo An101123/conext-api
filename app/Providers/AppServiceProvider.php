@@ -10,8 +10,12 @@ use App\Repositories\ExpertiseRepository;
 use App\Repositories\ExpertiseRepositoryInterface;
 use App\Services\ExpertiseService;
 use App\Services\ExpertiseServiceInterface;
-use Illuminate\Support\ServiceProvider;
+use App\Repositories\LocalConextRepository;
+use App\Repositories\LocalConextRepositoryInterface;
+use App\Services\LocalConextService;
+use App\Services\LocalConextServiceInterface;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BusinessTypeServiceInterface::class, BusinessTypeService::class);
         $this->app->bind(ExpertiseRepositoryInterface::class, ExpertiseRepository::class);
         $this->app->bind(ExpertiseServiceInterface::class, ExpertiseService::class);
+        $this->app->bind(LocalConextRepositoryInterface::class, LocalConextRepository::class);
+        $this->app->bind(LocalConextServiceInterface::class, LocalConextService::class);
     }
 
     /**
@@ -38,6 +44,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\BusinessTypeController;
-=======
+
 use App\Http\Controllers\ExpertiseController;
->>>>>>> CRUD-Expertise
+
+use App\Http\Controllers\LocalConextController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::resource('businessTypes', BusinessTypeController::class);
 Route::resource('expertises', ExpertiseController::class);  
+
+Route::resource('localConexts', LocalConextController::class);
