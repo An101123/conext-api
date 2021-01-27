@@ -5,7 +5,7 @@ use App\Http\Controllers\BusinessTypeController;
 use App\Http\Controllers\ExpertiseController;
 
 use App\Http\Controllers\LocalConextController;
-
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,5 +26,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('businessTypes', BusinessTypeController::class);
 Route::resource('expertises', ExpertiseController::class);  
-
 Route::resource('localConexts', LocalConextController::class);
+Route::resource('users', UserController::class);

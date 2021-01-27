@@ -43,14 +43,7 @@ class LocalConextRepository implements LocalConextRepositoryInterface{
     
     public function delete($id)
     {
-        
-        try{
-            if (!empty($id)){
-                LocalConext::where('id', $id)->delete();
-                return true;
-            }
-        } catch(\Exception $e) {
-            return false;
-        }
+        LocalConext::where('id', $id)->delete();
+        return true;
     }
 }

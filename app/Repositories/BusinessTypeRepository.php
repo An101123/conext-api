@@ -40,18 +40,12 @@ class BusinessTypeRepository implements BusinessTypeRepositoryInterface
             BusinessType::find($id)->update($data);
             return true;
         } catch(\Exception $e){
-            return false;   
+           return false;
         }
     }
     public function delete($id)
     {
-        try{
-            if (!empty($id)){
-                BusinessType::where('id', $id)->delete();
-                return true;
-            }
-        } catch(\Exception $e) {
-            return false;
-        }
+        BusinessType::where('id', $id)->delete();
+        return true;
     }
 }

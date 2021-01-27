@@ -43,13 +43,7 @@ class ExpertiseRepository implements ExpertiseRepositoryInterface{
     }
     public function delete($id)
     {
-        try{
-        if (!empty($id)){
             Expertise::where('id', $id)->delete($id);
             return true;
-            }
-        } catch(\Exception $e){
-            return false;
-        }
     }
 }

@@ -14,4 +14,7 @@ class LocalConext extends Model
     public $fillable = [
         'name'
     ];
+    public function user(){
+        return $this->hasMany(User::class);
+    }
 }
