@@ -29,5 +29,7 @@ Route::resource('businessTypes', BusinessTypeController::class);
 Route::resource('expertises', ExpertiseController::class);  
 Route::resource('localConexts', LocalConextController::class);
 Route::resource('users', UserController::class);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login']);
+Route::get('logout', [AuthController::class, 'logout']);
+Route::post('refresh', [AuthController::class, 'refresh']);
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Dotenv\Validator;
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -18,70 +18,30 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(Request $request){
-    	$validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+    public function login(LoginRequest $request){
+        $input = $request->all();
+        $token = null;
+        if (! $token = JWTAuth::attempt($input)) {
+            return response()->json(['message' => 'Invalid Email or Password']);
         }
-
-        if (! $token = auth()->attempt($validator->validated())) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
         return $this->createNewToken($token);
     }
-
-    /**
-     * Register a User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    /**
-     * Log the user out (Invalidate the token).
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function logout() {
-        auth()->logout();
-
-        return response()->json(['message' => 'User successfully signed out']);
-    }
-
-    /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function refresh() {
-        return $this->createNewToken(auth()->refresh());
-    }
-
-    /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function userProfile() {
-        return response()->json(auth()->user());
-    }
-
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     protected function createNewToken($token){
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()
+            'expires_in' => 3600,
+            'user' => Auth::user()
         ]);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return response()->json(['message' => 'User successfully signed out']);
+    }
+    
+    public function refresh() {
+        return $this->createNewToken(Auth::refresh());
     }
 }
