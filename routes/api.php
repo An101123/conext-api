@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BusinessTypeController;
 
 use App\Http\Controllers\ExpertiseController;
@@ -28,3 +29,5 @@ Route::resource('businessTypes', BusinessTypeController::class);
 Route::resource('expertises', ExpertiseController::class);  
 Route::resource('localConexts', LocalConextController::class);
 Route::resource('users', UserController::class);
+Route::post('/login', [AuthController::class, 'login']);
+

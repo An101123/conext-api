@@ -20,7 +20,7 @@ class User extends Model
         return $this->belongsTo(LocalConext::class, 'localConext_id', 'id');
     }
 
-    public $fillable = [
+    protected $fillable = [
         'name',
         'email',
         'password',
@@ -33,4 +33,14 @@ class User extends Model
         'localConext_id',
         'expertise_id'
     ];
+    protected $hidden = [
+        'password',
+
+    ];
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims() {
+        return [];
+    }   
 }
