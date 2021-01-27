@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BusinessTypeController;
 
 use App\Http\Controllers\ExpertiseController;
-
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\LocalConextController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -29,6 +29,7 @@ Route::resource('businessTypes', BusinessTypeController::class);
 Route::resource('expertises', ExpertiseController::class);  
 Route::resource('localConexts', LocalConextController::class);
 Route::resource('users', UserController::class);
+Route::resource('explores', ExploreController::class);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);

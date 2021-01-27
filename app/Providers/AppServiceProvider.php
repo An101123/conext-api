@@ -10,6 +10,10 @@ use App\Repositories\ExpertiseRepository;
 use App\Repositories\ExpertiseRepositoryInterface;
 use App\Services\ExpertiseService;
 use App\Services\ExpertiseServiceInterface;
+use App\Repositories\ExploreRepository;
+use App\Repositories\ExploreRepositoryInterface;
+use App\Services\ExploreService;
+use App\Services\ExploreServiceInterface;
 use App\Repositories\LocalConextRepository;
 use App\Repositories\LocalConextRepositoryInterface;
 use App\Repositories\UserRepository;
@@ -38,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ExpertiseServiceInterface::class, ExpertiseService::class);
         $this->app->bind(LocalConextRepositoryInterface::class, LocalConextRepository::class);
         $this->app->bind(LocalConextServiceInterface::class, LocalConextService::class);
+        $this->app->bind(ExploreRepositoryInterface::class, ExploreRepository::class);
+        $this->app->bind(ExploreServiceInterface::class, ExploreService::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(UserServiceInterface::class, UserService::class);
     }
