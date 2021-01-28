@@ -25,11 +25,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('businessTypes', BusinessTypeController::class);
-Route::resource('expertises', ExpertiseController::class);  
-Route::resource('localConexts', LocalConextController::class);
+Route::resource('businessTypes', BusinessTypeController::class)->middleware('auth:api');
+Route::resource('expertises', ExpertiseController::class)->middleware('auth:api');  
+Route::resource('localConexts', LocalConextController::class)->middleware('auth:api');
 Route::resource('users', UserController::class);
-Route::resource('explores', ExploreController::class);
+Route::get('userRandom', [UserController::class, 'getUserRandom']);
+Route::resource('explores', ExploreController::class)->middleware('auth:api');
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);

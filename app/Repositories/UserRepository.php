@@ -84,4 +84,9 @@ class UserRepository implements UserRepositoryInterface{
             ]);
         }
     }
+
+    public function getUserRandom()
+    {
+        return User::inRandomOrder()->limit(4)->get();
+    }
 }

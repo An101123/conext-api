@@ -70,4 +70,9 @@ class UserController extends Controller
     {
         return $this->userService->delete($id);
     }
+
+    public function getUserRandom()
+    {
+        return $this->userService->getUserRandom();
+    }
 }
