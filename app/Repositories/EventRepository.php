@@ -10,15 +10,16 @@ class EventRepository implements EventRepositoryInterface{
     public function getEvents($filter)
     {
         if ($filter == 1){
-            return Event::where('end_time', '>=', Carbon::now())->paginate(6);
-        }
-        else{
+            return Event::where('end_time', '>=', Carbon::now())->orderBy('start_time', 'asc')->paginate(6);
+        } elseif($filter == 2){
+            return Event::where('end_time', '<', Carbon::now())->orderBy('end_time', 'desc')->paginate(6);
+        } else {
         return Event::all();
         }
     }
     public function store($input)
     {
-        if($input['start_time'] >= (Carbon::now()) && $input['end_time'] >= $input['start_time']){
+        if($input['start_time'] >= (Carbon::now()) && $input['end_time'] > $input['start_time']){
         try{
             $data = array(
                 'title' => $input['title'],
@@ -41,7 +42,7 @@ class EventRepository implements EventRepositoryInterface{
     }
     public function update($input, $id)
     {
-        if($input['start_time'] >= (Carbon::now()) && $input['end_time'] >= $input['start_time']){
+        if($input['start_time'] >= (Carbon::now()) && $input['end_time'] > $input['start_time']){
             try{
                 $data = array(
                     'title' => $input['title'],
@@ -70,8 +71,4 @@ class EventRepository implements EventRepositoryInterface{
     {
         return Event::where('id', $id)->delete($id);
     }
-    // public function getEventAcitve()
-    // {
-    //     return Event::where('end_time', '>=', Carbon::now())->paginate(6);
-    // }
 }

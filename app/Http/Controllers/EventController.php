@@ -17,9 +17,10 @@ class EventController extends Controller
     {
         $this->eventService = $eventService;
     }
-    public function index()
+    public function index(Request $request)
     {
-        return $this->eventService->getEvents();
+        $filter = $request->filter;
+        return $this->eventService->getEvents($filter);
     }
 
     /**
@@ -67,10 +68,5 @@ class EventController extends Controller
     public function destroy($id)
     {
         return $this->eventService->delete($id);
-    }
-
-    public function getEventActive()
-    {
-        return $this->eventService->getEventActive();
     }
 }

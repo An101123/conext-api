@@ -15,7 +15,7 @@ class EditUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('name');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
         });
     }
 

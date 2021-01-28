@@ -14,13 +14,13 @@ class User extends Authenticatable  implements JWTSubject
 
     protected $table = 'users';
     public function businessType(){
-        return $this->belongsTo(BusinessType::class, 'businessType_id', 'id');
+        return $this->belongsTo(BusinessType::class, 'business_type_id', 'id');
     }
     public function expertise(){
         return $this->belongsTo(Expertise::class, 'expertise_id', 'id');
     }
     public function localConext(){
-        return $this->belongsTo(LocalConext::class, 'localConext_id', 'id');
+        return $this->belongsTo(LocalConext::class, 'local_conext_id', 'id');
     }
 
     protected $fillable = [
@@ -32,8 +32,8 @@ class User extends Authenticatable  implements JWTSubject
         'introduce',
         'workplace',
         'avatar',
-        'businessType_id',
-        'localConext_id',
+        'business_type_id',
+        'local_conext_id',
         'expertise_id',
         'role'
     ];

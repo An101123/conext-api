@@ -19,9 +19,11 @@ class UserController extends Controller
     {
         return $this->userService = $userService;
     }
-    public function index()
+    public function index(Request $request)
     {
-        return $this->userService->getUsers();
+        $businessType = $request->businessType;
+        $expertise = $request->expertise;
+        return $this->userService->getUsers($businessType, $expertise);
     }
 
     /**
@@ -32,6 +34,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $validated = 
         $input = $request;
         return $this->userService->store($input);
     }
@@ -74,15 +77,5 @@ class UserController extends Controller
     public function getUserRandom()
     {
         return $this->userService->getUserRandom();
-    }
-
-    public function getUserByBusinessType($id)
-    {
-        return $this->userService->getUserByBusinessType($id);
-    }
-
-    public function getUserByExpertise($id)
-    {
-        return $this->userService->getUserByExpertise($id);
     }
 }

@@ -12,9 +12,9 @@ class EventService implements EventServiceInterface{
     {
         return $this->eventRepository = $eventRepository;
     }
-    public function getEvents()
+    public function getEvents($filter)
     {
-        return $this->eventRepository->getEvents();
+        return $this->eventRepository->getEvents($filter);
     }
     public function store($input)
     {
@@ -31,9 +31,5 @@ class EventService implements EventServiceInterface{
     public function delete($id)
     {
         return $this->eventRepository->delete($id);
-    }
-    public function getEventActive()
-    {
-        return $this->eventRepository->getEventAcitve();
     }
 }
