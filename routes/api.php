@@ -31,6 +31,7 @@ Route::resource('business-types', BusinessTypeController::class)->only('index', 
 Route::resource('local-conexts', LocalConextController::class)->only('index', 'show');
 Route::resource('explores', ExploreController::class)->only('index', 'show');
 Route::resource('vouchers', VoucherController::class)->only('index', 'show');
+Route::resource('events', EventController::class)->only('index', 'show');
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
@@ -44,5 +45,4 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::resource('admin/explores', ExploreController::class);
     Route::resource('admin/events', EventController::class);
     Route::resource('admin/vouchers', VoucherController::class);
-
 });

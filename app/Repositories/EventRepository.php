@@ -6,7 +6,7 @@ use App\Models\Event;
 use Carbon\Carbon;
 
 
-class EventRepository implements EventRepositoryInterface{
+class EventRepository implements EventRepositoryInterface{  
     public function getEvents($filter)
     {
         if ($filter == 1){
@@ -14,7 +14,7 @@ class EventRepository implements EventRepositoryInterface{
         } elseif($filter == 2){
             return Event::where('end_time', '<', Carbon::now())->orderBy('end_time', 'desc')->paginate(6);
         } else {
-        return Event::all();
+        return Event::paginate(6);
         }
     }
     public function store($input)

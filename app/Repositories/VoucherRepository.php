@@ -12,7 +12,7 @@ class VoucherRepository implements VoucherRepositoryInterface{
         if ($type == 1){
             return Voucher::where('type', $type)->get();
         } else{
-            return Voucher::all();
+            return Voucher::paginate(6);
         }
     }
 
