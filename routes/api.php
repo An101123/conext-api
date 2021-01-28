@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BusinessTypeController;
-
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\LocalConextController;
@@ -34,6 +34,8 @@ Route::resource('localConexts', LocalConextController::class)->only('index', 'sh
 Route::resource('users', UserController::class)->only('index', 'show');
 Route::resource('explores', ExploreController::class)->only('index', 'show');
 
+Route::get('eventActive', [EventController::class, 'getEventActive']);
+
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
@@ -45,4 +47,5 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::resource('admin/localConexts', LocalConextController::class);
     Route::resource('admin/users', UserController::class);
     Route::resource('admin/explores', ExploreController::class);
+    Route::resource('admin/events', EventController::class);
 });

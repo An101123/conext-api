@@ -1,0 +1,77 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Models\Event;
+use Carbon\Carbon;
+
+
+class EventRepository implements EventRepositoryInterface{
+    public function getEvents($filter)
+    {
+        if ($filter == 1){
+            return Event::where('end_time', '>=', Carbon::now())->paginate(6);
+        }
+        else{
+        return Event::all();
+        }
+    }
+    public function store($input)
+    {
+        if($input['start_time'] >= (Carbon::now()) && $input['end_time'] >= $input['start_time']){
+        try{
+            $data = array(
+                'title' => $input['title'],
+                'image' => $input['image'],
+                'start_time' => $input['start_time'],
+                'end_time' => $input['end_time'],
+                'description' => $input['description']
+            );
+            Event::create($data);
+            return true;
+        } catch(\Exception $e){
+            return false;
+        }
+        }
+        else {
+            return response()->json([
+                'message' => 'Error'
+            ]);
+        }
+    }
+    public function update($input, $id)
+    {
+        if($input['start_time'] >= (Carbon::now()) && $input['end_time'] >= $input['start_time']){
+            try{
+                $data = array(
+                    'title' => $input['title'],
+                    'image' => $input['image'],
+                    'start_time' => $input['start_time'],
+                    'end_time' => $input['end_time'],
+                    'description' => $input['description']
+                );
+                Event::find($id)->update($data);
+                return true;
+            } catch(\Exception $e){
+                return false;
+            }
+            }
+            else {
+                return response()->json([
+                    'message' => 'Error'
+                ]);
+            }
+    }
+    public function getEvent($id)
+    {
+        return Event::find($id);
+    }
+    public function delete($id)
+    {
+        return Event::where('id', $id)->delete($id);
+    }
+    // public function getEventAcitve()
+    // {
+    //     return Event::where('end_time', '>=', Carbon::now())->paginate(6);
+    // }
+}
