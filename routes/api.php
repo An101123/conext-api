@@ -24,14 +24,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
-    Route::resource('users', UserController::class)->only('index', 'show');
-    Route::get('userRandom', [UserController::class, 'getUserRandom']);
-    Route::get('userByBusinessType/{id}',[UserController::class, 'getUserByBusinessType']);
-    Route::get('userByExpertise/{id}',[UserController::class, 'getUserByExpertise']);
-
-
+Route::resource('users', UserController::class)->only('index', 'show');
+Route::get('userRandom', [UserController::class, 'getUserRandom']);
+Route::get('userByBusinessType/{id}',[UserController::class, 'getUserByBusinessType']);
+Route::get('userByExpertise/{id}',[UserController::class, 'getUserByExpertise']);
 
 Route::resource('businessTypes', BusinessTypeController::class)->only('index', 'show');
 Route::resource('localConexts', LocalConextController::class)->only('index', 'show');
@@ -42,9 +38,9 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 
-Route::group(['middleware' => ['auth:api']], function()
+Route::group(['middleware' => ['auth:api', 'admin']], function()
 {
-    Route::resource('admin/expertises', ExpertiseController::class); 
+    Route::resource('admin/expertises', ExpertiseController::class);
     Route::resource('admin/businessTypes', BusinessTypeController::class);
     Route::resource('admin/localConexts', LocalConextController::class);
     Route::resource('admin/users', UserController::class);
