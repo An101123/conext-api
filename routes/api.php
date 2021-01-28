@@ -25,13 +25,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('businessTypes', BusinessTypeController::class)->middleware('auth:api');
-Route::resource('expertises', ExpertiseController::class)->middleware('auth:api');  
-Route::resource('localConexts', LocalConextController::class)->middleware('auth:api');
-Route::resource('users', UserController::class);
-Route::get('userRandom', [UserController::class, 'getUserRandom']);
-Route::resource('explores', ExploreController::class)->middleware('auth:api');
+
+    Route::resource('users', UserController::class)->only('index', 'show');
+    Route::get('userRandom', [UserController::class, 'getUserRandom']);
+    Route::get('userByBusinessType/{id}',[UserController::class, 'getUserByBusinessType']);
+    Route::get('userByExpertise/{id}',[UserController::class, 'getUserByExpertise']);
+
+
+
+Route::resource('businessTypes', BusinessTypeController::class)->only('index', 'show');
+Route::resource('localConexts', LocalConextController::class)->only('index', 'show');
+Route::resource('users', UserController::class)->only('index', 'show');
+Route::resource('explores', ExploreController::class)->only('index', 'show');
+
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 
+Route::group(['middleware' => ['auth:api']], function()
+{
+    Route::resource('admin/expertises', ExpertiseController::class); 
+    Route::resource('admin/businessTypes', BusinessTypeController::class);
+    Route::resource('admin/localConexts', LocalConextController::class);
+    Route::resource('admin/users', UserController::class);
+    Route::resource('admin/explores', ExploreController::class);
+});

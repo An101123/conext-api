@@ -38,4 +38,13 @@ class UserService implements UserServiceInterface
     {
         return $this->userRepository->getUserRandom();
     }
+    public function getUserByBusinessType($id)
+    {
+        return $this->userRepository->getUserByBusinessType($id);
+    }
+
+    public function getUserByExpertise($id)
+    {
+        return $this->userRepository->getUserByExpertise($id);
+    }
 }

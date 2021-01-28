@@ -31,13 +31,14 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => 3600,
-            'user' => Auth::user()
+            // 'user' => Auth::user()
         ]);
     }
 
     public function logout()
     {
         Auth::logout();
+        JWTAuth::invalidate(JWTAuth::getToken());
         return response()->json(['message' => 'User successfully signed out']);
     }
     

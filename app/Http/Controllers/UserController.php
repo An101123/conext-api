@@ -54,7 +54,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $input = $request;
         return $this->userService->update($input, $id);
@@ -74,5 +74,15 @@ class UserController extends Controller
     public function getUserRandom()
     {
         return $this->userService->getUserRandom();
+    }
+
+    public function getUserByBusinessType($id)
+    {
+        return $this->userService->getUserByBusinessType($id);
+    }
+
+    public function getUserByExpertise($id)
+    {
+        return $this->userService->getUserByExpertise($id);
     }
 }

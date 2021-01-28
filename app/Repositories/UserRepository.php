@@ -89,4 +89,15 @@ class UserRepository implements UserRepositoryInterface{
     {
         return User::inRandomOrder()->limit(4)->get();
     }
+
+    public function getUserByBusinessType($id)
+    {
+        return User::where('businessType_id', $id)->get();
+    }
+    public function getUserByExpertise($id)
+    {
+        return User::where('expertise_id', $id)->get();
+    }
+    
+    
 }
