@@ -7,6 +7,7 @@ use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\LocalConextController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VoucherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,7 @@ Route::get('user-random', [UserController::class, 'getUserRandom']);
 Route::resource('business-types', BusinessTypeController::class)->only('index', 'show');
 Route::resource('local-conexts', LocalConextController::class)->only('index', 'show');
 Route::resource('explores', ExploreController::class)->only('index', 'show');
-
+Route::resource('vouchers', VoucherController::class)->only('index', 'show');
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
@@ -42,4 +43,6 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::resource('admin/users', UserController::class);
     Route::resource('admin/explores', ExploreController::class);
     Route::resource('admin/events', EventController::class);
+    Route::resource('admin/vouchers', VoucherController::class);
+
 });
