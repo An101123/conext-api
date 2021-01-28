@@ -20,7 +20,7 @@ class ExpertiseRepository implements ExpertiseRepositoryInterface{
             Expertise::create($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
         
     }
@@ -38,7 +38,7 @@ class ExpertiseRepository implements ExpertiseRepositoryInterface{
             Expertise::find($id)->update($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
     }
     public function delete($id)

@@ -18,7 +18,7 @@ class LocalConextRepository implements LocalConextRepositoryInterface{
             LocalConext::create($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
     }
 
@@ -37,7 +37,7 @@ class LocalConextRepository implements LocalConextRepositoryInterface{
             LocalConext::find($id)->update($data);
             return true;
         } catch(\Exception $e){
-            return false;   
+            return $e;   
         }
     }
     

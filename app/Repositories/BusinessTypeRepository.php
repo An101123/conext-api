@@ -23,7 +23,7 @@ class BusinessTypeRepository implements BusinessTypeRepositoryInterface
             BusinessType::create($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
     }
     
@@ -40,7 +40,7 @@ class BusinessTypeRepository implements BusinessTypeRepositoryInterface
             BusinessType::find($id)->update($data);
             return true;
         } catch(\Exception $e){
-           return false;
+           return $e;
         }
     }
     public function delete($id)

@@ -45,7 +45,7 @@ class UserRepository implements UserRepositoryInterface{
             User::create($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
     }
 
@@ -80,7 +80,7 @@ class UserRepository implements UserRepositoryInterface{
             User::find($id)->update($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
     }
     

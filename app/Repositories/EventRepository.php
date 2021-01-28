@@ -31,7 +31,7 @@ class EventRepository implements EventRepositoryInterface{
             Event::create($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
         }
         else {
@@ -54,7 +54,7 @@ class EventRepository implements EventRepositoryInterface{
                 Event::find($id)->update($data);
                 return true;
             } catch(\Exception $e){
-                return false;
+                return $e;
             }
             }
             else {

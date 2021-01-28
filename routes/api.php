@@ -8,6 +8,7 @@ use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\LocalConextController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\WorkPlaceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,4 +46,5 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::resource('admin/explores', ExploreController::class);
     Route::resource('admin/events', EventController::class);
     Route::resource('admin/vouchers', VoucherController::class);
+    Route::resource('admin/work-places', WorkPlaceController::class);
 });

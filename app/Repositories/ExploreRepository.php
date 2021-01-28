@@ -21,7 +21,7 @@ class ExploreRepository implements ExploreRepositoryInterface{
             Explore::create($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
         
     }
@@ -40,7 +40,7 @@ class ExploreRepository implements ExploreRepositoryInterface{
             Explore::find($id)->update($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
     }
     public function delete($id)

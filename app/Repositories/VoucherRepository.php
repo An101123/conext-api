@@ -14,7 +14,7 @@ class VoucherRepository implements VoucherRepositoryInterface{
         } else{
             return Voucher::paginate(6);
         }
-    }
+    }   
 
     public function store($input)
     {
@@ -30,7 +30,7 @@ class VoucherRepository implements VoucherRepositoryInterface{
             Voucher::create($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
         } else {
             return response()->json([
@@ -57,7 +57,7 @@ class VoucherRepository implements VoucherRepositoryInterface{
             Voucher::find($id)->update($data);
             return true;
         } catch(\Exception $e){
-            return false;
+            return $e;
         }
     }
     public function delete($id)

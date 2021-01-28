@@ -22,6 +22,8 @@ use App\Repositories\UserRepository;
 use App\Repositories\UserRepositoryInterface;
 use App\Repositories\VoucherRepository;
 use App\Repositories\VoucherRepositoryInterface;
+use App\Repositories\WorkPlaceRepository;
+use App\Repositories\WorkPlaceRepositoryInterface;
 use App\Services\EventService;
 use App\Services\EventServiceInterface;
 use App\Services\LocalConextService;
@@ -30,6 +32,8 @@ use App\Services\UserService;
 use App\Services\UserServiceInterface;
 use App\Services\VoucherService;
 use App\Services\VoucherServiceInterface;
+use App\Services\WorkPlaceService;
+use App\Services\WorkPlaceServiceInterface;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -58,6 +62,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(EventRepositoryInterface::class, EventRepository::class);
         $this->app->bind(VoucherServiceInterface::class, VoucherService::class);
         $this->app->bind(VoucherRepositoryInterface::class, VoucherRepository::class);
+        $this->app->bind(WorkPlaceServiceInterface::class, WorkPlaceService::class);
+        $this->app->bind(WorkPlaceRepositoryInterface::class, WorkPlaceRepository::class);
     }
 
     /**
