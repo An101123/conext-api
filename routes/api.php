@@ -33,6 +33,8 @@ Route::resource('local-conexts', LocalConextController::class)->only('index', 's
 Route::resource('explores', ExploreController::class)->only('index', 'show');
 Route::resource('vouchers', VoucherController::class)->only('index', 'show');
 Route::resource('events', EventController::class)->only('index', 'show');
+Route::resource('work-places', WorkPlaceController::class)->only('index', 'show');
+Route::get('location', [WorkPlaceController::class, 'location']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);

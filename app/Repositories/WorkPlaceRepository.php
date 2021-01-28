@@ -52,4 +52,8 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface{
             WorkPlace::where('id', $id)->delete($id);
             return true;
     }
+    public function location()
+    {
+        return WorkPlace::all('address');
+    }
 }

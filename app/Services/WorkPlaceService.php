@@ -34,6 +34,9 @@ class WorkPlaceService implements WorkPlaceServiceInterface{
     public function delete($id)
     {
         return $this->workPlaceRepository->delete($id);
-        
+    }
+    public function location()
+    {
+        return $this->workPlaceRepository->location();
     }
 }

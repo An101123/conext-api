@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\WorkPlaceServiceInterface;
+use GuzzleHttp\RetryMiddleware;
 use Illuminate\Http\Request;
 
 class WorkPlaceController extends Controller
@@ -68,5 +69,11 @@ class WorkPlaceController extends Controller
     public function destroy($id)
     {
         return $this->workPlaceService->delete($id);
+    }
+
+    public function location()
+    {
+        return $this->workPlaceService->location();
+
     }
 }
