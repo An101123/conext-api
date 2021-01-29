@@ -19,9 +19,10 @@ class WorkPlaceController extends Controller
     {
         $this->workPlaceService = $workPlaceService;
     }
-    public function index()
+    public function index(Request $request)
     {
-        return $this->workPlaceService->getWorkPlaces();
+        $location = $request->location;
+        return $this->workPlaceService->getWorkPlaces($location);
     }
 
     /**
@@ -69,11 +70,5 @@ class WorkPlaceController extends Controller
     public function destroy($id)
     {
         return $this->workPlaceService->delete($id);
-    }
-
-    public function location()
-    {
-        return $this->workPlaceService->location();
-
     }
 }

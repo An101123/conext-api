@@ -8,9 +8,13 @@ use Exception;
 
 class WorkPlaceRepository implements WorkPlaceRepositoryInterface
 {
-    public function getWorkPlaces()
+    public function getWorkPlaces($location)
     {
-        return WorkPlace::all();
+        if (!empty($location) == 1){
+            return WorkPlace::all('address');
+        } else {
+            return WorkPlace::all();
+        }
     }   
 
     public function store($input)
@@ -52,9 +56,5 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
     {
             WorkPlace::where('id', $id)->delete($id);
             return true;
-    }
-    public function location()
-    {
-        return WorkPlace::all('address');
     }
 }

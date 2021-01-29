@@ -13,9 +13,9 @@ class WorkPlaceService implements WorkPlaceServiceInterface
     {
         return $this->workPlaceRepository = $workPlaceRepository;
     }
-    public function getWorkPlaces()
+    public function getWorkPlaces($location)
     {
-        return $this->workPlaceRepository->getWorkPlaces();
+        return $this->workPlaceRepository->getWorkPlaces($location);
     }
     public function store($input)
     {
@@ -32,9 +32,5 @@ class WorkPlaceService implements WorkPlaceServiceInterface
     public function delete($id)
     {
         return $this->workPlaceRepository->delete($id);
-    }
-    public function location()
-    {
-        return $this->workPlaceRepository->location();
     }
 }

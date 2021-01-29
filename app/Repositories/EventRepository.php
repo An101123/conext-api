@@ -43,7 +43,7 @@ class EventRepository implements EventRepositoryInterface
     }
     public function update($input, $id)
     {
-        if($input['start_time'] >= (Carbon::now()) && $input['end_time'] > $input['start_time']){
+        if($input['end_time'] > $input['start_time']){
             try{
                 $data = array(
                     'title' => $input['title'],

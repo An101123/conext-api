@@ -73,9 +73,9 @@ class UserRepository implements UserRepositoryInterface
                 'workplace' =>$input->workplace,
                 'password' =>Hash::make($input->password),
                 'avatar' => $input->avatar,
-                'business_type_id' =>$input->businessType_id,
+                'business_type_id' =>$input->business_type_id,
                 'expertise_id' =>$input->expertise_id,
-                'local_conext_id' =>$input->localConext_id,
+                'local_conext_id' =>$input->local_conext_id,
             );
             User::find($id)->update($data);
             return true;

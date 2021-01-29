@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequest;
 use App\Services\EventServiceInterface;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
         $input = $request->all();
         return $this->eventService->store($input);

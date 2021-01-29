@@ -30,12 +30,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('users', UserController::class)->only('index', 'show');
 Route::get('user-random', [UserController::class, 'getUserRandom']);
 Route::resource('business-types', BusinessTypeController::class)->only('index', 'show');
+Route::resource('expertises', ExpertiseController::class)->only('index', 'show');
 Route::resource('local-conexts', LocalConextController::class)->only('index', 'show');
 Route::resource('explores', ExploreController::class)->only('index', 'show');
 Route::resource('vouchers', VoucherController::class)->only('index', 'show');
 Route::resource('events', EventController::class)->only('index', 'show');
 Route::resource('work-places', WorkPlaceController::class)->only('index', 'show');
-Route::get('location', [WorkPlaceController::class, 'location']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
