@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-interface WorkPlaceServiceInterface{
+interface WorkPlaceServiceInterface
+{
     public function getWorkPlaces();
     public function store($input);
     public function getWorkPlace($id);

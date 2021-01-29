@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-interface LocalConextServiceInterface{
+interface LocalConextServiceInterface
+{
     public function getLocalConexts();
     public function store($input);
     public function getLocalConext($id);

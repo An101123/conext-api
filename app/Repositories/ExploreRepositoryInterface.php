@@ -2,7 +2,8 @@
 
 namespace App\Repositories;
 
-interface ExploreRepositoryInterface{
+interface ExploreRepositoryInterface
+{
     public function getExplores();
     public function store($input);
     public function getExplore($id);

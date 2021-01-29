@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-interface ExpertiseServiceInterface{
+interface ExpertiseServiceInterface
+{
     public function getExpertises();
     public function store($input);
     public function getExpertise($id);

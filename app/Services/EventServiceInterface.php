@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-interface EventServiceInterface{
+interface EventServiceInterface
+{
     public function getEvents($filter);
     public function store($input);
     public function getEvent($id);

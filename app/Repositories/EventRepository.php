@@ -6,7 +6,8 @@ use App\Models\Event;
 use Carbon\Carbon;
 
 
-class EventRepository implements EventRepositoryInterface{  
+class EventRepository implements EventRepositoryInterface
+{  
     public function getEvents($filter)
     {
         if ($filter == 1){

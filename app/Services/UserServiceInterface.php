@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-interface UserServiceInterface{
+interface UserServiceInterface
+{
     public function getUsers($businessType, $expertise);
     public function store($input);
     public function getUser($id);

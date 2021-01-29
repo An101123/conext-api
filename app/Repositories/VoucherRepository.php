@@ -6,7 +6,8 @@ use App\Models\Voucher;
 use Carbon\Carbon;
 use Exception;
 
-class VoucherRepository implements VoucherRepositoryInterface{
+class VoucherRepository implements VoucherRepositoryInterface
+{
     public function getVouchers($type)
     {
         if ($type == 1){

@@ -2,7 +2,8 @@
 
 namespace App\Repositories;
 
-interface WorkPlaceRepositoryInterface{
+interface WorkPlaceRepositoryInterface
+{
     public function getWorkPlaces();
     public function store($input);
     public function getWorkPlace($id);

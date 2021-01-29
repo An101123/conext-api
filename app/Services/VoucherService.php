@@ -4,7 +4,8 @@ namespace App\Services;
 
 use App\Repositories\VoucherRepositoryInterface;
 
-class VoucherService implements VoucherServiceInterface{
+class VoucherService implements VoucherServiceInterface
+{
 
     protected $voucherRepository;
     

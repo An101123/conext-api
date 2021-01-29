@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-interface VoucherServiceInterface{
+interface VoucherServiceInterface
+{
     public function getVouchers($type);
     public function store($input);
     public function getVoucher($id);

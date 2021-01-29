@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BusinessTypeController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\ExploreController;
@@ -38,7 +39,7 @@ Route::get('location', [WorkPlaceController::class, 'location']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
-
+Route::resource('contacts', ContactController::class)->only('index', 'store', 'destroy');
 Route::group(['middleware' => ['auth:api', 'admin']], function()
 {
     Route::resource('admin/expertises', ExpertiseController::class);

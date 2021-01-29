@@ -2,7 +2,8 @@
 
 namespace App\Repositories;
 
-interface ExpertiseRepositoryInterface{
+interface ExpertiseRepositoryInterface
+{
     public function getExpertises();
     public function store($input);
     public function getExpertise($id);

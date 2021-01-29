@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-interface ExploreServiceInterface{
+interface ExploreServiceInterface
+{
     public function getExplores();
     public function store($input);
     public function getExplore($id);

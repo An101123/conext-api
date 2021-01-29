@@ -6,7 +6,8 @@ use App\Models\WorkPlace;
 use Carbon\Carbon;
 use Exception;
 
-class WorkPlaceRepository implements WorkPlaceRepositoryInterface{
+class WorkPlaceRepository implements WorkPlaceRepositoryInterface
+{
     public function getWorkPlaces()
     {
         return WorkPlace::all();

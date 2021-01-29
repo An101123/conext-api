@@ -4,10 +4,11 @@ namespace App\Services;
 
 use App\Repositories\WorkPlaceRepositoryInterface;
 
-class WorkPlaceService implements WorkPlaceServiceInterface{
+class WorkPlaceService implements WorkPlaceServiceInterface
+{
 
     protected $workPlaceRepository;
-    
+
     public function __construct(WorkPlaceRepositoryInterface $workPlaceRepository)
     {
         return $this->workPlaceRepository = $workPlaceRepository;
@@ -19,17 +20,14 @@ class WorkPlaceService implements WorkPlaceServiceInterface{
     public function store($input)
     {
         return $this->workPlaceRepository->store($input);
-        
     }
     public function getWorkPlace($id)
     {
         return $this->workPlaceRepository->getWorkPlace($id);
-        
     }
     public function update($input, $id)
     {
         return $this->workPlaceRepository->update($input, $id);
-        
     }
     public function delete($id)
     {

@@ -4,7 +4,8 @@ namespace App\Services;
 
 use App\Repositories\EventRepositoryInterface;
 
-class EventService implements EventServiceInterface{
+class EventService implements EventServiceInterface
+{
 
     protected $eventRepository;
     

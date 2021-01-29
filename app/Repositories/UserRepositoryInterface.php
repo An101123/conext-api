@@ -2,7 +2,8 @@
 
 namespace App\Repositories;
 
-interface UserRepositoryInterface{
+interface UserRepositoryInterface
+{
     public function getUsers($businessType, $expertise);
     public function store($input);
     public function getUser($id);

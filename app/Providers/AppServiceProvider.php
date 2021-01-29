@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\BusinessTypeRepository;
 use App\Repositories\BusinessTypeRepositoryInterface;
+use App\Repositories\ContactRepository;
+use App\Repositories\ContactRepositoryInterface;
 use App\Repositories\EventRepository;
 use App\Repositories\EventRepositoryInterface;
 use App\Services\BusinessTypeService;
@@ -24,6 +26,8 @@ use App\Repositories\VoucherRepository;
 use App\Repositories\VoucherRepositoryInterface;
 use App\Repositories\WorkPlaceRepository;
 use App\Repositories\WorkPlaceRepositoryInterface;
+use App\Services\ContactService;
+use App\Services\ContactServiceInterface;
 use App\Services\EventService;
 use App\Services\EventServiceInterface;
 use App\Services\LocalConextService;
@@ -64,6 +68,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(VoucherRepositoryInterface::class, VoucherRepository::class);
         $this->app->bind(WorkPlaceServiceInterface::class, WorkPlaceService::class);
         $this->app->bind(WorkPlaceRepositoryInterface::class, WorkPlaceRepository::class);
+        $this->app->bind(ContactServiceInterface::class, ContactService::class);
+        $this->app->bind(ContactRepositoryInterface::class, ContactRepository::class);
     }
 
     /**

@@ -2,7 +2,8 @@
 
 namespace App\Repositories;
 
-interface EventRepositoryInterface{
+interface EventRepositoryInterface
+{
     public function getEvents($filter);
     public function store($input);
     public function getEvent($id);

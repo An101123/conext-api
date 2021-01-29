@@ -2,7 +2,8 @@
 
 namespace App\Repositories;
 
-interface LocalConextRepositoryInterface{
+interface LocalConextRepositoryInterface
+{
     public function getLocalConexts();
     public function store($input);
     public function getLocalConext($id);

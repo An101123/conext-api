@@ -4,7 +4,8 @@ namespace App\Services;
 
 use App\Repositories\ExpertiseRepositoryInterface;
 
-class ExpertiseService implements ExpertiseServiceInterface{
+class ExpertiseService implements ExpertiseServiceInterface
+{
 
     protected $expertiseRepository;
     

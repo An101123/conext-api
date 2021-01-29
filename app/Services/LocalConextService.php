@@ -4,7 +4,8 @@ namespace App\Services;
 
 use App\Repositories\LocalConextRepositoryInterface;
 
-class LocalConextService implements LocalConextServiceInterface{
+class LocalConextService implements LocalConextServiceInterface
+{
 
     protected $localConextRepository;
     

@@ -5,7 +5,8 @@ namespace App\Repositories;
 use App\Models\Expertise;
 use Exception;
 
-class ExpertiseRepository implements ExpertiseRepositoryInterface{
+class ExpertiseRepository implements ExpertiseRepositoryInterface
+{
     public function getExpertises()
     {
         return Expertise::all();

@@ -5,7 +5,8 @@ namespace App\Repositories;
 use App\Models\Explore;
 use Exception;
 
-class ExploreRepository implements ExploreRepositoryInterface{
+class ExploreRepository implements ExploreRepositoryInterface
+{
     public function getExplores()
     {
         return Explore::all();

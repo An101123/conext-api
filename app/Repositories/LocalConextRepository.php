@@ -4,7 +4,8 @@ namespace App\Repositories;
 
 use App\Models\LocalConext;
 
-class LocalConextRepository implements LocalConextRepositoryInterface{
+class LocalConextRepository implements LocalConextRepositoryInterface
+{
     public function getLocalConexts()
     {
         return LocalConext::all();

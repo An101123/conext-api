@@ -5,7 +5,8 @@ namespace App\Repositories;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class UserRepository implements UserRepositoryInterface{
+class UserRepository implements UserRepositoryInterface
+{
     public function getUsers($businessType, $expertise)
     {
         if (!empty($businessType) && !empty($expertise)){
@@ -76,7 +77,6 @@ class UserRepository implements UserRepositoryInterface{
                 'expertise_id' =>$input->expertise_id,
                 'local_conext_id' =>$input->localConext_id,
             );
-        
             User::find($id)->update($data);
             return true;
         } catch(\Exception $e){

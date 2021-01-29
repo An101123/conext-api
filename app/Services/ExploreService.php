@@ -4,7 +4,8 @@ namespace App\Services;
 
 use App\Repositories\ExploreRepositoryInterface;
 
-class ExploreService implements ExploreServiceInterface{
+class ExploreService implements ExploreServiceInterface
+{
 
     protected $exploreRepository;
     
