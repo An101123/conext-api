@@ -8,11 +8,11 @@ use Carbon\Carbon;
 
 class EventRepository implements EventRepositoryInterface
 {  
-    public function getEvents($filter)
+    public function getEvents($active)
     {
-        if ($filter == 1){
+        if ($active == 1){
             return Event::where('end_time', '>=', Carbon::now())->orderBy('start_time', 'asc')->paginate(6);
-        } elseif($filter == 2){
+        } elseif($active == 2){
             return Event::where('end_time', '<', Carbon::now())->orderBy('end_time', 'desc')->paginate(6);
         } else {
         return Event::paginate(6);

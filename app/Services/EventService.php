@@ -13,9 +13,9 @@ class EventService implements EventServiceInterface
     {
         return $this->eventRepository = $eventRepository;
     }
-    public function getEvents($filter)
+    public function getEvents($active)
     {
-        return $this->eventRepository->getEvents($filter);
+        return $this->eventRepository->getEvents($active);
     }
     public function store($input)
     {

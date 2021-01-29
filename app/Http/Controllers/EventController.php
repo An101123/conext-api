@@ -20,8 +20,8 @@ class EventController extends Controller
     }
     public function index(Request $request)
     {
-        $filter = $request->filter;
-        return $this->eventService->getEvents($filter);
+        $active = $request->active;
+        return $this->eventService->getEvents($active);
     }
 
     /**
