@@ -3,12 +3,14 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
 {
     public function getUsers($businessType, $expertise)
     {
+
         if (!empty($businessType) && !empty($expertise)){
             return User::where('business_type_id', $businessType)->where('expertise_id', $expertise)->get();
         } elseif (!empty($expertise)){
@@ -52,7 +54,8 @@ class UserRepository implements UserRepositoryInterface
 
     public function getUser($id)
     {
-        return User::find($id);
+        return User::where('users.id', '=', $id)->join('business_types', 'users.business_type_id', '=', 'business_types.id')->join('expertises', 'users.expertise_id', '=', 'expertises.id')
+        ->select('users.*', 'business_types.name as business-type', 'expertises.name as expertise')->get();
     }
     
     public function update($input, $id)
