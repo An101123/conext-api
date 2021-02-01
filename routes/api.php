@@ -28,6 +28,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('users', UserController::class)->only('index', 'show');
+Route::resource('users', UserController::class)->only('index', 'show');
+Route::get('profile', [UserController::class, 'show']);
 Route::get('user-random', [UserController::class, 'getUserRandom']);
 Route::apiResource('business-types', BusinessTypeController::class)->only('index', 'show');
 Route::apiResource('expertises', ExpertiseController::class)->only('index', 'show');

@@ -15,6 +15,8 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
         } else {
             return WorkPlace::all();
         }
+        
+        return WorkPlace::all();
     }   
 
     public function store($input)
@@ -56,5 +58,9 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
     {
             WorkPlace::where('id', $id)->delete($id);
             return true;
+    }
+    public function location()
+    {
+        return WorkPlace::all('id', 'address');
     }
 }
