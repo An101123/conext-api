@@ -70,6 +70,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(WorkPlaceRepositoryInterface::class, WorkPlaceRepository::class);
         $this->app->bind(ContactServiceInterface::class, ContactService::class);
         $this->app->bind(ContactRepositoryInterface::class, ContactRepository::class);
+        $this->app->register(\L5Swagger\L5SwaggerServiceProvider::class);
     }
 
     /**
