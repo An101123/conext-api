@@ -65,7 +65,7 @@ class UserRepository implements UserRepositoryInterface{
             };
             $data = array(
                 'name' =>$input->name,
-                'email' =>$input->email,
+                // 'email' =>$input->email,s
                 'gender' =>$input->gender,
                 'address' =>$input->address,
                 'introduce' =>$input->introduce,

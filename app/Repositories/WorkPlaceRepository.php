@@ -9,6 +9,7 @@ use Exception;
 class WorkPlaceRepository implements WorkPlaceRepositoryInterface{
     public function getWorkPlaces()
     {
+        
         return WorkPlace::all();
     }   
 
@@ -54,6 +55,6 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface{
     }
     public function location()
     {
-        return WorkPlace::all('address');
+        return WorkPlace::all('id', 'address');
     }
 }

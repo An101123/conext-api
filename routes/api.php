@@ -27,6 +27,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::resource('users', UserController::class)->only('index', 'show');
+Route::get('profile', [UserController::class, 'show']);
 Route::get('user-random', [UserController::class, 'getUserRandom']);
 Route::resource('business-types', BusinessTypeController::class)->only('index', 'show');
 Route::resource('local-conexts', LocalConextController::class)->only('index', 'show');
@@ -38,7 +39,6 @@ Route::get('location', [WorkPlaceController::class, 'location']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
-
 Route::group(['middleware' => ['auth:api', 'admin']], function()
 {
     Route::resource('admin/expertises', ExpertiseController::class);
