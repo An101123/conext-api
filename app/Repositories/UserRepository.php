@@ -29,15 +29,7 @@ class UserRepository implements UserRepositoryInterface
                 $name = $file->getClientOriginalName();
                 $file->move('image/avatar', $name);
                 $input['aaaa']= 'image/avatar/'.$name;
-            dd($input->all(), $input->avatar, $input->image);
-
             }
-
-            
-            // dd('image/avatar/' . $file->getClientOriginalName());
-            // $input['avatar'] =  'image/avatar/'. $file->getClientOriginalName();
-
-            // dd($input['avatar']);
             $data = array(
                 'name' =>$input->name,
                 'email' =>$input->email,

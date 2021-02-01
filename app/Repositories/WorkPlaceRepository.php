@@ -16,13 +16,7 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
     public function store($input)
     {
         try{
-            $data = array(
-                'name' => $input['name'],
-                'image' => $input['image'],
-                'price' => $input['price'],
-                'address' => $input['address'],
-            );
-            WorkPlace::create($data);
+            WorkPlace::create($input);
             return true;
         } catch(\Exception $e){
             return false;
@@ -36,13 +30,7 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
     public function update($input, $id)
     {
         try{
-            $data = array(
-                'name' => $input['name'],
-                'image' => $input['image'],
-                'price' => $input['price'],
-                'address' => $input['address'],
-            );
-            WorkPlace::find($id)->update($data);
+            WorkPlace::find($id)->update($input);
             return true;
         } catch(\Exception $e){
             return $e;

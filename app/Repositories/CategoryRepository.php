@@ -15,10 +15,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     public function store($input)
     {
         try{
-            $data = array(
-                'category_name' => $input['category_name'],
-            );
-            Category::create($data);
+            Category::create($input);
             return true;
         } catch(\Exception $e){
             return $e;
@@ -32,10 +29,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     public function update($input, $id)
     {
         try{
-            $data = array(
-                'category_name' => $input['category_names']
-            );
-            Category::find($id)->update($data);
+            Category::find($id)->update($input);
             return true;
         } catch(\Exception $e){
            return $e;

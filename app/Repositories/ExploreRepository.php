@@ -15,11 +15,7 @@ class ExploreRepository implements ExploreRepositoryInterface
     public function store($input)
     {
         try{
-            $data = array(
-                'title' => $input['title'],
-                'image' => $input['image']
-            );
-            Explore::create($data);
+            Explore::create($input);
             return true;
         } catch(\Exception $e){
             return $e;
@@ -34,11 +30,7 @@ class ExploreRepository implements ExploreRepositoryInterface
     public function update($input, $id)
     {
         try{
-            $data = array(
-                'title' => $input['title'],
-                'image' => $input['image']
-            );
-            Explore::find($id)->update($data);
+            Explore::find($id)->update($input);
             return true;
         } catch(\Exception $e){
             return $e;
