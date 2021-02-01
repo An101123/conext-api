@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\WorkPlaceServiceInterface;
-use GuzzleHttp\RetryMiddleware;
+// use App\Models\HotNeed;
+// use App\Services\HotNeedService;
+use App\Services\HotNeedServiceInterface;
 use Illuminate\Http\Request;
 
-class WorkPlaceController extends Controller
+class HotNeedController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    protected $workPlaceService;
+    protected $hotNeedService;
     
-    public function __construct(WorkPlaceServiceInterface $workPlaceService)
+    public function __construct(HotNeedServiceInterface $hotNeedService)
     {
-        $this->workPlaceService = $workPlaceService;
+        $this->hotNeedService = $hotNeedService;
     }
-    public function index(Request $request)
+    public function index()
     {
-        $location = $request->location;
-        return $this->workPlaceService->getWorkPlaces($location);
+        return $this->hotNeedService->getHotNeeds();
     }
 
     /**
@@ -33,8 +33,11 @@ class WorkPlaceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd('hahaha');
         $input = $request->all();
-        return $this->workPlaceService->store($input);
+        // var_dump($input);
+        return $this->hotNeedService->store($input);
+        
     }
 
     /**
@@ -45,7 +48,7 @@ class WorkPlaceController extends Controller
      */
     public function show($id)
     {
-        return $this->workPlaceService->getWorkPlace($id);
+        return $this->hotNeedService->getHotNeed($id);
     }
 
     /**
@@ -58,7 +61,7 @@ class WorkPlaceController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        return $this->workPlaceService->update($input, $id);
+        return $this->hotNeedService->update($input, $id);
     }
 
     /**
@@ -69,11 +72,6 @@ class WorkPlaceController extends Controller
      */
     public function destroy($id)
     {
-        return $this->workPlaceService->delete($id);
-    }
-
-    public function location()
-    {
-        return $this->workPlaceService->location();
+        return $this->hotNeedService->delete($id);
     }
 }

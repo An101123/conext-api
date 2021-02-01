@@ -10,13 +10,7 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
 {
     public function getWorkPlaces($location)
     {
-        if (!empty($location) == 1){
-            return WorkPlace::all('id','address');
-        } else {
             return WorkPlace::all();
-        }
-        
-        return WorkPlace::all();
     }   
 
     public function store($input)

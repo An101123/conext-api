@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\WorkPlaceServiceInterface;
-use GuzzleHttp\RetryMiddleware;
+// use App\Models\Category;
+// use App\Services\CategoryService;
+use App\Services\CategoryServiceInterface;
 use Illuminate\Http\Request;
 
-class WorkPlaceController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    protected $workPlaceService;
+    protected $categoryService;
     
-    public function __construct(WorkPlaceServiceInterface $workPlaceService)
+    public function __construct(CategoryServiceInterface $categoryService)
     {
-        $this->workPlaceService = $workPlaceService;
+        $this->categoryService = $categoryService;
     }
-    public function index(Request $request)
+    public function index()
     {
-        $location = $request->location;
-        return $this->workPlaceService->getWorkPlaces($location);
+        return $this->categoryService->getCategories();
     }
 
     /**
@@ -33,8 +33,11 @@ class WorkPlaceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd('hahaha');
         $input = $request->all();
-        return $this->workPlaceService->store($input);
+        // var_dump($input);
+        return $this->categoryService->store($input);
+        
     }
 
     /**
@@ -45,7 +48,7 @@ class WorkPlaceController extends Controller
      */
     public function show($id)
     {
-        return $this->workPlaceService->getWorkPlace($id);
+        return $this->categoryService->getCategory($id);
     }
 
     /**
@@ -58,7 +61,7 @@ class WorkPlaceController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        return $this->workPlaceService->update($input, $id);
+        return $this->categoryService->update($input, $id);
     }
 
     /**
@@ -69,11 +72,6 @@ class WorkPlaceController extends Controller
      */
     public function destroy($id)
     {
-        return $this->workPlaceService->delete($id);
-    }
-
-    public function location()
-    {
-        return $this->workPlaceService->location();
+        return $this->categoryService->delete($id);
     }
 }
