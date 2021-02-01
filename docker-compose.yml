@@ -10,7 +10,7 @@ services:
     #   - ./dbdata:/var/lib/mysql
     #   - ./dbbackup:/var/lib/mysql-db-backup
     environment:
-      - "MYSQL_DATABASE=iotcms"
+      - "MYSQL_DATABASE=conext"
       - "MYSQL_USER=iotcms"
       - "MYSQL_PASSWORD=htactive"
       - "MYSQL_ROOT_PASSWORD=htactive"
