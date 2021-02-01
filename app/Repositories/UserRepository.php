@@ -10,7 +10,6 @@ class UserRepository implements UserRepositoryInterface
 {
     public function getUsers($businessType, $expertise)
     {
-
         if (!empty($businessType) && !empty($expertise)){
             return User::where('business_type_id', $businessType)->where('expertise_id', $expertise)->get();
         } elseif (!empty($expertise)){

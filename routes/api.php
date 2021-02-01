@@ -27,19 +27,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('users', UserController::class)->only('index', 'show');
+Route::apiResource('users', UserController::class)->only('index', 'show');
 Route::get('user-random', [UserController::class, 'getUserRandom']);
-Route::resource('business-types', BusinessTypeController::class)->only('index', 'show');
-Route::resource('expertises', ExpertiseController::class)->only('index', 'show');
-Route::resource('local-conexts', LocalConextController::class)->only('index', 'show');
-Route::resource('explores', ExploreController::class)->only('index', 'show');
-Route::resource('vouchers', VoucherController::class)->only('index', 'show');
-Route::resource('events', EventController::class)->only('index', 'show');
+Route::apiResource('business-types', BusinessTypeController::class)->only('index', 'show');
+Route::apiResource('expertises', ExpertiseController::class)->only('index', 'show');
+Route::apiResource('local-conexts', LocalConextController::class)->only('index', 'show');
+Route::apiResource('explores', ExploreController::class)->only('index', 'show');
+Route::apiResource('vouchers', VoucherController::class)->only('index', 'show');
+Route::apiResource('events', EventController::class)->only('index', 'show');
 Route::resource('work-places', WorkPlaceController::class)->only('index', 'show');
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
-Route::resource('contacts', ContactController::class)->only('index', 'store', 'destroy');
+Route::apiResource('contacts', ContactController::class)->only('index', 'store', 'destroy');
 Route::group(['middleware' => ['auth:api', 'admin']], function()
 {
     Route::resource('admin/expertises', ExpertiseController::class);
