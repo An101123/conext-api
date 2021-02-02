@@ -14,7 +14,7 @@ class AddPaidToWorkPlacesTable extends Migration
     public function up()
     {
         Schema::table('work_places', function (Blueprint $table) {
-            $table->string(' ');
+            $table->string('image');
         });
     }
 
