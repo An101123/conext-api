@@ -14,7 +14,11 @@ class TermAndPolicyController extends Controller
      */
     public function index()
     {
-        return TermAndPolicy::all();
+        $data = TermAndPolicy::all();
+        return response()->json([
+            'code' => 200,
+            'data' => $data
+        ]);
     }
 
     /**
