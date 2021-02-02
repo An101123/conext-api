@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BusinessTypeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\ExploreController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\LocalConextController;
+use App\Http\Controllers\TermAndPolicyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\WorkPlaceController;
@@ -40,6 +43,7 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 Route::apiResource('contacts', ContactController::class)->only('index', 'store', 'destroy');
+
 Route::group(['middleware' => ['auth:api', 'admin']], function()
 {
     Route::resource('admin/expertises', ExpertiseController::class);
@@ -51,3 +55,7 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::resource('admin/vouchers', VoucherController::class);
     Route::resource('admin/work-places', WorkPlaceController::class);
 });
+
+Route::apiResource('abouts', AboutController::class)->only('index', 'show');
+Route::apiResource('faqs', FaqController::class)->only('index', 'show');
+Route::apiResource('term-and-policies', TermAndPolicyController::class)->only('index', 'show');
