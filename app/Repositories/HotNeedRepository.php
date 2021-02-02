@@ -11,18 +11,19 @@ use Illuminate\Support\Facades\Auth;
 
 class HotNeedRepository implements HotNeedRepositoryInterface
 {
-    public function getHotNeeds(Request $request, $user_id)
+    public function getHotNeeds($category)
     {
-        dd($request->all());
         if(!empty($category)){
             return HotNeed::where('category_id', $category)->paginate(6);
-        }
-        if(!empty($user_id)){
-            return HotNeed::where('user_id', $user_id)->paginate(2)->get();
         }
         else {
         return HotNeed::paginate(6);    
         }
+    }
+
+    public function getHotNeedByUser($user_id)
+    {   
+        return HotNeed::where('user_id', $user_id)->paginate(6);
     }
 
     public function store($input)

@@ -32,8 +32,12 @@ class HotNeedController extends Controller
     public function index(Request $request)
     {
         $category = $request->category;
+        return $this->hotNeedService->getHotNeeds($category);
+    }
+    public function getHotNeedByUser()
+    {
         $user_id = Auth::user()->id;
-        return $this->hotNeedService->getHotNeeds($category, $user_id);
+        return $this->hotNeedService->getHotNeedByUser($user_id);
     }
 
     /**
@@ -50,6 +54,7 @@ class HotNeedController extends Controller
         return $this->hotNeedService->store($input);
     }
 
+    
     /**
      * Display the specified resource.
      *
