@@ -1,14 +1,17 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BusinessTypeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\ExploreController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HotNeedController;
 use App\Http\Controllers\LocalConextController;
+use App\Http\Controllers\TermAndPolicyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\WorkPlaceController;
@@ -46,6 +49,7 @@ Route::get('/auth/logout', [AuthController::class, 'logout']);
 Route::get('location', [WorkPlaceController::class, 'location']);
 
 Route::apiResource('contacts', ContactController::class)->only('index', 'store', 'destroy');
+
 Route::group(['middleware' => ['auth:api', 'admin']], function()
 {
 
@@ -60,5 +64,8 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::apiResource('admin/categories', CategoryController::class);
 });
 
+Route::get('abouts', [AboutController::class, 'index']);
+Route::get('faqs', [FaqController::class, 'index']);
+Route::get('term-and-policies', [TermAndPolicyController::class, 'index']);
 Route::apiResource('hot-needs', HotNeedController::class)->middleware('auth:api');
 
