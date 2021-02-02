@@ -21,12 +21,12 @@ class CreateUsersTable extends Migration
             $table->longText('introduce')->nullable();
             $table->string('workplace')->nullable();
             $table->string('password');
-            $table->integer('business_type_id')->unsigned();
-            $table->foreign('business_type_id')->references('id')->on('business_types')->onDelete('cascade');
-            $table->integer('expertise_id')->unsigned();
-            $table->foreign('expertise_id')->references('id')->on('expertises')->onDelete('cascade');
-            $table->integer('local_conext_id')->unsigned();
-            $table->foreign('local_conext_id')->references('id')->on('local_conexts')->onDelete('cascade');
+            $table->integer('business_type_id')->unsigned()->nullable();
+            $table->foreign('business_type_id')->references('id')->on('business_types');
+            $table->integer('expertise_id')->unsigned()->nullable();
+            $table->foreign('expertise_id')->references('id')->on('expertises');
+            $table->integer('local_conext_id')->unsigned()->nullable();
+            $table->foreign('local_conext_id')->references('id')->on('local_conexts');
             $table->rememberToken();
             $table->timestamps();
         });
