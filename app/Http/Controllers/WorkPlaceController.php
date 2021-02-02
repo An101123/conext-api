@@ -39,6 +39,69 @@ class WorkPlaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+        /**
+     * @OA\Post(
+     *     tags={"work-places"},
+     *     path="/api/admin/work-places",
+     *     summary="Adds a new work-places",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="price",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="address",
+     *                     type="string"
+     *                 ),
+     *                 example={"name": "name workplace nha", "price": 12000, "address nha"}
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                         "errcode": 1,
+     *                         "errmsg": "ok",
+     *                         "data": {}
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="OH no Oh no no no no",
+     *      )
+     * )
+     */
     public function store(Request $request)
     {
         $input = $request->all();

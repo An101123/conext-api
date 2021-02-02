@@ -10,7 +10,7 @@ class LocalConextController extends Controller
     /**
      *
      * @OA\Get(
-     *     tags={"local-conexts"},
+     *     tags={"Local-conexts"},
      *     path="/api/local-conexts",
      *     @OA\Response(response="200", description="Display a listing of local-conexts.")
      * )
@@ -36,6 +36,61 @@ class LocalConextController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     */
+        /**
+     * @OA\Post(
+     *     tags={"Local-conexts"},
+     *     path="/api/admin/local-conexts",
+     *     summary="Adds a new local-conexts",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 example={"name": "name local conext nha"}
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                         "errcode": 1,
+     *                         "errmsg": "ok",
+     *                         "data": {}
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="OH no Oh no no no no",
+     *      )
+     * )
      */
     public function store(Request $request)
     {

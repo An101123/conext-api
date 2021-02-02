@@ -12,7 +12,7 @@ class HotNeedController extends Controller
     /**
      *
      * @OA\Get(
-     *     tags={"hot-needs"},
+     *     tags={"Hot-needs"},
      *     path="/api/hot-needs",
      *     @OA\Response(response="200", description="Display a listing of hot-needs.")
      * )
@@ -38,6 +38,61 @@ class HotNeedController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     */
+        /**
+     * @OA\Post(
+     *     tags={"Hot-needs"},
+     *     path="/api/admin/hot-needs",
+     *     summary="Adds a new hot-needs",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 example={"name": "name not need nha"}
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                         "errcode": 1,
+     *                         "errmsg": "ok",
+     *                         "data": {}
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="OH no Oh no no no no",
+     *      )
+     * )
      */
     public function store(Request $request)
     {

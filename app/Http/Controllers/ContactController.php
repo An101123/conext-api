@@ -41,6 +41,77 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+        /**
+     * @OA\Post(
+     *     tags={"Contact"},
+     *     path="/api/admin/contact",
+     *     summary="Adds a new contacts",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="phone_number",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="subject",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="content",
+     *                     type="string"
+     *                 ),
+     *                 example={"name": "name bussiness nha"}
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                         "errcode": 1,
+     *                         "errmsg": "ok",
+     *                         "data": {}
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="OH no Oh no no no no",
+     *      )
+     * )
+     */
     public function store(ContactRequest $request)
     {
         $input = $request->all();
