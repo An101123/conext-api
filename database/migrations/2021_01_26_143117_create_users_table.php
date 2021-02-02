@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->longText('introduce')->nullable();
             $table->string('workplace')->nullable();
             $table->string('password');
-            $table->integer('   ')->unsigned();
+            $table->integer('business_type_id')->unsigned();
             $table->foreign('business_type_id')->references('id')->on('business_types')->onDelete('cascade');
             $table->integer('expertise_id')->unsigned();
             $table->foreign('expertise_id')->references('id')->on('expertises')->onDelete('cascade');
