@@ -8,12 +8,20 @@ use Illuminate\Http\Request;
 class ExploreController extends Controller
 {
     /**
+     *
+     * @OA\Get(
+     *     tags={"Explore"},
+     *     path="/api/explores",
+     *     @OA\Response(response="200", description="Display a listing of explores.")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     protected $exploreService;
-    
+
     public function __construct(ExploreServiceInterface $exploreService)
     {
         $this->exploreService = $exploreService;

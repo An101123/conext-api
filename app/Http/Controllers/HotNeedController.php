@@ -10,12 +10,20 @@ use Illuminate\Http\Request;
 class HotNeedController extends Controller
 {
     /**
+     *
+     * @OA\Get(
+     *     tags={"hot-needs"},
+     *     path="/api/hot-needs",
+     *     @OA\Response(response="200", description="Display a listing of hot-needs.")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     protected $hotNeedService;
-    
+
     public function __construct(HotNeedServiceInterface $hotNeedService)
     {
         $this->hotNeedService = $hotNeedService;
@@ -37,7 +45,6 @@ class HotNeedController extends Controller
         $input = $request->all();
         // var_dump($input);
         return $this->hotNeedService->store($input);
-        
     }
 
     /**

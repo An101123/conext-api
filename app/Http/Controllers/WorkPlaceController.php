@@ -9,12 +9,20 @@ use Illuminate\Http\Request;
 class WorkPlaceController extends Controller
 {
     /**
+     *
+     * @OA\Get(
+     *     tags={"work-places"},
+     *     path="/api/work-places",
+     *     @OA\Response(response="200", description="Display a listing of work-places.")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     protected $workPlaceService;
-    
+
     public function __construct(WorkPlaceServiceInterface $workPlaceService)
     {
         $this->workPlaceService = $workPlaceService;

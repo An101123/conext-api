@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/auth/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('auth/users', UserController::class)->only('index', 'show');
@@ -41,8 +41,8 @@ Route::apiResource('explores', ExploreController::class)->only('index', 'show');
 Route::apiResource('vouchers', VoucherController::class)->only('index', 'show');
 Route::apiResource('events', EventController::class)->only('index', 'show');
 Route::apiResource('work-places', WorkPlaceController::class)->only('index', 'show');
-Route::post('auth/login', [AuthController::class, 'login']);
-Route::get('logout', [AuthController::class, 'logout']);
+Route::post('/auth/login', [AuthController::class, 'login']);
+Route::get('/auth/logout', [AuthController::class, 'logout']);
 Route::get('location', [WorkPlaceController::class, 'location']);
 
 Route::apiResource('contacts', ContactController::class)->only('index', 'store', 'destroy');
