@@ -1,0 +1,30 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/contacts": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of contact."
+                    }
+                }
+            }
+        },
+        "/api/events": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of event."
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

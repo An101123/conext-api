@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     /**
+     *
+     * @OA\Get(
+     *     path="/api/events",
+     *     @OA\Response(response="200", description="Display a listing of event.")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
