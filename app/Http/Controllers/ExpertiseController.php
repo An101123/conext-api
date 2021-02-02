@@ -37,7 +37,7 @@ class ExpertiseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Post(
      *     tags={"Expertises"},
      *     path="/api/admin/expertises",
@@ -127,6 +127,24 @@ class ExpertiseController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     */
+    /**
+     * @OA\Delete(path="api/admin/expertises/{id}",
+     *   tags={"Expertises"},
+     *   summary="Delete expertises",
+     *   description="This can only be done by the logged in user.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The expertises that needs to be deleted",
+     *     required=true,
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Invalid id supplied"),
+     *   @OA\Response(response=404, description="Id not found")
+     * )
      */
     public function destroy($id)
     {
