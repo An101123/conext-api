@@ -14,9 +14,10 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     summary="Get list of contact",
      *     path="/api/admin/categories",
-     *     @OA\Response(response="200", description="Display a listing of categories.")
+     *     @OA\Response(response="200", description="Display a listing of categories.", @OA\JsonContent())
      * )
      */
+
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +39,33 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     */
+    /**
+     * @OA\Post(
+     *     tags={"Categories"},
+     *     path="/api/admin/categories",
+     *     summary="Adds a new categories",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="category_name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="quantity",
+     *                     type="string"
+     *                 ),
+     *                 example={"category_name": "category nha", "quantity": "quantity nha"}
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK"
+     *     )
+     * )
      */
     public function store(Request $request)
     {
@@ -71,11 +99,30 @@ class CategoryController extends Controller
         return $this->categoryService->update($input, $id);
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     */
+    /**
+     * @OA\Delete(path="/admin/categories/{id}",
+     *   tags={"Categories"},
+     *   summary="Delete category",
+     *   description="This can only be done by the logged in user.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The category that needs to be deleted",
+     *     required=true,
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Invalid username supplied"),
+     *   @OA\Response(response=404, description="User not found")
+     * )
      */
     public function destroy($id)
     {
