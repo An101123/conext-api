@@ -166,6 +166,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+        /**
+     * @OA\Delete(path="api/admin/users/{id}",
+     *   tags={"Users"},
+     *   summary="Delete users",
+     *   description="This can only be done by the logged in user.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The users that needs to be deleted",
+     *     required=true,
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Invalid id supplied"),
+     *   @OA\Response(response=404, description="Id not found")
+     * )
+     */
     public function destroy($id)
     {
         return $this->userService->delete($id);

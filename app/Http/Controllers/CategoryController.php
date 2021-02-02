@@ -107,7 +107,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="/admin/categories/{id}",
+     * @OA\Delete(path="api/admin/categories/{id}",
      *   tags={"Categories"},
      *   summary="Delete category",
      *   description="This can only be done by the logged in user.",
@@ -120,8 +120,8 @@ class CategoryController extends Controller
      *         type="string"
      *     )
      *   ),
-     *   @OA\Response(response=400, description="Invalid username supplied"),
-     *   @OA\Response(response=404, description="User not found")
+     *   @OA\Response(response=400, description="Invalid id supplied"),
+     *   @OA\Response(response=404, description="Id not found")
      * )
      */
     public function destroy($id)

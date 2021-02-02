@@ -10,7 +10,7 @@ class VoucherController extends Controller
     /**
      *
      * @OA\Get(
-     *     tags={"vouchers"},
+     *     tags={"Vouchers"},
      *     path="/api/vouchers",
      *     @OA\Response(response="200", description="Display a listing of vouchers.")
      * )
@@ -38,9 +38,9 @@ class VoucherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Post(
-     *     tags={"vouchers"},
+     *     tags={"Vouchers"},
      *     path="/api/admin/vouchers",
      *     summary="Adds a new vouchers",
      *     @OA\RequestBody(
@@ -144,6 +144,24 @@ class VoucherController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     */
+    /**
+     * @OA\Delete(path="api/admin/vouchers/{id}",
+     *   tags={"Vouchers"},
+     *   summary="Delete vouchers",
+     *   description="This can only be done by the logged in user.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The vouchers that needs to be deleted",
+     *     required=true,
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Invalid id supplied"),
+     *   @OA\Response(response=404, description="Id not found")
+     * )
      */
     public function destroy($id)
     {

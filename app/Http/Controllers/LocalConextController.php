@@ -37,7 +37,7 @@ class LocalConextController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Post(
      *     tags={"Local-conexts"},
      *     path="/api/admin/local-conexts",
@@ -127,6 +127,24 @@ class LocalConextController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     */
+    /**
+     * @OA\Delete(path="api/admin/local-conexts/{id}",
+     *   tags={"Local-conexts"},
+     *   summary="Delete local-conexts",
+     *   description="This can only be done by the logged in user.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The local-conexts that needs to be deleted",
+     *     required=true,
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Invalid id supplied"),
+     *   @OA\Response(response=404, description="Id not found")
+     * )
      */
     public function destroy($id)
     {

@@ -119,6 +119,35 @@
                 }
             }
         },
+        "api/admin/business-types/{id}": {
+            "delete": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Delete business-types",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\BusinessTypeController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The business-types that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "Id not found"
+                    }
+                }
+            }
+        },
         "/api/admin/categories": {
             "get": {
                 "tags": [
@@ -170,7 +199,7 @@
                 }
             }
         },
-        "/admin/categories/{id}": {
+        "api/admin/categories/{id}": {
             "delete": {
                 "tags": [
                     "Categories"
@@ -191,10 +220,10 @@
                 ],
                 "responses": {
                     "400": {
-                        "description": "Invalid username supplied"
+                        "description": "Invalid id supplied"
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Id not found"
                     }
                 }
             }
@@ -242,7 +271,10 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "name bussiness nha"
+                                    "email": "email contact nha",
+                                    "name": "name contact nha",
+                                    "subject": "subject contact nha",
+                                    "content": "content nha"
                                 }
                             }
                         }
@@ -281,6 +313,35 @@
                     },
                     "500": {
                         "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
+        "api/admin/contact/{id}": {
+            "delete": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Delete contact",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\ContactController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The contact that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
                     }
                 }
             }
@@ -371,6 +432,35 @@
                 }
             }
         },
+        "api/admin/events/{id}": {
+            "delete": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Delete events",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\EventController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The event that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "Id not found"
+                    }
+                }
+            }
+        },
         "/api/expertises": {
             "get": {
                 "tags": [
@@ -440,6 +530,35 @@
                     },
                     "500": {
                         "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
+        "api/admin/expertises/{id}": {
+            "delete": {
+                "tags": [
+                    "Expertises"
+                ],
+                "summary": "Delete expertises",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\ExpertiseController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The expertises that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "Id not found"
                     }
                 }
             }
@@ -517,6 +636,35 @@
                 }
             }
         },
+        "api/admin/explore/{id}": {
+            "delete": {
+                "tags": [
+                    "Explore"
+                ],
+                "summary": "Delete explore",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\ExploreController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The explore that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "Id not found"
+                    }
+                }
+            }
+        },
         "/api/faqs": {
             "get": {
                 "tags": [
@@ -549,9 +697,23 @@
                 "tags": [
                     "Hot-needs"
                 ],
+                "summary": "Get list of hot-needs",
                 "responses": {
-                    "200": {
-                        "description": "Display a listing of hot-needs."
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong . Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -703,6 +865,35 @@
                 }
             }
         },
+        "api/admin/local-conexts/{id}": {
+            "delete": {
+                "tags": [
+                    "Local-conexts"
+                ],
+                "summary": "Delete local-conexts",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\LocalConextController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The local-conexts that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "Id not found"
+                    }
+                }
+            }
+        },
         "/api/term-and-policies": {
             "get": {
                 "tags": [
@@ -834,10 +1025,39 @@
                 }
             }
         },
+        "api/admin/users/{id}": {
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete users",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\UserController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The users that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "Id not found"
+                    }
+                }
+            }
+        },
         "/api/vouchers": {
             "get": {
                 "tags": [
-                    "vouchers"
+                    "Vouchers"
                 ],
                 "responses": {
                     "200": {
@@ -849,7 +1069,7 @@
         "/api/admin/vouchers": {
             "post": {
                 "tags": [
-                    "vouchers"
+                    "Vouchers"
                 ],
                 "summary": "Adds a new vouchers",
                 "operationId": "App\\Http\\Controllers\\VoucherController::store",
@@ -919,10 +1139,39 @@
                 }
             }
         },
+        "api/admin/vouchers/{id}": {
+            "delete": {
+                "tags": [
+                    "Vouchers"
+                ],
+                "summary": "Delete vouchers",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\VoucherController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The vouchers that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "Id not found"
+                    }
+                }
+            }
+        },
         "/api/work-places": {
             "get": {
                 "tags": [
-                    "work-places"
+                    "Work-places"
                 ],
                 "responses": {
                     "200": {
@@ -934,7 +1183,7 @@
         "/api/admin/work-places": {
             "post": {
                 "tags": [
-                    "work-places"
+                    "Work-places"
                 ],
                 "summary": "Adds a new work-places",
                 "operationId": "App\\Http\\Controllers\\WorkPlaceController::store",
@@ -996,6 +1245,35 @@
                     },
                     "500": {
                         "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
+        "api/admin/work-places/{id}": {
+            "delete": {
+                "tags": [
+                    "Work-places"
+                ],
+                "summary": "Delete work-places",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\WorkPlaceController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The work-places that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "Id not found"
                     }
                 }
             }

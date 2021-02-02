@@ -11,11 +11,18 @@ use Illuminate\Support\Facades\Auth;
 class HotNeedController extends Controller
 {
     /**
-     *
+     * 
      * @OA\Get(
      *     tags={"Hot-needs"},
+     *     summary="Get list of hot-needs",
      *     path="/api/hot-needs",
-     *     @OA\Response(response="200", description="Display a listing of hot-needs.")
+     *     @OA\Response(
+     *          response=422,
+     *          description="Wrong credentials response",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Sorry, wrong . Please try again"),
+     *          )
+     *     )
      * )
      */
     /**

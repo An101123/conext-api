@@ -11,7 +11,7 @@ class WorkPlaceController extends Controller
     /**
      *
      * @OA\Get(
-     *     tags={"work-places"},
+     *     tags={"Work-places"},
      *     path="/api/work-places",
      *     @OA\Response(response="200", description="Display a listing of work-places.")
      * )
@@ -39,9 +39,9 @@ class WorkPlaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Post(
-     *     tags={"work-places"},
+     *     tags={"Work-places"},
      *     path="/api/admin/work-places",
      *     summary="Adds a new work-places",
      *     @OA\RequestBody(
@@ -137,6 +137,24 @@ class WorkPlaceController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     */
+    /**
+     * @OA\Delete(path="api/admin/work-places/{id}",
+     *   tags={"Work-places"},
+     *   summary="Delete work-places",
+     *   description="This can only be done by the logged in user.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The work-places that needs to be deleted",
+     *     required=true,
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Invalid id supplied"),
+     *   @OA\Response(response=404, description="Id not found")
+     * )
      */
     public function destroy($id)
     {
