@@ -8,12 +8,20 @@ use Illuminate\Http\Request;
 class VoucherController extends Controller
 {
     /**
+     *
+     * @OA\Get(
+     *     tags={"vouchers"},
+     *     path="/api/vouchers",
+     *     @OA\Response(response="200", description="Display a listing of vouchers.")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     protected $voucherService;
-    
+
     public function __construct(VoucherServiceInterface $voucherService)
     {
         $this->voucherService = $voucherService;
