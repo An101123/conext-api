@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ExpertiseServiceInterface;
+// use App\Models\Category;
+// use App\Services\CategoryService;
+use App\Services\CategoryServiceInterface;
 use Illuminate\Http\Request;
 
-class ExpertiseController extends Controller
+class CategoryController extends Controller
 {
     /**
-     *
      * @OA\Get(
-     *     tags={"Expertises"},
-     *     path="/api/expertises",
-     *     @OA\Response(response="200", description="Display a listing of expertises.")
+     *     tags={"Categories"},
+     *     summary="Get list of contact",
+     *     path="/api/admin/categories",
+     *     @OA\Response(response="200", description="Display a listing of categories.")
      * )
      */
     /**
@@ -20,15 +22,15 @@ class ExpertiseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $expertiseService;
+    protected $categoryService;
 
-    public function __construct(ExpertiseServiceInterface $expertiseService)
+    public function __construct(CategoryServiceInterface $categoryService)
     {
-        $this->expertiseService = $expertiseService;
+        $this->categoryService = $categoryService;
     }
     public function index()
     {
-        return $this->expertiseService->getExpertises();
+        return $this->categoryService->getCategories();
     }
 
     /**
@@ -39,8 +41,10 @@ class ExpertiseController extends Controller
      */
     public function store(Request $request)
     {
+        // dd('hahaha');
         $input = $request->all();
-        return $this->expertiseService->store($input);
+        // var_dump($input);
+        return $this->categoryService->store($input);
     }
 
     /**
@@ -51,7 +55,7 @@ class ExpertiseController extends Controller
      */
     public function show($id)
     {
-        return $this->expertiseService->getExpertise($id);
+        return $this->categoryService->getCategory($id);
     }
 
     /**
@@ -64,7 +68,7 @@ class ExpertiseController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        return $this->expertiseService->update($input, $id);
+        return $this->categoryService->update($input, $id);
     }
 
     /**
@@ -75,6 +79,6 @@ class ExpertiseController extends Controller
      */
     public function destroy($id)
     {
-        return $this->expertiseService->delete($id);
+        return $this->categoryService->delete($id);
     }
 }

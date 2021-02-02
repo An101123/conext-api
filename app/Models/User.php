@@ -22,7 +22,9 @@ class User extends Authenticatable  implements JWTSubject
     public function localConext(){
         return $this->belongsTo(LocalConext::class, 'local_conext_id', 'id');
     }
-
+    public function hotNeed(){
+        return $this->hasMany(HotNeed::class);
+    }
     protected $fillable = [
         'name',
         'email',

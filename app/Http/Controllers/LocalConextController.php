@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class LocalConextController extends Controller
 {
     /**
+     *
+     * @OA\Get(
+     *     tags={"local-conexts"},
+     *     path="/api/local-conexts",
+     *     @OA\Response(response="200", description="Display a listing of local-conexts.")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

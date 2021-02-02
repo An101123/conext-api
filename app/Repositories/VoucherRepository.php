@@ -21,14 +21,7 @@ class VoucherRepository implements VoucherRepositoryInterface
     {
         if($input['expired_on'] > (Carbon::now())){
         try{
-            $data = array(
-                'title' => $input['title'],
-                'image' => $input['image'],
-                'description' => $input['description'],
-                'type' => $input['type'],
-                'expired_on' => $input['expired_on'],
-            );
-            Voucher::create($data);
+            Voucher::create($input);
             return true;
         } catch(\Exception $e){
             return $e;
@@ -48,14 +41,7 @@ class VoucherRepository implements VoucherRepositoryInterface
     public function update($input, $id)
     {
         try{
-            $data = array(
-                'title' => $input['title'],
-                'image' => $input['image'],
-                'description' => $input['description'],
-                'type' => $input['type'],
-                'expired_on' => $input['expired_on'],
-            );
-            Voucher::find($id)->update($data);
+            Voucher::find($id)->update($input);
             return true;
         } catch(\Exception $e){
             return $e;

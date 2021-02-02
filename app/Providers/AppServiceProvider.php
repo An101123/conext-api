@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\BusinessTypeRepository;
 use App\Repositories\BusinessTypeRepositoryInterface;
+use App\Repositories\CategoryRepository;
+use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\ContactRepository;
 use App\Repositories\ContactRepositoryInterface;
 use App\Repositories\EventRepository;
@@ -16,6 +18,8 @@ use App\Services\ExpertiseService;
 use App\Services\ExpertiseServiceInterface;
 use App\Repositories\ExploreRepository;
 use App\Repositories\ExploreRepositoryInterface;
+use App\Repositories\HotNeedRepository;
+use App\Repositories\HotNeedRepositoryInterface;
 use App\Services\ExploreService;
 use App\Services\ExploreServiceInterface;
 use App\Repositories\LocalConextRepository;
@@ -26,10 +30,14 @@ use App\Repositories\VoucherRepository;
 use App\Repositories\VoucherRepositoryInterface;
 use App\Repositories\WorkPlaceRepository;
 use App\Repositories\WorkPlaceRepositoryInterface;
+use App\Services\CategoryService;
+use App\Services\CategoryServiceInterface;
 use App\Services\ContactService;
 use App\Services\ContactServiceInterface;
 use App\Services\EventService;
 use App\Services\EventServiceInterface;
+use App\Services\HotNeedService;
+use App\Services\HotNeedServiceInterface;
 use App\Services\LocalConextService;
 use App\Services\LocalConextServiceInterface;
 use App\Services\UserService;
@@ -70,8 +78,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(WorkPlaceRepositoryInterface::class, WorkPlaceRepository::class);
         $this->app->bind(ContactServiceInterface::class, ContactService::class);
         $this->app->bind(ContactRepositoryInterface::class, ContactRepository::class);
+        $this->app->register(\L5Swagger\L5SwaggerServiceProvider::class);
+        $this->app->bind(CategoryServiceInterface::class, CategoryService::class);
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(HotNeedServiceInterface::class, HotNeedService::class);
+        $this->app->bind(HotNeedRepositoryInterface::class, HotNeedRepository::class);
     }
-
     /**
      * Bootstrap any application services.
      *

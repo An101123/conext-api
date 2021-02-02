@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ExpertiseServiceInterface;
+// use App\Models\HotNeed;
+// use App\Services\HotNeedService;
+use App\Services\HotNeedServiceInterface;
 use Illuminate\Http\Request;
 
-class ExpertiseController extends Controller
+class HotNeedController extends Controller
 {
     /**
      *
      * @OA\Get(
-     *     tags={"Expertises"},
-     *     path="/api/expertises",
-     *     @OA\Response(response="200", description="Display a listing of expertises.")
+     *     tags={"hot-needs"},
+     *     path="/api/hot-needs",
+     *     @OA\Response(response="200", description="Display a listing of hot-needs.")
      * )
      */
     /**
@@ -20,15 +22,15 @@ class ExpertiseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $expertiseService;
+    protected $hotNeedService;
 
-    public function __construct(ExpertiseServiceInterface $expertiseService)
+    public function __construct(HotNeedServiceInterface $hotNeedService)
     {
-        $this->expertiseService = $expertiseService;
+        $this->hotNeedService = $hotNeedService;
     }
     public function index()
     {
-        return $this->expertiseService->getExpertises();
+        return $this->hotNeedService->getHotNeeds();
     }
 
     /**
@@ -39,8 +41,10 @@ class ExpertiseController extends Controller
      */
     public function store(Request $request)
     {
+        // dd('hahaha');
         $input = $request->all();
-        return $this->expertiseService->store($input);
+        // var_dump($input);
+        return $this->hotNeedService->store($input);
     }
 
     /**
@@ -51,7 +55,7 @@ class ExpertiseController extends Controller
      */
     public function show($id)
     {
-        return $this->expertiseService->getExpertise($id);
+        return $this->hotNeedService->getHotNeed($id);
     }
 
     /**
@@ -64,7 +68,7 @@ class ExpertiseController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        return $this->expertiseService->update($input, $id);
+        return $this->hotNeedService->update($input, $id);
     }
 
     /**
@@ -75,6 +79,6 @@ class ExpertiseController extends Controller
      */
     public function destroy($id)
     {
-        return $this->expertiseService->delete($id);
+        return $this->hotNeedService->delete($id);
     }
 }

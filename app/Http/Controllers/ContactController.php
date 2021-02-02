@@ -12,12 +12,21 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     /**
+     * @OA\Get(
+     *     tags={"Contact"},
+     *     summary="Get list of contact",
+     *     path="/api/contacts",
+     *     @OA\Response(response="200", description="Display a listing of contact.")
+     * )
+     */
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     protected $contactService;
-    
+
     public function __construct(ContactServiceInterface $contactService)
     {
         $this->contactService = $contactService;
@@ -26,7 +35,6 @@ class ContactController extends Controller
     {
         return $this->contactService->getContacts();
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,7 +45,6 @@ class ContactController extends Controller
     {
         $input = $request->all();
         return $this->contactService->store($input);
-        
     }
 
     /**

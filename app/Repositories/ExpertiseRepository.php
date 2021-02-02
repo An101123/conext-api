@@ -15,10 +15,7 @@ class ExpertiseRepository implements ExpertiseRepositoryInterface
     public function store($input)
     {
         try{
-            $data = array(
-                'name' => $input['name']
-            );
-            Expertise::create($data);
+            Expertise::create($input);
             return true;
         } catch(\Exception $e){
             return $e;
@@ -33,10 +30,7 @@ class ExpertiseRepository implements ExpertiseRepositoryInterface
     public function update($input, $id)
     {
         try{
-            $data = array(
-                'name' => $input['name']
-            );
-            Expertise::find($id)->update($data);
+            Expertise::find($id)->update($input);
             return true;
         } catch(\Exception $e){
             return $e;
