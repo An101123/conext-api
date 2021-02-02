@@ -139,6 +139,24 @@ class BusinessTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /**
+     * @OA\Delete(path="api/admin/business-types/{id}",
+     *   tags={"Business"},
+     *   summary="Delete business-types",
+     *   description="This can only be done by the logged in user.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The business-types that needs to be deleted",
+     *     required=true,
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Invalid id supplied"),
+     *   @OA\Response(response=404, description="Id not found")
+     * )
+     */
     public function destroy($id)
     {
         return $this->businessTypeService->delete($id);

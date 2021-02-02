@@ -128,6 +128,24 @@ class ExploreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+        /**
+     * @OA\Delete(path="api/admin/explore/{id}",
+     *   tags={"Explore"},
+     *   summary="Delete explore",
+     *   description="This can only be done by the logged in user.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The explore that needs to be deleted",
+     *     required=true,
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Invalid id supplied"),
+     *   @OA\Response(response=404, description="Id not found")
+     * )
+     */
     public function destroy($id)
     {
         return $this->exploreService->delete($id);

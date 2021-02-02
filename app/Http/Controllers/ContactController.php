@@ -41,7 +41,7 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Post(
      *     tags={"Contact"},
      *     path="/api/admin/contact",
@@ -70,7 +70,9 @@ class ContactController extends Controller
      *                     property="content",
      *                     type="string"
      *                 ),
-     *                 example={"name": "name bussiness nha"}
+     *                 example={"email": "email contact nha", "name": "name contact nha",
+     *                      "subject": "subject contact nha", "content": "content nha"
+     *                  }
      *             )
      *         ),
      *     ),
@@ -124,7 +126,24 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
+    /**
+     * @OA\Delete(path="api/admin/contact/{id}",
+     *   tags={"Contact"},
+     *   summary="Delete contact",
+     *   description="This can only be done by the logged in user.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The contact that needs to be deleted",
+     *     required=true,
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Invalid id supplied"),
+     *   @OA\Response(response=404, description="User not found")
+     * )
+     */
     public function destroy($id)
     {
         return $this->contactService->delete($id);
