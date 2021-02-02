@@ -56,6 +56,6 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::resource('admin/work-places', WorkPlaceController::class);
 });
 
-Route::apiResource('abouts', AboutController::class)->only('index', 'show');
-Route::apiResource('faqs', FaqController::class)->only('index', 'show');
-Route::apiResource('term-and-policies', TermAndPolicyController::class)->only('index', 'show');
+Route::get('abouts', [AboutController::class, 'index']);
+Route::get('faqs', [FaqController::class, 'index']);
+Route::get('term-and-policies', [TermAndPolicyController::class, 'index']);
