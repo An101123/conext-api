@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
 Route::get('abouts', [AboutController::class, 'index']);
 Route::get('faqs', [FaqController::class, 'index']);
 Route::get('term-and-policies', [TermAndPolicyController::class, 'index']);
-Route::apiResource('hot-needs', HotNeedController::class)->middleware('auth:api');
+Route::apiResource('hot-needs', HotNeedController::class)->only('store', 'update', 'detroy')->middleware('auth:api');
+Route::get('hot-needs', [HotNeedController::class, 'inde']);
 Route::get('my-hot-needs', [HotNeedController::class, 'getHotNeedByUser'])->middleware('auth:api');
 
