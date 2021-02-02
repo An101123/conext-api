@@ -28,7 +28,7 @@ class UserRepository implements UserRepositoryInterface
                 $file = $input->file('avatar');
                 $name = $file->getClientOriginalName();
                 $file->move('image/avatar', $name);
-                $input->avatar = 'image/avatar/'.$name;
+                $input['aaaa']= 'image/avatar/'.$name;
             }
             $data = array(
                 'name' =>$input->name,
@@ -68,7 +68,7 @@ class UserRepository implements UserRepositoryInterface
             };
             $data = array(
                 'name' =>$input->name,
-                'email' =>$input->email,
+                // 'email' =>$input->email,s
                 'gender' =>$input->gender,
                 'address' =>$input->address,
                 'introduce' =>$input->introduce,

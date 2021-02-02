@@ -21,6 +21,9 @@ class AuthController extends Controller
     public function login(LoginRequest $request){
         $input = $request->all();
         $token = null;
+        // dd(
+        //     JWTAuth::attempt($input)
+        // );
         if (! $token = JWTAuth::attempt($input)) {
             return response()->json(['message' => 'Invalid Email or Password']);
         }
