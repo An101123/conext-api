@@ -8,12 +8,20 @@ use Illuminate\Http\Request;
 class ExpertiseController extends Controller
 {
     /**
+     *
+     * @OA\Get(
+     *     tags={"Expertises"},
+     *     path="/api/expertises",
+     *     @OA\Response(response="200", description="Display a listing of expertises.")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     protected $expertiseService;
-    
+
     public function __construct(ExpertiseServiceInterface $expertiseService)
     {
         $this->expertiseService = $expertiseService;

@@ -84,7 +84,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(HotNeedServiceInterface::class, HotNeedService::class);
         $this->app->bind(HotNeedRepositoryInterface::class, HotNeedRepository::class);
     }
-
     /**
      * Bootstrap any application services.
      *

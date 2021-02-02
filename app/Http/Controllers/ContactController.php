@@ -12,9 +12,9 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     /**
-     * @OA\Info(title="My First API", version="0.1")
-     *
      * @OA\Get(
+     *     tags={"Contact"},
+     *     summary="Get list of contact",
      *     path="/api/contacts",
      *     @OA\Response(response="200", description="Display a listing of contact.")
      * )
@@ -35,7 +35,6 @@ class ContactController extends Controller
     {
         return $this->contactService->getContacts();
     }
-
     /**
      * Store a newly created resource in storage.
      *

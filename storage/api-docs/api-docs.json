@@ -1,12 +1,42 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "My First API",
+        "title": "CONEXT API",
         "version": "0.1"
     },
     "paths": {
+        "/api/business-types": {
+            "get": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Get list of contact",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of businesses."
+                    }
+                }
+            }
+        },
+        "/api/admin/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get list of contact",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of categories."
+                    }
+                }
+            }
+        },
         "/api/contacts": {
             "get": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Get list of contact",
                 "responses": {
                     "200": {
                         "description": "Display a listing of contact."
@@ -16,9 +46,97 @@
         },
         "/api/events": {
             "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Get list of events",
                 "responses": {
                     "200": {
-                        "description": "Display a listing of event."
+                        "description": "Display a listing of events."
+                    }
+                }
+            }
+        },
+        "/api/expertises": {
+            "get": {
+                "tags": [
+                    "Expertises"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of expertises."
+                    }
+                }
+            }
+        },
+        "/api/explores": {
+            "get": {
+                "tags": [
+                    "Explore"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of explores."
+                    }
+                }
+            }
+        },
+        "/api/hot-needs": {
+            "get": {
+                "tags": [
+                    "hot-needs"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of hot-needs."
+                    }
+                }
+            }
+        },
+        "/api/local-conexts": {
+            "get": {
+                "tags": [
+                    "local-conexts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of local-conexts."
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of users."
+                    }
+                }
+            }
+        },
+        "/api/vouchers": {
+            "get": {
+                "tags": [
+                    "vouchers"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of vouchers."
+                    }
+                }
+            }
+        },
+        "/api/work-places": {
+            "get": {
+                "tags": [
+                    "work-places"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of work-places."
                     }
                 }
             }

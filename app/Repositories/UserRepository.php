@@ -11,11 +11,19 @@ class UserRepository implements UserRepositoryInterface
     public function getUsers($businessType, $expertise)
     {
         if (!empty($businessType) && !empty($expertise)){
-            return User::where('business_type_id', $businessType)->where('expertise_id', $expertise)->get();
+            return User::where('business_type_id', $businessType)
+            ->where('expertise_id', $expertise)
+            ->join('business_types', 'users.business_type_id','=', 'business_types.id')
+            ->join('expertises', 'users.expertise_id', '=', 'expertises.id')
+            ->select('users.*','business_types.name as business-type', 'expertises.name as expertise')->get();
         } elseif (!empty($expertise)){
-            return User::where('expertise_id', $expertise)->get();
+            return User::where('expertise_id', $expertise)
+            ->join('expertises', 'users.expertise_id', '=', 'expertises.id')
+            ->select('users.*', 'expertises.name as expertise')->get();
         } elseif (!empty($businessType)){
-            return User::where('business_type_id', $businessType)->get();
+            return User::where('business_type_id', $businessType)
+            ->join('business_types', 'users.business_type_id','=', 'business_types.id')
+            ->select('users.*','business_types.name as business-type')->get();
         } else{
             return User::all();
         }
@@ -28,7 +36,7 @@ class UserRepository implements UserRepositoryInterface
                 $file = $input->file('avatar');
                 $name = $file->getClientOriginalName();
                 $file->move('image/avatar', $name);
-                $input['aaaa']= 'image/avatar/'.$name;
+                $input->avatar= 'image/avatar/'.$name;
             }
             $data = array(
                 'name' =>$input->name,

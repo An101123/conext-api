@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Models\HotNeed;
 use  App\Repositories\HotNeedRepositoryInterface;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 
 class HotNeedRepository implements HotNeedRepositoryInterface
@@ -14,12 +16,11 @@ class HotNeedRepository implements HotNeedRepositoryInterface
             return HotNeed::where('category_id', $category)->limit(6)->get();
         }
         return HotNeed::all();
+        
     }
 
     public function store($input)
     {
-
-        // dd(Auth::user()->id);
         try{
             $data = array(
                 'topic' => $input['topic'],
@@ -30,6 +31,7 @@ class HotNeedRepository implements HotNeedRepositoryInterface
                 'full_description' => $input['full_description'],
                 'user_id' => Auth::user()->id
             );
+            // dd($data);
             HotNeed::create($data);
             return true;
         } catch(\Exception $e){
@@ -45,7 +47,13 @@ class HotNeedRepository implements HotNeedRepositoryInterface
     {
         try{
             $data = array(
-                'category_name' => $input['category_names']
+                'topic' => $input['topic'],
+                'city' => $input['city'],
+                'category_id' => $input['category_id'],
+                'expected_deadline' => $input['expected_deadline'],
+                'brief_description' => $input['brief_description'],
+                'full_description' => $input['full_description'],
+                'user_id' => Auth::user()->id
             );
             HotNeed::find($id)->update($data);
             return true;

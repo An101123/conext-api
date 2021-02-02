@@ -10,12 +10,20 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
+     * @OA\Get(
+     *     tags={"Categories"},
+     *     summary="Get list of contact",
+     *     path="/api/admin/categories",
+     *     @OA\Response(response="200", description="Display a listing of categories.")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     protected $categoryService;
-    
+
     public function __construct(CategoryServiceInterface $categoryService)
     {
         $this->categoryService = $categoryService;
@@ -37,7 +45,6 @@ class CategoryController extends Controller
         $input = $request->all();
         // var_dump($input);
         return $this->categoryService->store($input);
-        
     }
 
     /**

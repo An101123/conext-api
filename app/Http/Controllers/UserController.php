@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
+     *
+     * @OA\Get(
+     *     tags={"users"},
+     *     path="/api/users",
+     *     @OA\Response(response="200", description="Display a listing of users.")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -34,8 +42,8 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $validated = 
-        $input = $request;
+        $validated =
+            $input = $request;
         return $this->userService->store($input);
     }
 
