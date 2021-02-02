@@ -13,20 +13,34 @@
                 "summary": "Get list of about",
                 "operationId": "App\\Http\\Controllers\\AboutController::index",
                 "responses": {
-                    "422": {
-                        "description": "Wrong credentials response",
+                    "200": {
+                        "description": "OK",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Sorry, wrong . Please try again"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
                         }
                     }
                 }
@@ -39,20 +53,34 @@
                 ],
                 "summary": "Get list of contact",
                 "responses": {
-                    "422": {
-                        "description": "Wrong credentials response",
+                    "200": {
+                        "description": "OK",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Sorry, wrong email address or password. Please try again"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
                         }
                     }
                 }
@@ -113,8 +141,90 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/business-types/{id}": {
+            "put": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Update an existing bussiness",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\BusinessTypeController::update",
+                "requestBody": {
+                    "description": "Bussiness object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name bussiness nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -139,11 +249,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "Id not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -156,11 +290,33 @@
                 "summary": "Get list of contact",
                 "responses": {
                     "200": {
-                        "description": "Display a listing of categories.",
+                        "description": "OK",
                         "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
                         }
                     }
                 }
@@ -194,7 +350,99 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/categories/{id}": {
+            "put": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Update an existing categories",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\CategoryController::update",
+                "requestBody": {
+                    "description": "Categories object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "category_name": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "category_name": "category nha",
+                                    "quantity": "quantity nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -219,11 +467,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "Id not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -236,7 +508,34 @@
                 "summary": "Get list of contact",
                 "responses": {
                     "200": {
-                        "description": "Display a listing of contact."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -337,11 +636,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -354,7 +677,34 @@
                 "summary": "Get list of events",
                 "responses": {
                     "200": {
-                        "description": "Display a listing of events."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -432,6 +782,79 @@
                 }
             }
         },
+        "/api/admin/events/{id}": {
+            "put": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Update an existing events",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\EventController::update",
+                "requestBody": {
+                    "description": "Events object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "start_time": {
+                                        "type": "DateTime"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "title event nha",
+                                    "image": "image.png",
+                                    "start_time": "12-3-2019 4:1:1",
+                                    "description": "hihi"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "api/admin/events/{id}": {
             "delete": {
                 "tags": [
@@ -452,11 +875,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "Id not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -468,7 +915,34 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Display a listing of expertises."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -534,6 +1008,67 @@
                 }
             }
         },
+        "/api/admin/expertises/{id}": {
+            "put": {
+                "tags": [
+                    "Expertises"
+                ],
+                "summary": "Update an existing expertises",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\ExpertiseController::update",
+                "requestBody": {
+                    "description": "Expertises object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name expertises nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "api/admin/expertises/{id}": {
             "delete": {
                 "tags": [
@@ -554,11 +1089,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "Id not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -570,7 +1129,34 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Display a listing of explores."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -636,6 +1222,67 @@
                 }
             }
         },
+        "/api/admin/explore/{id}": {
+            "put": {
+                "tags": [
+                    "Explore"
+                ],
+                "summary": "Update an existing explore",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\ExploreController::update",
+                "requestBody": {
+                    "description": "Explore object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name explore nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "api/admin/explore/{id}": {
             "delete": {
                 "tags": [
@@ -656,11 +1303,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "Id not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -699,20 +1370,34 @@
                 ],
                 "summary": "Get list of hot-needs",
                 "responses": {
-                    "422": {
-                        "description": "Wrong credentials response",
+                    "200": {
+                        "description": "OK",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Sorry, wrong . Please try again"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
                         }
                     }
                 }
@@ -786,8 +1471,143 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/hot-needs/{id}": {
+            "put": {
+                "tags": [
+                    "Hot-needs"
+                ],
+                "summary": "Update an existing hot-needs",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\HotNeedController::update",
+                "requestBody": {
+                    "description": "Hot-needs object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name not need nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "api/admin/hot-needs/{id}": {
+            "delete": {
+                "tags": [
+                    "Hot-needs"
+                ],
+                "summary": "Delete hot-needs",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\HotNeedController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The hot-needs that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -799,7 +1619,34 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Display a listing of local-conexts."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -859,8 +1706,90 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/local-conexts/{id}": {
+            "put": {
+                "tags": [
+                    "Local-conexts"
+                ],
+                "summary": "Update an existing local-conexts",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\LocalConextController::update",
+                "requestBody": {
+                    "description": "Local-conexts object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name local conext nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -885,11 +1814,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "Id not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -902,20 +1855,34 @@
                 "summary": "Get list of term-and-policies",
                 "operationId": "App\\Http\\Controllers\\TermAndPolicyController::index",
                 "responses": {
-                    "422": {
-                        "description": "Wrong credentials response",
+                    "200": {
+                        "description": "OK",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Sorry, wrong . Please try again"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
                         }
                     }
                 }
@@ -1025,6 +1992,98 @@
                 }
             }
         },
+        "/api/admin/users/{id}": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update an existing users",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\UserController::update",
+                "requestBody": {
+                    "description": "Users object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "gender": {
+                                        "type": "integer"
+                                    },
+                                    "introduce": {
+                                        "type": "string"
+                                    },
+                                    "workplace": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "business_type_id": {
+                                        "type": "integer"
+                                    },
+                                    "expertise_id": {
+                                        "type": "string"
+                                    },
+                                    "local_conext_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "email@gmail.com",
+                                    "address": "address nha",
+                                    "gender": 2,
+                                    "introduce": "introduce nha",
+                                    "workplace": "workplace nha",
+                                    "business_type_id": 1,
+                                    "expertise_id": 1,
+                                    "local_conext_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "api/admin/users/{id}": {
             "delete": {
                 "tags": [
@@ -1045,11 +2104,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "Id not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -1061,7 +2144,34 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Display a listing of vouchers."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -1133,8 +2243,102 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/vouchers/{id}": {
+            "put": {
+                "tags": [
+                    "Vouchers"
+                ],
+                "summary": "Update an existing vouchers",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\VoucherController::update",
+                "requestBody": {
+                    "description": "Vouchers object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "expired_on": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name voucher nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -1159,11 +2363,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "Id not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -1175,7 +2403,34 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Display a listing of work-places."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -1249,6 +2504,75 @@
                 }
             }
         },
+        "/api/admin/work-places/{id}": {
+            "put": {
+                "tags": [
+                    "Work-places"
+                ],
+                "summary": "Update an existing work-places",
+                "description": "",
+                "operationId": "App\\Http\\Controllers\\WorkPlaceController::update",
+                "requestBody": {
+                    "description": "Work-places object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name workplace nha",
+                                    "price": 12000,
+                                    "0": "address nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "api/admin/work-places/{id}": {
             "delete": {
                 "tags": [
@@ -1269,11 +2593,35 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "400": {
-                        "description": "Invalid id supplied"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "404": {
-                        "description": "Id not found"
+                        "description": "Pet not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
