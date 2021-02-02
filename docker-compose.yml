@@ -15,7 +15,7 @@ services:
       - "MYSQL_PASSWORD=htactive"
       - "MYSQL_ROOT_PASSWORD=htactive"
     ports:
-      - "33306:3306"
+      - "3306:3306"
     networks:
       - web-network
 
@@ -27,7 +27,7 @@ services:
     links:
       - mysql:db
     ports:
-      - "38081:80"
+      - "81:80"
     networks:
       - web-network
 
@@ -35,7 +35,7 @@ services:
     build:
       context: ./nginx
     ports:
-      - "38080:80"
+      - "80:80"
     volumes:
       - ./:/var/www
       - ./nginx/conf.d:/etc/nginx/conf.d

@@ -15,8 +15,8 @@ class ContactController extends Controller
      * @OA\Info(title="My First API", version="0.1")
      *
      * @OA\Get(
-     *     path="/contacts",
-     *     @OA\Response(response="200", description="Display a listing of projects.")
+     *     path="/api/contacts",
+     *     @OA\Response(response="200", description="Display a listing of contact.")
      * )
      */
 

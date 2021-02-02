@@ -5,11 +5,20 @@
         "version": "0.1"
     },
     "paths": {
-        "/contacts": {
+        "/api/contacts": {
             "get": {
                 "responses": {
                     "200": {
-                        "description": "Display a listing of projects."
+                        "description": "Display a listing of contact."
+                    }
+                }
+            }
+        },
+        "/api/events": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of event."
                     }
                 }
             }
