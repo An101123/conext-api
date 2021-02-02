@@ -20,6 +20,7 @@ class EventRepository implements EventRepositoryInterface
     }
     public function store($input)
     {
+        
         if($input['start_time'] >= (Carbon::now()) && $input['end_time'] > $input['start_time']){
         try{
             Event::create($input);
