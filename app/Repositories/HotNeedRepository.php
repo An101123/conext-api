@@ -6,17 +6,23 @@ use App\Models\HotNeed;
 use  App\Repositories\HotNeedRepositoryInterface;
 use Carbon\Carbon;
 use DateTime;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HotNeedRepository implements HotNeedRepositoryInterface
 {
-    public function getHotNeeds($category, $user_id)
+    public function getHotNeeds(Request $request, $user_id)
     {
+        dd($request->all());
         if(!empty($category)){
-            return HotNeed::where('category_id', $category)->limit(6)->get();
+            return HotNeed::where('category_id', $category)->paginate(6);
         }
-        return HotNeed::all();
-        
+        if(!empty($user_id)){
+            return HotNeed::where('user_id', $user_id)->paginate(2)->get();
+        }
+        else {
+        return HotNeed::paginate(6);    
+        }
     }
 
     public function store($input)
