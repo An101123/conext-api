@@ -28,7 +28,6 @@ class HotNeedRepository implements HotNeedRepositoryInterface
                 'full_description' => $input['full_description'],
                 'user_id' => Auth::user()->id
             );
-            // dd($data);
             HotNeed::create($data);
             return true;
         } catch(\Exception $e){
