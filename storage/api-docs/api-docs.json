@@ -2,9 +2,36 @@
     "openapi": "3.0.0",
     "info": {
         "title": "CONEXT API",
-        "version": "0.1"
+        "version": "0.3"
     },
     "paths": {
+        "/api/abouts": {
+            "get": {
+                "tags": [
+                    "About"
+                ],
+                "summary": "Get list of about",
+                "operationId": "App\\Http\\Controllers\\AboutController::index",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong . Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/business-types": {
             "get": {
                 "tags": [
@@ -490,11 +517,51 @@
                 }
             }
         },
+        "/api/faqs": {
+            "get": {
+                "tags": [
+                    "Faqs"
+                ],
+                "summary": "Get list of faqs",
+                "operationId": "App\\Http\\Controllers\\FaqController::index",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong . Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/hot-needs": {
             "get": {
                 "tags": [
                     "Hot-needs"
                 ],
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of hot-needs."
+                    }
+                }
+            }
+        },
+        "/api/my-hot-needs": {
+            "get": {
+                "tags": [
+                    "Hot-needs"
+                ],
+                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
                 "responses": {
                     "200": {
                         "description": "Display a listing of hot-needs."
@@ -632,6 +699,33 @@
                     },
                     "500": {
                         "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
+        "/api/term-and-policies": {
+            "get": {
+                "tags": [
+                    "Term-and-policies"
+                ],
+                "summary": "Get list of term-and-policies",
+                "operationId": "App\\Http\\Controllers\\TermAndPolicyController::index",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong . Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }

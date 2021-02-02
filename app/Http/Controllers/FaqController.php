@@ -12,6 +12,22 @@ class FaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /**
+     * 
+     * @OA\Get(
+     *     tags={"Faqs"},
+     *     summary="Get list of faqs",
+     *     path="/api/faqs",
+     *     @OA\Response(
+     *          response=422,
+     *          description="Wrong credentials response",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Sorry, wrong . Please try again"),
+     *          )
+     *     )
+     * )
+     */
+
     public function index()
     {
         return Faqs::all();
