@@ -8,8 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class HotNeedRepository implements HotNeedRepositoryInterface
 {
-    public function getHotNeeds()
+    public function getHotNeeds($category, $user_id)
     {
+        if(!empty($category)){
+            return HotNeed::where('category_id', $category)->limit(6)->get();
+        }
         return HotNeed::all();
     }
 

@@ -20,9 +20,9 @@ class HotNeedController extends Controller
     {
         $this->hotNeedService = $hotNeedService;
     }
-    public function index()
+    public function index($category, $user_id)
     {
-        return $this->hotNeedService->getHotNeeds();
+        return $this->hotNeedService->getHotNeeds($category, $user_id);
     }
 
     /**
