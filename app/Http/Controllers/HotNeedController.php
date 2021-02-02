@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 // use App\Services\HotNeedService;
 use App\Services\HotNeedServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HotNeedController extends Controller
 {
@@ -28,9 +29,15 @@ class HotNeedController extends Controller
     {
         $this->hotNeedService = $hotNeedService;
     }
-    public function index()
+    public function index(Request $request)
     {
-        return $this->hotNeedService->getHotNeeds();
+        $category = $request->category;
+        return $this->hotNeedService->getHotNeeds($category);
+    }
+    public function getHotNeedByUser()
+    {
+        $user_id = Auth::user()->id;
+        return $this->hotNeedService->getHotNeedByUser($user_id);
     }
 
     /**
@@ -47,6 +54,7 @@ class HotNeedController extends Controller
         return $this->hotNeedService->store($input);
     }
 
+    
     /**
      * Display the specified resource.
      *
