@@ -242,7 +242,10 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "name bussiness nha"
+                                    "email": "email contact nha",
+                                    "name": "name contact nha",
+                                    "subject": "subject contact nha",
+                                    "content": "content nha"
                                 }
                             }
                         }
@@ -281,6 +284,35 @@
                     },
                     "500": {
                         "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
+        "api/admin/contact/{id}": {
+            "delete": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Delete contact",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\ContactController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The contact that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
                     }
                 }
             }
