@@ -38,7 +38,11 @@ class AboutController extends Controller
     public function index()
     {
         // return $this->aboutService->getAbouts();
-        return About::all();
+        $data = About::all();
+        return response()->json([
+            'code' => 200,
+            'data' => $data
+        ]);
     }
 
     /**

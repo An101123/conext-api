@@ -25,30 +25,78 @@ class UserTableSeeder extends Seeder
                 'expertise_id' => '1',
                 'local_conext_id' => '1'
             ],
-            // [
-            //     'name' => 'Tran Thi An',
-            //     'email' => 'tta@gmail.com',
-            //     'password' => Hash::make('123123123'),
-            //     'business_type_id' => '2',
-            //     'expertise_id' => '2',
-            //     'local_conext_id' => '2'
-            // ],
-            // [
-            //     'name' => 'Nguyen Thi An',
-            //     'email' => 'nta@gmail.com',
-            //     'password' => Hash::make('123123123'),
-            //     'business_type_id' => '3',
-            //     'expertise_id' => '3',
-            //     'local_conext_id' => '3'
-            // ],
-            // [
-            //     'name' => 'Vo Thi An',
-            //     'email' => 'vta@gmail.com',
-            //     'password' => Hash::make('123123123'),
-            //     'business_type_id' => '4',
-            //     'expertise_id' => '4',
-            //     'local_conext_id' => '4'
-            // ],
+            [
+                'name' => 'Tran Thi An',
+                'email' => 'tta@gmail.com',
+                'password' => Hash::make('123123123'),
+                'role' => null,
+                'business_type_id' => '2',
+                'expertise_id' => '2',
+                'local_conext_id' => '2'
+            ],
+            [
+                'name' => 'Nguyen Thi An',
+                'email' => 'nta@gmail.com',
+                'password' => Hash::make('123123123'),
+                'role' => null,
+                'business_type_id' => '3',
+                'expertise_id' => '3',
+                'local_conext_id' => '3'
+            ],
+            [
+                'name' => 'Vo Thi An',
+                'email' => 'vta@gmail.com',
+                'password' => Hash::make('123123123'),
+                'role' => null,
+                'business_type_id' => '2',
+                'expertise_id' => '2',
+                'local_conext_id' => '3'
+            ],
+            [
+                'name' => 'Luong Thi An',
+                'email' => 'lta@gmail.com',
+                'password' => Hash::make('123123123'),
+                'role' => null,
+                'business_type_id' => '3',
+                'expertise_id' => '3',
+                'local_conext_id' => '2'
+            ],
+            [
+                'name' => 'Hoang Thi An',
+                'email' => 'hta@gmail.com',
+                'password' => Hash::make('123123123'),
+                'role' => null,
+                'business_type_id' => '2',
+                'expertise_id' => '3',
+                'local_conext_id' => '3'
+            ],
+            [
+                'name' => 'Dao Thi An',
+                'email' => 'dta@gmail.com',
+                'password' => Hash::make('123123123'),
+                'role' => null,
+                'business_type_id' => '1',
+                'expertise_id' => '2',
+                'local_conext_id' => '1'
+            ],
+            [
+                'name' => 'Pham Thi An',
+                'email' => 'pta@gmail.com',
+                'password' => Hash::make('123123123'),
+                'role' => null,
+                'business_type_id' => '3',
+                'expertise_id' => '2',
+                'local_conext_id' => '3'
+            ],
+            [
+                'name' => 'Cao Thi An',
+                'email' => 'cta@gmail.com',
+                'password' => Hash::make('123123123'),
+                'role' => null,
+                'business_type_id' => '2',
+                'expertise_id' => '3',
+                'local_conext_id' => '2'
+            ],
         ]);
     }
 }
