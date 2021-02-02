@@ -39,47 +39,6 @@ class ContactController extends Controller
         return $this->contactService->getContacts();
     }
     /**
-     * @OA\Post(
-     *   path="api/contacts",
-     *   summary="Create A contact",
-     *   operationId="store",
-     *   tags={"Contact"},
-     *   security={
-     *       {"ApiKeyAuth": {}}
-     *   },
-     *   @OA\Parameter(
-     *      name="email",
-     *      in="formData",
-     *      required=true,
-     *   ),
-     *   @OA\Parameter(
-     *       name="name",
-     *       in="formData",
-     *       required=true,
-     *       type="string"
-     *   ),
-     *   @OA\Parameter(
-     *       name="phone_number",
-     *       in="formData",
-     *       type="string"
-     *   ),
-     *   @OA\Parameter(
-     *       name="subject",
-     *       in="formData",
-     *       type="string"
-     *   ),     
-     *   @OA\Parameter(
-     *       name="content",
-     *       in="formData",
-     *       type="string"
-     *   ),
-     *   @OA\Response(response=200, description="successful operation"),
-     *   @OA\Response(response=406, description="not acceptable"),
-     *   @OA\Response(response=500, description="internal server error")
-     * )
-     *
-     */
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
