@@ -34,6 +34,14 @@ class HotNeedController extends Controller
         $category = $request->category;
         return $this->hotNeedService->getHotNeeds($category);
     }
+    /**
+     *
+     * @OA\Get(
+     *     tags={"Hot-needs"},
+     *     path="/api/my-hot-needs",
+     *     @OA\Response(response="200", description="Display a listing of hot-needs.")
+     * )
+     */
     public function getHotNeedByUser()
     {
         $user_id = Auth::user()->id;
@@ -46,7 +54,7 @@ class HotNeedController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Post(
      *     tags={"Hot-needs"},
      *     path="/api/admin/hot-needs",
@@ -109,13 +117,14 @@ class HotNeedController extends Controller
         return $this->hotNeedService->store($input);
     }
 
-    
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         return $this->hotNeedService->getHotNeed($id);

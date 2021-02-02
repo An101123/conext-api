@@ -12,6 +12,21 @@ class TermAndPolicyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /**
+     * 
+     * @OA\Get(
+     *     tags={"Term-and-policies"},
+     *     summary="Get list of term-and-policies",
+     *     path="/api/term-and-policies",
+     *     @OA\Response(
+     *          response=422,
+     *          description="Wrong credentials response",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Sorry, wrong . Please try again"),
+     *          )
+     *     )
+     * )
+     */
     public function index()
     {
         return TermAndPolicy::all();

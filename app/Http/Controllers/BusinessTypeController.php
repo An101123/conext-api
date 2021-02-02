@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 class BusinessTypeController extends Controller
 {
     /**
-     * @OA\Info(title="CONEXT API", version="0.1")
      *
      * @OA\Get(
      *     tags={"Business"},
@@ -24,8 +23,6 @@ class BusinessTypeController extends Controller
      *          )
      *     )
      * )
-     *
-     * 
      */
     /**
      * Display a listing of the resource.
