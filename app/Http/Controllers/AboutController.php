@@ -14,11 +14,27 @@ class AboutController extends Controller
      * @return \Illuminate\Http\Response
      */
     // protected $aboutService;
-    
+
     // public function __construct(AboutServiceInterface $aboutService)
     // {
     //     $this->aboutService = $aboutService;
     // }
+    /**
+     * @OA\Info(title="CONEXT API", version="0.3")
+     *
+     * @OA\Get(
+     *     tags={"About"},
+     *     summary="Get list of about",
+     *     path="/api/abouts",
+     *     @OA\Response(
+     *          response=422,
+     *          description="Wrong credentials response",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Sorry, wrong . Please try again"),
+     *          )
+     *     )
+     * )
+     */
     public function index()
     {
         // return $this->aboutService->getAbouts();
@@ -35,13 +51,13 @@ class AboutController extends Controller
     {
         // $input = $request->all();
         // return $this->aboutService->store($input);
-        try{
+        try {
             $data = array(
                 'content' => $input['content']
             );
             About::create($data);
             return true;
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return $e;
         }
     }
@@ -69,14 +85,14 @@ class AboutController extends Controller
     {
         // $input = $request->all();
         // return $this->aboutService->update($input, $id);
-        try{
+        try {
             $data = array(
                 'content' => $input['content']
             );
             About::find($id)->update($data);
             return true;
-        } catch(\Exception $e){
-           return $e;
+        } catch (\Exception $e) {
+            return $e;
         }
     }
 

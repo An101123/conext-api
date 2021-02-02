@@ -11,7 +11,7 @@ class UserController extends Controller
     /**
      *
      * @OA\Get(
-     *     tags={"users"},
+     *     tags={"Users"},
      *     path="/api/users",
      *     @OA\Response(response="200", description="Display a listing of users.")
      * )
@@ -39,6 +39,95 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     */
+        /**
+     * @OA\Post(
+     *     tags={"Users"},
+     *     path="/api/admin/users",
+     *     summary="Adds a new users",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="address",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="gender",
+     *                     type="integer"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="introduce",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="workplace",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="business_type_id",
+     *                     type="integer"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="expertise_id",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="local_conext_id",
+     *                     type="string"
+     *                 ),
+     *                 example={"email": "email@gmail.com", "address": "address nha", "gender": 2, "introduce": "introduce nha",
+     *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1, "local_conext_id": 1                      
+     *                 }
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                         "errcode": 1,
+     *                         "errmsg": "ok",
+     *                         "data": {}
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="OH no Oh no no no no",
+     *      )
+     * )
      */
     public function store(UserRequest $request)
     {

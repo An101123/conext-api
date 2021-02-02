@@ -2,9 +2,36 @@
     "openapi": "3.0.0",
     "info": {
         "title": "CONEXT API",
-        "version": "0.1"
+        "version": "0.3"
     },
     "paths": {
+        "/api/abouts": {
+            "get": {
+                "tags": [
+                    "About"
+                ],
+                "summary": "Get list of about",
+                "operationId": "App\\Http\\Controllers\\AboutController::index",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong . Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/business-types": {
             "get": {
                 "tags": [
@@ -12,8 +39,82 @@
                 ],
                 "summary": "Get list of contact",
                 "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/business-types": {
+            "post": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Adds a new business-types",
+                "operationId": "App\\Http\\Controllers\\BusinessTypeController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name bussiness nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
                     "200": {
-                        "description": "Display a listing of businesses."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
                     }
                 }
             }
@@ -26,7 +127,74 @@
                 "summary": "Get list of contact",
                 "responses": {
                     "200": {
-                        "description": "Display a listing of categories."
+                        "description": "Display a listing of categories.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Adds a new categories",
+                "operationId": "App\\Http\\Controllers\\CategoryController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "category_name": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "category_name": "category nha",
+                                    "quantity": "quantity nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/categories/{id}": {
+            "delete": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Delete category",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "App\\Http\\Controllers\\CategoryController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The category that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
                     }
                 }
             }
@@ -44,6 +212,79 @@
                 }
             }
         },
+        "/api/admin/contact": {
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Adds a new contacts",
+                "operationId": "App\\Http\\Controllers\\ContactController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "phone_number": {
+                                        "type": "string"
+                                    },
+                                    "subject": {
+                                        "type": "string"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name bussiness nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
         "/api/events": {
             "get": {
                 "tags": [
@@ -53,6 +294,79 @@
                 "responses": {
                     "200": {
                         "description": "Display a listing of events."
+                    }
+                }
+            }
+        },
+        "/api/admin/events": {
+            "post": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Adds a new events",
+                "operationId": "App\\Http\\Controllers\\EventController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "start_time": {
+                                        "type": "DateTime"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "title event nha",
+                                    "image": "image.png",
+                                    "start_time": "12-3-2019 4:1:1",
+                                    "description": "hihi"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
                     }
                 }
             }
@@ -69,6 +383,67 @@
                 }
             }
         },
+        "/api/admin/expertises": {
+            "post": {
+                "tags": [
+                    "Expertises"
+                ],
+                "summary": "Adds a new expertises",
+                "operationId": "App\\Http\\Controllers\\ExpertiseController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name expertises nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
         "/api/explores": {
             "get": {
                 "tags": [
@@ -81,10 +456,98 @@
                 }
             }
         },
+        "/api/admin/explore": {
+            "post": {
+                "tags": [
+                    "Explore"
+                ],
+                "summary": "Adds a new business-types",
+                "operationId": "App\\Http\\Controllers\\ExploreController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name explore nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
+        "/api/faqs": {
+            "get": {
+                "tags": [
+                    "Faqs"
+                ],
+                "summary": "Get list of faqs",
+                "operationId": "App\\Http\\Controllers\\FaqController::index",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong . Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/hot-needs": {
             "get": {
                 "tags": [
-                    "hot-needs"
+                    "Hot-needs"
                 ],
                 "responses": {
                     "200": {
@@ -93,10 +556,84 @@
                 }
             }
         },
+        "/api/my-hot-needs": {
+            "get": {
+                "tags": [
+                    "Hot-needs"
+                ],
+                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of hot-needs."
+                    }
+                }
+            }
+        },
+        "/api/admin/hot-needs": {
+            "post": {
+                "tags": [
+                    "Hot-needs"
+                ],
+                "summary": "Adds a new hot-needs",
+                "operationId": "App\\Http\\Controllers\\HotNeedController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name not need nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
         "/api/local-conexts": {
             "get": {
                 "tags": [
-                    "local-conexts"
+                    "Local-conexts"
                 ],
                 "responses": {
                     "200": {
@@ -105,14 +642,194 @@
                 }
             }
         },
+        "/api/admin/local-conexts": {
+            "post": {
+                "tags": [
+                    "Local-conexts"
+                ],
+                "summary": "Adds a new local-conexts",
+                "operationId": "App\\Http\\Controllers\\LocalConextController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name local conext nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
+        "/api/term-and-policies": {
+            "get": {
+                "tags": [
+                    "Term-and-policies"
+                ],
+                "summary": "Get list of term-and-policies",
+                "operationId": "App\\Http\\Controllers\\TermAndPolicyController::index",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong . Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
-                    "users"
+                    "Users"
                 ],
                 "responses": {
                     "200": {
                         "description": "Display a listing of users."
+                    }
+                }
+            }
+        },
+        "/api/admin/users": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Adds a new users",
+                "operationId": "App\\Http\\Controllers\\UserController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "gender": {
+                                        "type": "integer"
+                                    },
+                                    "introduce": {
+                                        "type": "string"
+                                    },
+                                    "workplace": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "business_type_id": {
+                                        "type": "integer"
+                                    },
+                                    "expertise_id": {
+                                        "type": "string"
+                                    },
+                                    "local_conext_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "email@gmail.com",
+                                    "address": "address nha",
+                                    "gender": 2,
+                                    "introduce": "introduce nha",
+                                    "workplace": "workplace nha",
+                                    "business_type_id": 1,
+                                    "expertise_id": 1,
+                                    "local_conext_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
                     }
                 }
             }
@@ -129,6 +846,79 @@
                 }
             }
         },
+        "/api/admin/vouchers": {
+            "post": {
+                "tags": [
+                    "vouchers"
+                ],
+                "summary": "Adds a new vouchers",
+                "operationId": "App\\Http\\Controllers\\VoucherController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "expired_on": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name voucher nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
+                    }
+                }
+            }
+        },
         "/api/work-places": {
             "get": {
                 "tags": [
@@ -137,6 +927,75 @@
                 "responses": {
                     "200": {
                         "description": "Display a listing of work-places."
+                    }
+                }
+            }
+        },
+        "/api/admin/work-places": {
+            "post": {
+                "tags": [
+                    "work-places"
+                ],
+                "summary": "Adds a new work-places",
+                "operationId": "App\\Http\\Controllers\\WorkPlaceController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name workplace nha",
+                                    "price": 12000,
+                                    "0": "address nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "OH no Oh no no no no"
                     }
                 }
             }
