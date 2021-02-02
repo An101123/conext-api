@@ -10,12 +10,23 @@ use Illuminate\Http\Request;
 class BusinessTypeController extends Controller
 {
     /**
+     * @OA\Info(title="CONEXT API", version="0.1")
+     *
+     * @OA\Get(
+     *     tags={"Business"},
+     *     summary="Get list of contact",
+     *     path="/api/business-types",
+     *     @OA\Response(response="200", description="Display a listing of businesses.")
+     * )
+     * 
+     */
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     protected $businessTypeService;
-    
+
     public function __construct(BusinessTypeServiceInterface $businessTypeService)
     {
         $this->businessTypeService = $businessTypeService;
@@ -37,7 +48,6 @@ class BusinessTypeController extends Controller
         $input = $request->all();
         // var_dump($input);
         return $this->businessTypeService->store($input);
-        
     }
 
     /**

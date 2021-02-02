@@ -17,10 +17,7 @@ class BusinessTypeRepository implements BusinessTypeRepositoryInterface
     public function store($input)
     {
         try{
-            $data = array(
-                'name' => $input['name']
-            );
-            BusinessType::create($data);
+            BusinessType::create($input);
             return true;
         } catch(\Exception $e){
             return $e;
@@ -34,10 +31,7 @@ class BusinessTypeRepository implements BusinessTypeRepositoryInterface
     public function update($input, $id)
     {
         try{
-            $data = array(
-                'name' => $input['name']
-            );
-            BusinessType::find($id)->update($data);
+            BusinessType::find($id)->update($input);
             return true;
         } catch(\Exception $e){
            return $e;

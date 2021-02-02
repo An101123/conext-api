@@ -10,23 +10,13 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
 {
     public function getWorkPlaces($location)
     {
-        if (!empty($location) == 1){
-            return WorkPlace::all('id','address');
-        } else {
             return WorkPlace::all();
-        }
     }   
 
     public function store($input)
     {
         try{
-            $data = array(
-                'name' => $input['name'],
-                'image' => $input['image'],
-                'price' => $input['price'],
-                'address' => $input['address'],
-            );
-            WorkPlace::create($data);
+            WorkPlace::create($input);
             return true;
         } catch(\Exception $e){
             return false;
@@ -40,13 +30,7 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
     public function update($input, $id)
     {
         try{
-            $data = array(
-                'name' => $input['name'],
-                'image' => $input['image'],
-                'price' => $input['price'],
-                'address' => $input['address'],
-            );
-            WorkPlace::find($id)->update($data);
+            WorkPlace::find($id)->update($input);
             return true;
         } catch(\Exception $e){
             return $e;
@@ -56,5 +40,9 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
     {
             WorkPlace::where('id', $id)->delete($id);
             return true;
+    }
+    public function location()
+    {
+        return WorkPlace::all('id', 'address');
     }
 }

@@ -17,14 +17,7 @@ class ContactRepository implements ContactRepositoryInterface
     public function store($input)
     {
         try{
-            $data = array(
-                'name' => $input['name'],
-                'email' => $input['email'],
-                'phone_number' => $input['phone_number'],
-                'subject' => $input['subject'],
-                'content' => $input['content']
-            );
-            Contact::create($data);
+            Contact::create($input);
             return true;
         } catch(\Exception $e){
             return $e;

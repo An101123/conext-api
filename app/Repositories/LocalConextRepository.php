@@ -13,10 +13,7 @@ class LocalConextRepository implements LocalConextRepositoryInterface
     public function store($input)
     {
         try{
-            $data = array(
-                'name' => $input['name']
-            );
-            LocalConext::create($data);
+            LocalConext::create($input);
             return true;
         } catch(\Exception $e){
             return $e;
@@ -32,10 +29,7 @@ class LocalConextRepository implements LocalConextRepositoryInterface
     public function update($input, $id)
     {
         try{
-            $data = array(
-                'name' => $input['name']
-            );
-            LocalConext::find($id)->update($data);
+            LocalConext::find($id)->update($input);
             return true;
         } catch(\Exception $e){
             return $e;   
