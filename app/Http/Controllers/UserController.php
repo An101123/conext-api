@@ -154,6 +154,107 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+            /**
+     * @OA\Put(
+     *     path="/api/admin/users/{id}",
+     *     tags={"Users"},
+     *     summary="Update an existing users",
+     *     description="",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Users object that needs to be added to the store",
+     *         @OA\MediaType(
+     *            mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="address",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="gender",
+     *                     type="integer"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="introduce",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="workplace",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="business_type_id",
+     *                     type="integer"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="expertise_id",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="local_conext_id",
+     *                     type="string"
+     *                 ),
+     *                 example={"email": "email@gmail.com", "address": "address nha", "gender": 2, "introduce": "introduce nha",
+     *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1, "local_conext_id": 1                      
+     *                 }
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Pet not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     * )
+     */
     public function update(Request $request, $id)
     {
         $input = $request;
@@ -180,8 +281,51 @@ class UserController extends Controller
      *         type="string"
      *     )
      *   ),
-     *   @OA\Response(response=400, description="Invalid id supplied"),
-     *   @OA\Response(response=404, description="Id not found")
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Pet not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     )
      * )
      */
     public function destroy($id)
