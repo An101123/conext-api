@@ -30,8 +30,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('users', UserController::class)->only('index', 'show');
-Route::apiResource('users',  UserController::class)->only('update')->middleware('auth:api');
+Route::apiResource('auth/users', UserController::class)->only('index', 'show');
+Route::apiResource('auth/users',  UserController::class)->only('update')->middleware('auth:api');
 Route::get('profile', [UserController::class, 'show']);
 Route::get('user-random', [UserController::class, 'getUserRandom']);
 Route::apiResource('business-types', BusinessTypeController::class)->only('index', 'show');
@@ -41,7 +41,7 @@ Route::apiResource('explores', ExploreController::class)->only('index', 'show');
 Route::apiResource('vouchers', VoucherController::class)->only('index', 'show');
 Route::apiResource('events', EventController::class)->only('index', 'show');
 Route::apiResource('work-places', WorkPlaceController::class)->only('index', 'show');
-Route::post('login', [AuthController::class, 'login']);
+Route::post('auth/login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::get('location', [WorkPlaceController::class, 'location']);
 

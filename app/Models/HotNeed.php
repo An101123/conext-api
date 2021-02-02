@@ -15,7 +15,7 @@ class HotNeed extends Model
         'topic',
         'city',
         'category_id',
-        'expected-deadline',
+        'expected_deadline',
         'brief_description',
         'full_description',
         'user_id'
