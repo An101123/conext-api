@@ -17,7 +17,9 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
     {
         try{
             WorkPlace::create($input);
-            return true;
+            return response()->json([
+                'message' => "Workplace created successfully"
+            ]);
         } catch(\Exception $e){
             return false;
         }
@@ -31,7 +33,9 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
     {
         try{
             WorkPlace::find($id)->update($input);
-            return true;
+            return response()->json([
+                'message' => "Workplace updated successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }

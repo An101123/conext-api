@@ -39,7 +39,9 @@ class HotNeedRepository implements HotNeedRepositoryInterface
                 'user_id' => Auth::user()->id
             );
             HotNeed::create($data);
-            return true;
+            return response()->json([
+                'message' => "Hot need type created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }
@@ -62,7 +64,9 @@ class HotNeedRepository implements HotNeedRepositoryInterface
                 'user_id' => Auth::user()->id
             );
             HotNeed::find($id)->update($data);
-            return true;
+            return response()->json([
+                'message' => "Hot need type updated successfully"
+            ]);
         } catch(\Exception $e){
            return $e;
         }

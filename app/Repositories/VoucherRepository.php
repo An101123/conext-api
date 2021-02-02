@@ -22,7 +22,9 @@ class VoucherRepository implements VoucherRepositoryInterface
         if($input['expired_on'] > (Carbon::now())){
         try{
             Voucher::create($input);
-            return true;
+            return response()->json([
+                'message' => "Voucher type created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }
@@ -42,7 +44,9 @@ class VoucherRepository implements VoucherRepositoryInterface
     {
         try{
             Voucher::find($id)->update($input);
-            return true;
+            return response()->json([
+                'message' => "Voucher type created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }

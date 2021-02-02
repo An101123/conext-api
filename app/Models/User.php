@@ -14,10 +14,10 @@ class User extends Authenticatable  implements JWTSubject
 
     protected $table = 'users';
     public function businessType(){
-        return $this->belongsTo(BusinessType::class, 'business_type_id', 'id');
+        return $this->belongsTo(BusinessType::class)->select('id', 'name');
     }
     public function expertise(){
-        return $this->belongsTo(Expertise::class, 'expertise_id', 'id');
+        return $this->belongsTo(Expertise::class)->select('id', 'name');
     }
     public function localConext(){
         return $this->belongsTo(LocalConext::class, 'local_conext_id', 'id');

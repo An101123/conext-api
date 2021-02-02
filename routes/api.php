@@ -63,6 +63,7 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::apiResource('admin/work-places', WorkPlaceController::class);
     Route::apiResource('admin/categories', CategoryController::class);
 });
+
 Route::post('register', [UserController::class, 'store']);
 Route::get('abouts', [AboutController::class, 'index']);
 Route::get('faqs', [FaqController::class, 'index']);

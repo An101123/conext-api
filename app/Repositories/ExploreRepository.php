@@ -16,7 +16,9 @@ class ExploreRepository implements ExploreRepositoryInterface
     {
         try{
             Explore::create($input);
-            return true;
+            return response()->json([
+                'message' => "Explore type created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }
@@ -31,7 +33,9 @@ class ExploreRepository implements ExploreRepositoryInterface
     {
         try{
             Explore::find($id)->update($input);
-            return true;
+            return response()->json([
+                'message' => "Explore type updated successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }
