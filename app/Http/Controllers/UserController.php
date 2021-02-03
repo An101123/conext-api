@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Services\UserServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -408,9 +409,10 @@ class UserController extends Controller
      *     }
      * )
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $input = $request;
+        $id = Auth::user()->id;
         return $this->userService->update($input, $id);
     }
 
@@ -538,5 +540,10 @@ class UserController extends Controller
     public function getUserRandom()
     {
         return $this->userService->getUserRandom();
+    }
+
+    public function profile()
+    {
+        return $this->userService->profile();
     }
 }

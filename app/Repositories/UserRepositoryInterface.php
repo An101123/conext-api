@@ -10,4 +10,5 @@ interface UserRepositoryInterface
     public function update($input, $id);
     public function delete($id);
     public function getUserRandom();
+    public function profile();
 }

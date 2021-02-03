@@ -33,14 +33,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/auth/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('auth/users', UserController::class)->only('index', 'show');
-Route::apiResource('auth/users',  UserController::class)->only('update')->middleware('auth:api');
-Route::get('profile', [UserController::class, 'show']);
+Route::apiResource('users', UserController::class)->only('index', 'show');
+Route::post('auth/update-profile',  [UserController::class, 'update'])->middleware('auth:api');
+Route::get('auth/profile', [UserController::class, 'profile'])->middleware('auth:api');
 Route::get('user-random', [UserController::class, 'getUserRandom']);
 Route::apiResource('business-types', BusinessTypeController::class)->only('index', 'show');
 Route::apiResource('expertises', ExpertiseController::class)->only('index', 'show');
 Route::apiResource('local-conexts', LocalConextController::class)->only('index', 'show');
 Route::apiResource('explores', ExploreController::class)->only('index', 'show');
+Route::get('categories', [CategoryController::class, 'index']);
 Route::apiResource('vouchers', VoucherController::class)->only('index', 'show');
 Route::apiResource('events', EventController::class)->only('index', 'show');
 Route::apiResource('work-places', WorkPlaceController::class)->only('index', 'show');
@@ -48,10 +49,11 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::get('/auth/logout', [AuthController::class, 'logout'])->middleware('auth:api');
 Route::get('location', [WorkPlaceController::class, 'location']);
 
-Route::apiResource('contacts', ContactController::class)->only('index', 'store', 'destroy');
+Route::post('contacts', [ContactController::class,'store']);
 
 Route::group(['middleware' => ['auth:api', 'admin']], function()
 {
+    Route::apiResource('admin/contacts', ContactController::class);
     Route::apiResource('admin/expertises', ExpertiseController::class);
     Route::apiResource('admin/business-types', BusinessTypeController::class);
     Route::apiResource('admin/local-conexts', LocalConextController::class);
@@ -62,7 +64,6 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::apiResource('admin/work-places', WorkPlaceController::class);
     Route::apiResource('admin/categories', CategoryController::class);
 });
-
 Route::post('register', [UserController::class, 'store']);
 Route::get('abouts', [AboutController::class, 'index']);
 Route::get('faqs', [FaqController::class, 'index']);
