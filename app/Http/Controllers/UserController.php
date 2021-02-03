@@ -13,7 +13,31 @@ class UserController extends Controller
      * @OA\Get(
      *     tags={"Users"},
      *     path="/api/auth/users",
-     *     @OA\Response(response="200", description="Display a listing of users."),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="businessType",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="expertise",
+     *                     type="string"
+     *                 ),
+     *                 example={"businessType": 1, "expertise": 1}
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),     
      *     @OA\Response(
      *         response=400,
      *         description="Bad Request",

@@ -1991,9 +1991,33 @@
                 "tags": [
                     "Users"
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "businessType": {
+                                        "type": "string"
+                                    },
+                                    "expertise": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "businessType": 1,
+                                    "expertise": 1
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "Display a listing of users."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "400": {
                         "description": "Bad Request",
