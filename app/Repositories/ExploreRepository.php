@@ -4,12 +4,21 @@ namespace App\Repositories;
 
 use App\Models\Explore;
 use Exception;
+use Illuminate\Support\Str;
+
 
 class ExploreRepository implements ExploreRepositoryInterface
 {
     public function getExplores()
     {
-        return Explore::all();
+        $explores =  Explore::all();
+        $data = [];
+        foreach ($explores as $explore)
+        {
+            $explore['slug'] = Str::slug($explore['title']);
+            array_push($data, $explore);
+        }
+        return $data;
     }
 
     public function store($input)
