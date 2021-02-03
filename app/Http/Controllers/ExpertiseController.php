@@ -56,7 +56,7 @@ class ExpertiseController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )     
+     *     ),     
      * )
      */
     /**
@@ -165,7 +165,10 @@ class ExpertiseController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ) 
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function store(Request $request)

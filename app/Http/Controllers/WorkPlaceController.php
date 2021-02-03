@@ -71,6 +71,61 @@ class WorkPlaceController extends Controller
     {
         $this->workPlaceService = $workPlaceService;
     }
+    /**
+     *
+     * @OA\Get(
+     *     tags={"Work-places"},
+     *     path="/api/admin/work-places",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Workplace not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
+     * )
+     */
     public function index(Request $request)
     {
         $location = $request->location;
@@ -175,7 +230,10 @@ class WorkPlaceController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function store(Request $request)
@@ -202,7 +260,7 @@ class WorkPlaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Put(
      *     path="/api/admin/work-places/{id}",
      *     tags={"Work-places"},
@@ -274,7 +332,10 @@ class WorkPlaceController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )   
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }  
      * )
      */
     public function update(Request $request, $id)
@@ -347,7 +408,10 @@ class WorkPlaceController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function destroy($id)
