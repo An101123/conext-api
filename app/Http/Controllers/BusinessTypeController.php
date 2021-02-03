@@ -39,6 +39,11 @@ class BusinessTypeController extends Controller
      *                         @OA\Items
      *                     ),
      *                     example={
+     *                          "id": 1,
+                                "name": "Startups",
+                                "created_at": null,
+                                "updated_at": null
+     *                      }
      *                         "errcode": 1,
      *                         "errmsg": "ok",
      *                         "data": {"name": "name bussiness nha"}

@@ -24,6 +24,34 @@ class FaqController extends Controller
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                          "code": 200,
+                                "data":{
+                                    "id": 1,
+                                    "question": "<p><strong>How can I meet up with other conexters?</strong></p>",
+                                    "answer": "<p><img src='https://storage.googleapis.com/conext-develop/faq_catch_up.png'></p><p>When you log in to your account, you can see Meetup Community. Please choose positions or industries of Conextor who you want to meet, and click let&rsquo;s meet to connect with them.</p>",
+                                    "created_at": null,
+                                    "updated_at": null
+                                }
+     *                      }
+     *                 )
      *             )
      *         }
      *     ),
