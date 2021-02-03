@@ -8,9 +8,14 @@ use Exception;
 
 class WorkPlaceRepository implements WorkPlaceRepositoryInterface
 {
-    public function getWorkPlaces($location)
+    public function getWorkPlaces($zone)
     {
-            return WorkPlace::all();
+        // dd(WorkPlace::all());
+        $workPlaces = WorkPlace::with(['localConext'])
+        ->when($zone, function ($data) use($zone){
+            $data->where('local_conext_id', $zone);
+        })->get();
+        return $workPlaces;
     }   
 
     public function store($input)

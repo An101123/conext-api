@@ -72,8 +72,8 @@ class WorkPlaceController extends Controller
     }
     public function index(Request $request)
     {
-        $location = $request->location;
-        return $this->workPlaceService->getWorkPlaces($location);
+        $zone = $request->zone;
+        return $this->workPlaceService->getWorkPlaces($zone);
     }
 
     /**

@@ -45,7 +45,7 @@ Route::apiResource('vouchers', VoucherController::class)->only('index', 'show');
 Route::apiResource('events', EventController::class)->only('index', 'show');
 Route::apiResource('work-places', WorkPlaceController::class)->only('index', 'show');
 Route::post('/auth/login', [AuthController::class, 'login']);
-Route::get('/auth/logout', [AuthController::class, 'logout']);
+Route::get('/auth/logout', [AuthController::class, 'logout'])->middleware('auth:api');
 Route::get('location', [WorkPlaceController::class, 'location']);
 
 Route::apiResource('contacts', ContactController::class)->only('index', 'store', 'destroy');

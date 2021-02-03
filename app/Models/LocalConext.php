@@ -17,4 +17,7 @@ class LocalConext extends Model
     public function user(){
         return $this->hasMany(User::class);
     }
+    public function workPlace(){
+        return $this->hasMany(WorkPlace::class);
+    }
 }
