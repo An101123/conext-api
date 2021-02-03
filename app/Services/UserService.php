@@ -40,6 +40,7 @@ class UserService implements UserServiceInterface
     }
     public function profile()
     {
-        return $this->userRepository->profile();
+        return $this->userRepository->profile(); 
+        
     }
 }
