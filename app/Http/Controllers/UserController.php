@@ -13,22 +13,6 @@ class UserController extends Controller
      * @OA\Get(
      *     tags={"Users"},
      *     path="/api/auth/users",
-     *     @OA\RequestBody(
-     *         @OA\MediaType(
-     *             mediaType="application/json",
-     *             @OA\Schema(
-     *                 @OA\Property(
-     *                     property="businessType",
-     *                     type="string"
-     *                 ),
-     *                 @OA\Property(
-     *                     property="expertise",
-     *                     type="string"
-     *                 ),
-     *                 example={"businessType": 1, "expertise": 1}
-     *             )
-     *         ),
-     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -494,7 +478,10 @@ class UserController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     } 
      * )
      */
     public function destroy($id)
@@ -543,9 +530,6 @@ class UserController extends Controller
      *             )
      *         }
      *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }
      * )
      */
     public function getUserRandom()

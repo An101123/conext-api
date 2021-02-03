@@ -52,7 +52,6 @@ Route::apiResource('contacts', ContactController::class)->only('index', 'store',
 
 Route::group(['middleware' => ['auth:api', 'admin']], function()
 {
-
     Route::apiResource('admin/expertises', ExpertiseController::class);
     Route::apiResource('admin/business-types', BusinessTypeController::class);
     Route::apiResource('admin/local-conexts', LocalConextController::class);

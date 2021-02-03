@@ -66,7 +66,10 @@ class AuthController extends Controller
      *                     example={
      *                         "errcode": 1,
      *                         "errmsg": "ok",
-     *                         "data": {}
+     *                         "data": {
+     *                              "email": "thian200298@gmail.com",
+     *                              "password": "123123123"
+     *                          }
      *                     }
      *                 )
      *             )

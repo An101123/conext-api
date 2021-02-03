@@ -103,7 +103,10 @@
                                     "example": {
                                         "errcode": 1,
                                         "errmsg": "ok",
-                                        "data": []
+                                        "data": {
+                                            "email": "thian200298@gmail.com",
+                                            "password": "123123123"
+                                        }
                                     }
                                 }
                             }
@@ -197,7 +200,33 @@
                     "200": {
                         "description": "OK",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": {
+                                            "name": "name bussiness nha"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     },
                     "400": {
@@ -228,6 +257,50 @@
             }
         },
         "/api/admin/business-types": {
+            "get": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Get list of contact",
+                "operationId": "App\\Http\\Controllers\\BusinessTypeController::index",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Business not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Business"
@@ -306,7 +379,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/business-types/{id}": {
@@ -367,7 +445,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/business-types/{id}": {
@@ -420,7 +503,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/categories": {
@@ -2620,7 +2708,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/user-random": {
@@ -2657,12 +2750,7 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         },
         "/api/vouchers": {
@@ -2987,11 +3075,63 @@
                 "tags": [
                     "Work-places"
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "zone": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "zone": 1
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": {
+                                            "id": 1,
+                                            "name": "Campus K Coworking Space",
+                                            "price": 50000,
+                                            "address": "15th Floor, Tower B, Song Da Building, Pham Hung, My Dinh 1, Nam Tu Liem, Hanoi",
+                                            "image": "https://storage.googleapis.com/conext-production/99935659_55835531_17331773_75997746.png",
+                                            "local_conext_id": 1,
+                                            "local_conext": {
+                                                "id": 1,
+                                                "name": "Ha Noi"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     },
                     "400": {
@@ -3027,11 +3167,65 @@
                     "Work-places"
                 ],
                 "operationId": "App\\Http\\Controllers\\WorkPlaceController::index",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "zone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name workplace nha",
+                                    "price": 12000,
+                                    "0": "address nha"
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": {
+                                            "id": 1,
+                                            "name": "Campus K Coworking Space",
+                                            "price": 50000,
+                                            "address": "15th Floor, Tower B, Song Da Building, Pham Hung, My Dinh 1, Nam Tu Liem, Hanoi",
+                                            "image": "https://storage.googleapis.com/conext-production/99935659_55835531_17331773_75997746.png",
+                                            "local_conext_id": 1,
+                                            "local_conext": {
+                                                "id": 1,
+                                                "name": "Ha Noi"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     },
                     "400": {
@@ -3121,7 +3315,11 @@
                                     "example": {
                                         "errcode": 1,
                                         "errmsg": "ok",
-                                        "data": []
+                                        "data": {
+                                            "0": "address nha",
+                                            "name": "name workplace nha",
+                                            "price": 12000
+                                        }
                                     }
                                 }
                             }
@@ -3289,6 +3487,46 @@
                         "bearer": []
                     }
                 ]
+            }
+        },
+        "/api/location": {
+            "get": {
+                "tags": [
+                    "Work-places"
+                ],
+                "operationId": "App\\Http\\Controllers\\WorkPlaceController::location",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Workplace not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
             }
         }
     },
