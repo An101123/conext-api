@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -70,12 +71,10 @@ class UserRepository implements UserRepositoryInterface
             };
             $data = array(
                 'name' =>$input->name,
-                // 'email' =>$input->email,s
                 'gender' =>$input->gender,
                 'address' =>$input->address,
                 'introduce' =>$input->introduce,
                 'workplace' =>$input->workplace,
-                'password' =>Hash::make($input->password),
                 'avatar' => $input->avatar,
                 'business_type_id' =>$input->business_type_id,
                 'expertise_id' =>$input->expertise_id,
@@ -105,5 +104,11 @@ class UserRepository implements UserRepositoryInterface
     public function getUserRandom()
     {
         return User::inRandomOrder()->limit(9)->get();
+    }
+
+    public function profile()
+    {
+        $id = Auth::user()->id;
+        return User::find($id);
     }
 }
