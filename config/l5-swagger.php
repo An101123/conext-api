@@ -101,8 +101,15 @@ return [
         'securityDefinitions' => [
             'securitySchemes' => [
                 /*
-                 * Examples of Security schemes
+                 * Examples of Security schemesx
                 */
+                'bearer' => [
+                    'type' => 'http',
+                    'description' => 'Authorization token obtained from logging in.',
+                    'name' => 'Authorization',
+                    'in' => 'header',
+                    'scheme' => 'bearer',
+                ],
                 /*
                 'api_key_security_example' => [ // Unique name of security
                     'type' => 'apiKey', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
@@ -144,17 +151,18 @@ return [
                 /*
                  * Examples of Securities
                 */
-                [
-                    /*
-                    'oauth2_security_example' => [
-                        'read',
-                        'write'
-                    ],
+                // [
+                //     /*
+                //     'oauth2_security_example' => [
+                //         'read',
+                //         'write'
+                //     ],
 
-                    'passport' => []
-                    */
-                ],
+                //     'passport' => []
+                //     */],
+                []
             ],
+
         ],
 
         /*
@@ -197,7 +205,7 @@ return [
          * Uncomment to add constants which can be used in annotations
          */
         'constants' => [
-        'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
+            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
         ],
     ],
 ];

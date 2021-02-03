@@ -9,7 +9,8 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
@@ -18,7 +19,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-        /**
+    /**
      * @OA\Post(
      *     tags={"Login"},
      *     path="/api/auth/login",
@@ -65,7 +66,10 @@ class AuthController extends Controller
      *                     example={
      *                         "errcode": 1,
      *                         "errmsg": "ok",
-     *                         "data": {}
+     *                         "data": {
+     *                              "email": "thian200298@gmail.com",
+     *                              "password": "123123123"
+     *                          }
      *                     }
      *                 )
      *             )
@@ -109,19 +113,21 @@ class AuthController extends Controller
      *     )
      * )
      */
-    public function login(LoginRequest $request){
+    public function login(LoginRequest $request)
+    {
         $input = $request->all();
         $token = null;
         // dd(
         //     JWTAuth::attempt($input)
         // );
-        if (! $token = JWTAuth::attempt($input)) {
+        if (!$token = JWTAuth::attempt($input)) {
             return response()->json(['message' => 'Invalid Email or Password'], 401);
         }
-        
+
         return $this->createNewToken($token);
     }
-    protected function createNewToken($token){
+    protected function createNewToken($token)
+    {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
@@ -129,15 +135,76 @@ class AuthController extends Controller
             // 'user' => Auth::user()
         ]);
     }
-
+    /**
+     *
+     * @OA\Get(
+     *     tags={"Logout"},
+     *     summary="Logout",
+     *     path="/api/auth/logout",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *         ),
+     *     ), 
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Business not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),   
+     *     security={
+     *         {"bearer": {}}
+     *     }
+     * )
+     */
     public function logout()
     {
         Auth::logout();
         JWTAuth::invalidate(JWTAuth::getToken());
         return response()->json(['message' => 'User successfully signed out']);
     }
-    
-    public function refresh() {
+
+    public function refresh()
+    {
         return $this->createNewToken(Auth::refresh());
     }
 }
