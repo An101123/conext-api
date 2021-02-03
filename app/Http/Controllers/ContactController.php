@@ -60,7 +60,8 @@ class ContactController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )  
+     *     ),
+     *   
      * )
      */
 
@@ -187,7 +188,10 @@ class ContactController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function store(ContactRequest $request)
@@ -260,7 +264,10 @@ class ContactController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ) 
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function destroy($id)

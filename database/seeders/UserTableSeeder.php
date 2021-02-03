@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $name = ['Nguyen Tich Duy', 'Tran Dinh Van', 'Tran Nhat Huy', 'Pham Anh Phu', 'Pham Anh Thien', 'Tran Thi An', 'Pham Quy', 'Nguyen Thi Ut Thao', 'Tran Quang Phu', 'Nguyen Tran Quoc Vinh', 'Pham Duong Thu Hang', 'Pham Thi Yen', 'Doan Duy Binh', 'Ho Ngo My Vy', 'Pham Anh Phuong', 'Vo Van Luong', 'Tran Quoc Chien', 'Bui Ngoc Vinh', 'Tran Van Hung', 'Pham Dinh Lau', 'Doan Chi Binh'];
-        for ($i=0; $i < 20 ; $i++) { 
+        for ($i=1; $i <= 20 ; $i++) { 
             DB::table('users')->insert([
                 [
                     'name' => $name[$i],
