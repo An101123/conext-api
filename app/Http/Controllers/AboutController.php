@@ -37,7 +37,7 @@ class AboutController extends Controller
      *     ),
      *     @OA\Response(
      *         response=400,
-     *         description="OK",
+     *         description="Bad Request",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -46,7 +46,7 @@ class AboutController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Pet not found",
+     *         description="About not found",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -64,13 +64,13 @@ class AboutController extends Controller
      *     ),
      *     @OA\Response(
      *         response=500,
-     *         description="Validation exception",
+     *         description="Internal Server Error",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     )     
      * )
      */
     public function index()
