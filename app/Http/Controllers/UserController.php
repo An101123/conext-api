@@ -13,7 +13,23 @@ class UserController extends Controller
      *
      * @OA\Get(
      *     tags={"Users"},
-     *     path="/api/auth/users",
+     *     path="/api/users",
+     *     @OA\Parameter(
+     *       name="businessType",
+     *       in="query",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="expertise",
+     *       in="query",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -72,11 +88,27 @@ class UserController extends Controller
     {
         return $this->userService = $userService;
     }
-        /**
+    /**
      *
      * @OA\Get(
      *     tags={"Users"},
      *     path="/api/admin/users",
+     *     @OA\Parameter(
+     *       name="businessType",
+     *       in="query",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="expertise",
+     *       in="query",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",

@@ -1492,7 +1492,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/expertises/{id}": {
@@ -1545,7 +1550,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/explores": {
@@ -2526,10 +2536,28 @@
                 }
             }
         },
-        "/api/auth/users": {
+        "/api/users": {
             "get": {
                 "tags": [
                     "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "businessType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "expertise",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -2571,6 +2599,24 @@
                     "Users"
                 ],
                 "operationId": "App\\Http\\Controllers\\UserController::index",
+                "parameters": [
+                    {
+                        "name": "businessType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "expertise",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -3265,6 +3311,16 @@
             "get": {
                 "tags": [
                     "Work-places"
+                ],
+                "parameters": [
+                    {
+                        "name": "zone",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {

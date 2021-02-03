@@ -314,7 +314,10 @@ class ExpertiseController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ) 
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function update(Request $request, $id)
@@ -387,7 +390,10 @@ class ExpertiseController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ) 
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function destroy($id)
