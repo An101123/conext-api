@@ -38,7 +38,25 @@ class VoucherTableSeeder extends Seeder
                 'image' => 'https://storage.googleapis.com/conext-production/33562622_75803936_48752140_46239508.png',
                 'expired_on' => '2020-10-30',
                 'description' => '<p>Enouvo Space is running a special discount for member of Conext community in May 2020 with 10% off for daily pass.&nbsp;</p><p>Conextor will save 10,000 VND from the original price 100,000 VND</p><p>In order to get the promo code, simply click on the Get Voucher button. The voucher will be sent directly to your registered email at Conext.&nbsp;</p><p>Please kindly show the voucher when check-in at Enouvo Space and enjoy the productive working day.</p><p>Enouvo Space&nbsp;</p><p>Website: enouvospace.com</p><p>Address: 16-18 An Nhon 3, Son Tra, Danang</p><p>Phone: (+84) 236 3 810 449 - (+84) 935 330 727</p><p>Email: <a href="mailto:space@enouvo.com">space@enouvo.com</a></p>'
-            ]
+            ],
+            [
+                'title' => '[DNC] Get promo code 20% discount for daily pass',
+                'image' => 'https://storage.googleapis.com/conext-production/61151640_41063916_81769667_72704808.png',
+                'expired_on' => '2020-11-30',
+                'description' => "DNC's offering the exclusively discount for member of Conext community in May 2020 with 20% discount for daily pass:<br></br>Conextor Daily pass with Only 60,000 VND (original price is 75,000 VND)<br></br>In order to get the promo code:  simply click on the Get Voucher button, and the voucher will be sent to you through your registered email at Conext. You just need to show the voucher when check-in at DNC and enjoy the discount."
+            ],
+            [
+                'title' => '[ENOUVO SPACE] GET PROMO CODE 10% DISCOUNT FOR DAILY PASS',
+                'image' => 'hhttps://storage.googleapis.com/conext-production/55089944_13864010_74212248_59364091.png',
+                'expired_on' => '2020-10-30',
+                'description' => '<p>Enouvo Space is running a special discount for member of Conext community in May 2020 with 10% off for daily pass.&nbsp;</p><p>Conextor will save 10,000 VND from the original price 100,000 VND</p><p>In order to get the promo code, simply click on the Get Voucher button. The voucher will be sent directly to your registered email at Conext.&nbsp;</p><p>Please kindly show the voucher when check-in at Enouvo Space and enjoy the productive working day.</p><p>Enouvo Space&nbsp;</p><p>Website: enouvospace.com</p><p>Address: 16-18 An Nhon 3, Son Tra, Danang</p><p>Phone: (+84) 236 3 810 449 - (+84) 935 330 727</p><p>Email: <a href="mailto:space@enouvo.com">space@enouvo.com</a></p>'
+            ],
+            [
+                'title' => '[ENOUVO SPACE] GET PROMO CODE 10% DISCOUNT FOR DAILY PASS',
+                'image' => 'https://storage.googleapis.com/conext-production/33562622_75803936_48752140_46239508.png',
+                'expired_on' => '2020-10-30',
+                'description' => '<p>Enouvo Space is running a special discount for member of Conext community in May 2020 with 10% off for daily pass.&nbsp;</p><p>Conextor will save 10,000 VND from the original price 100,000 VND</p><p>In order to get the promo code, simply click on the Get Voucher button. The voucher will be sent directly to your registered email at Conext.&nbsp;</p><p>Please kindly show the voucher when check-in at Enouvo Space and enjoy the productive working day.</p><p>Enouvo Space&nbsp;</p><p>Website: enouvospace.com</p><p>Address: 16-18 An Nhon 3, Son Tra, Danang</p><p>Phone: (+84) 236 3 810 449 - (+84) 935 330 727</p><p>Email: <a href="mailto:space@enouvo.com">space@enouvo.com</a></p>'
+            ],
         ]);
     }
 }
