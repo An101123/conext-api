@@ -12,6 +12,14 @@ class VoucherController extends Controller
      * @OA\Get(
      *     tags={"Vouchers"},
      *     path="/api/vouchers",
+     *     @OA\Parameter(
+     *       name="page",
+     *       in="query",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -106,6 +114,14 @@ class VoucherController extends Controller
      * @OA\Get(
      *     tags={"Vouchers"},
      *     path="/api/admin/vouchers",
+     *     @OA\Parameter(
+     *       name="page",
+     *       in="query",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
