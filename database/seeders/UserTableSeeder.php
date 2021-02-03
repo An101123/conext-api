@@ -15,11 +15,12 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 21 ; $i++) { 
+        $name = ['Nguyen Tich Duy', 'Tran Dinh Van', 'Tran Nhat Huy', 'Pham Anh Phu', 'Pham Anh Thien', 'Tran Thi An', 'Pham Quy', 'Nguyen Thi Ut Thao', 'Tran Quang Phu', 'Nguyen Tran Quoc Vinh', 'Pham Duong Thu Hang', 'Pham Thi Yen', 'Doan Duy Binh', 'Ho Ngo My Vy', 'Pham Anh Phuong', 'Vo Van Luong', 'Tran Quoc Chien', 'Bui Ngoc Vinh', 'Tran Van Hung', 'Pham Dinh Lau', 'Doan Chi Binh'];
+        for ($i=0; $i < 20 ; $i++) { 
             DB::table('users')->insert([
                 [
-                    'name' => 'User '.$i,
-                    'email' => 'thian200298'.$i.'@gmail.com',
+                    'name' => $name[$i],
+                    'email' => 'user'.$i.'@gmail.com',
                     'password' => Hash::make('123123123'),
                     'business_type_id' => rand(1,8),
                     'expertise_id' => rand(1,8),
