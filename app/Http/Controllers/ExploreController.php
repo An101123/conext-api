@@ -70,6 +70,61 @@ class ExploreController extends Controller
     {
         $this->exploreService = $exploreService;
     }
+        /**
+     *
+     * @OA\Get(
+     *     tags={"Explore"},
+     *     path="/api/admin/explores",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Explore not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }  
+     * )
+     */
     public function index()
     {
         return $this->exploreService->getExplores();
@@ -165,7 +220,10 @@ class ExploreController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )     
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }   
      * )
      */
     public function store(Request $request)
@@ -257,6 +315,9 @@ class ExploreController extends Controller
      *             )
      *         }
      *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function update(Request $request, $id)
@@ -329,7 +390,10 @@ class ExploreController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function destroy($id)

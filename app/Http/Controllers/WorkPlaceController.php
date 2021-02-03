@@ -550,7 +550,10 @@ class WorkPlaceController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )    
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }   
      * )
      */
     public function location()
