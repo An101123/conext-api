@@ -24,7 +24,7 @@ class EventController extends Controller
      *     ),
      *     @OA\Response(
      *         response=400,
-     *         description="OK",
+     *         description="Bad Request",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -33,7 +33,7 @@ class EventController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Pet not found",
+     *         description="Event not found",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -51,13 +51,14 @@ class EventController extends Controller
      *     ),
      *     @OA\Response(
      *         response=500,
-     *         description="Validation exception",
+     *         description="Internal Server Error",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )     * )
+     *     )     
+     * )
      */
     /**
      * Display a listing of the resource.
@@ -143,9 +144,41 @@ class EventController extends Controller
      *         }
      *     ),
      *     @OA\Response(
-     *          response=500,
-     *          description="OH no Oh no no no no",
-     *      )
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Event not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ) 
      * )
      */
     public function store(EventRequest $request)
@@ -224,7 +257,7 @@ class EventController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Pet not found",
+     *         description="Event not found",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -242,13 +275,13 @@ class EventController extends Controller
      *     ),
      *     @OA\Response(
      *         response=500,
-     *         description="Validation exception",
+     *         description="Internal Server",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     )  
      * )
      */
     public function update(Request $request, $id)
@@ -288,7 +321,7 @@ class EventController extends Controller
      *     ),
      *     @OA\Response(
      *         response=400,
-     *         description="OK",
+     *         description="Bad Request",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -297,7 +330,7 @@ class EventController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Pet not found",
+     *         description="Event not found",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -315,13 +348,13 @@ class EventController extends Controller
      *     ),
      *     @OA\Response(
      *         response=500,
-     *         description="Validation exception",
+     *         description="Internal Server Error",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ) 
      * )
      */
     public function destroy($id)
