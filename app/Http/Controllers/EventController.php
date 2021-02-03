@@ -19,6 +19,37 @@ class EventController extends Controller
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                          "current_page": 1,
+                                "data":{
+                                    "id": 1,
+                                    "title": "[Webinar] Let’s Help Startups Series: Tips to Make Your Startup Stand Out",
+                                    "image": "https://storage.googleapis.com/conext-production/detail/67646647_71324239_35429499_80603001.png",
+                                    "start_time": "2021-04-02 10:00:00",
+                                    "end_time": "2021-04-02 12:45:00",
+                                    "description": "<p>In 2021, OVHcloud Startup Program Asia Pacific is going to run a series of webinars to share ideas, tips and guides from the subject matter experts to support startups in the ecosystem.</p><br></br><p>Join us in the panel discussion to learn from our guest speakers who will share ideas on how to market your business, the importance of networking and tips to make your startup stand out among the crowd.</p>",
+                                    "created_at": null,
+                                    "updated_at": null
+                                }
+     *                      }
+     *                 )
      *             )
      *         }
      *     ),
