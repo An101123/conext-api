@@ -13,12 +13,12 @@ class HotNeedRepository implements HotNeedRepositoryInterface
 {
     public function getHotNeeds($category)
     {
-        if(!empty($category)){
-            return HotNeed::where('category_id', $category)->paginate(6);
-        }
-        else {
-        return HotNeed::paginate(6);    
-        }
+        $hotNeeds = HotNeed::with(['user'])
+        ->when($category, function($data) use($category){
+            $data->where('category_id', $category)->paginate(6);
+        })
+        ->get();
+        return $hotNeeds;
     }
 
     public function getHotNeedByUser($user_id)
@@ -39,7 +39,9 @@ class HotNeedRepository implements HotNeedRepositoryInterface
                 'user_id' => Auth::user()->id
             );
             HotNeed::create($data);
-            return true;
+            return response()->json([
+                'message' => "Hot need type created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }
@@ -47,7 +49,16 @@ class HotNeedRepository implements HotNeedRepositoryInterface
     
     public function getHotNeed($id)
     {
-        return HotNeed::find($id);
+        if (!empty(HotNeed::find($id)))
+        {
+            return HotNeed::find($id);
+        }
+        else
+        {
+            return response()->json([
+                'message' => 'User not found'
+            ]);
+        }
     }
     public function update($input, $id)
     {
@@ -62,7 +73,9 @@ class HotNeedRepository implements HotNeedRepositoryInterface
                 'user_id' => Auth::user()->id
             );
             HotNeed::find($id)->update($data);
-            return true;
+            return response()->json([
+                'message' => "Hot need updated successfully"
+            ]);
         } catch(\Exception $e){
            return $e;
         }

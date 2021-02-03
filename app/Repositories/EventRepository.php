@@ -24,9 +24,13 @@ class EventRepository implements EventRepositoryInterface
         if($input['start_time'] >= (Carbon::now()) && $input['end_time'] > $input['start_time']){
         try{
             Event::create($input);
-            return true;
+            return response()->json([
+                'message' => "Event created successfully"
+            ]);
         } catch(\Exception $e){
-            return $e;
+            return $e;response()->json([
+                'message' => "Event created successfully"
+            ]);
         }
         }
         else {
@@ -40,7 +44,9 @@ class EventRepository implements EventRepositoryInterface
         if($input['end_time'] > $input['start_time']){
             try{
                 Event::find($id)->update($input);
-                return true;
+                return response()->json([
+                    'message' => "Event updated successfully"
+                ]);
             } catch(\Exception $e){
                 return $e;
             }

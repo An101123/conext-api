@@ -8,16 +8,23 @@ use Exception;
 
 class WorkPlaceRepository implements WorkPlaceRepositoryInterface
 {
-    public function getWorkPlaces($location)
+    public function getWorkPlaces($zone)
     {
-            return WorkPlace::all();
+        // dd(WorkPlace::all());
+        $workPlaces = WorkPlace::with(['localConext'])
+        ->when($zone, function ($data) use($zone){
+            $data->where('local_conext_id', $zone);
+        })->get();
+        return $workPlaces;
     }   
 
     public function store($input)
     {
         try{
             WorkPlace::create($input);
-            return true;
+            return response()->json([
+                'message' => "Workplace created successfully"
+            ]);
         } catch(\Exception $e){
             return false;
         }
@@ -31,7 +38,9 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
     {
         try{
             WorkPlace::find($id)->update($input);
-            return true;
+            return response()->json([
+                'message' => "Workplace updated successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }

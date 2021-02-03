@@ -18,7 +18,9 @@ class BusinessTypeRepository implements BusinessTypeRepositoryInterface
     {
         try{
             BusinessType::create($input);
-            return true;
+            return  response()->json([
+                'message' => "Business type created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }
@@ -32,7 +34,9 @@ class BusinessTypeRepository implements BusinessTypeRepositoryInterface
     {
         try{
             BusinessType::find($id)->update($input);
-            return true;
+            return response()->json([
+                'message' => "Business type updated successfully"
+            ]);
         } catch(\Exception $e){
            return $e;
         }

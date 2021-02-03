@@ -16,10 +16,15 @@ class WorkPlace extends Model
         'address',
         'price',
         'image',
+        'local_conext_id'
     ];
 
     public $hidden = [
         'created_at',
         'updated_at'
     ];
+
+    public function localConext(){
+        return $this->belongsTo(LocalConext::class)->select('id', 'name');
+    }
 }

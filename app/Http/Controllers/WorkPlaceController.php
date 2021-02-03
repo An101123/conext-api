@@ -13,8 +13,51 @@ class WorkPlaceController extends Controller
      * @OA\Get(
      *     tags={"Work-places"},
      *     path="/api/work-places",
-     *     @OA\Response(response="200", description="Display a listing of work-places.")
-     * )
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Pet not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     )     * )
      */
     /**
      * Display a listing of the resource.
@@ -29,8 +72,8 @@ class WorkPlaceController extends Controller
     }
     public function index(Request $request)
     {
-        $location = $request->location;
-        return $this->workPlaceService->getWorkPlaces($location);
+        $zone = $request->zone;
+        return $this->workPlaceService->getWorkPlaces($zone);
     }
 
     /**
@@ -126,6 +169,81 @@ class WorkPlaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+        /**
+     * @OA\Put(
+     *     path="/api/admin/work-places/{id}",
+     *     tags={"Work-places"},
+     *     summary="Update an existing work-places",
+     *     description="",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Work-places object that needs to be added to the store",
+     *         @OA\MediaType(
+     *            mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="price",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="address",
+     *                     type="string"
+     *                 ),
+     *                 example={"name": "name workplace nha", "price": 12000, "address nha"}
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Pet not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),     
+     * )
+     */
     public function update(Request $request, $id)
     {
         $input = $request->all();
@@ -152,8 +270,51 @@ class WorkPlaceController extends Controller
      *         type="string"
      *     )
      *   ),
-     *   @OA\Response(response=400, description="Invalid id supplied"),
-     *   @OA\Response(response=404, description="Id not found")
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Pet not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     )
      * )
      */
     public function destroy($id)

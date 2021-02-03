@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 interface WorkPlaceRepositoryInterface
 {
-    public function getWorkPlaces($location);
+    public function getWorkPlaces($zone);
     public function store($input);
     public function getWorkPlace($id);
     public function update($input, $id);

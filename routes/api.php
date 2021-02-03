@@ -45,7 +45,7 @@ Route::apiResource('vouchers', VoucherController::class)->only('index', 'show');
 Route::apiResource('events', EventController::class)->only('index', 'show');
 Route::apiResource('work-places', WorkPlaceController::class)->only('index', 'show');
 Route::post('/auth/login', [AuthController::class, 'login']);
-Route::get('/auth/logout', [AuthController::class, 'logout']);
+Route::get('/auth/logout', [AuthController::class, 'logout'])->middleware('auth:api');
 Route::get('location', [WorkPlaceController::class, 'location']);
 
 Route::apiResource('contacts', ContactController::class)->only('index', 'store', 'destroy');
@@ -63,11 +63,12 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
     Route::apiResource('admin/work-places', WorkPlaceController::class);
     Route::apiResource('admin/categories', CategoryController::class);
 });
+
 Route::post('register', [UserController::class, 'store']);
 Route::get('abouts', [AboutController::class, 'index']);
 Route::get('faqs', [FaqController::class, 'index']);
 Route::get('term-and-policies', [TermAndPolicyController::class, 'index']);
 Route::apiResource('hot-needs', HotNeedController::class)->only('store', 'update', 'detroy')->middleware('auth:api');
-Route::get('hot-needs', [HotNeedController::class, 'index']);
+Route::apiResource('hot-needs', HotNeedController::class)->only('index', 'show');
 Route::get('my-hot-needs', [HotNeedController::class, 'getHotNeedByUser'])->middleware('auth:api');
 

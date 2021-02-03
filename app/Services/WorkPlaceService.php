@@ -13,9 +13,9 @@ class WorkPlaceService implements WorkPlaceServiceInterface
     {
         return $this->workPlaceRepository = $workPlaceRepository;
     }
-    public function getWorkPlaces($location)
+    public function getWorkPlaces($zone)
     {
-        return $this->workPlaceRepository->getWorkPlaces($location);
+        return $this->workPlaceRepository->getWorkPlaces($zone);
     }
     public function store($input)
     {
