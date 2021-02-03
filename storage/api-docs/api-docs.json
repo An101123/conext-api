@@ -20,13 +20,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "About not found",
                         "content": {
                             "application/json": {}
                         }
@@ -38,7 +38,93 @@
                         }
                     },
                     "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Login with a email and password",
+                "operationId": "App\\Http\\Controllers\\Auth\\AuthController::login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "thian200298@gmail.com",
+                                    "password": "123123123"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Login type not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
                         "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -60,13 +146,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Business not found",
                         "content": {
                             "application/json": {}
                         }
@@ -78,7 +164,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -142,13 +228,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Business type not found",
                         "content": {
                             "application/json": {}
                         }
@@ -160,7 +246,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -203,13 +289,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Bussiness type not found",
                         "content": {
                             "application/json": {}
                         }
@@ -221,7 +307,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -256,13 +342,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Business type not found",
                         "content": {
                             "application/json": {}
                         }
@@ -274,7 +360,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -296,13 +382,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Category not found",
                         "content": {
                             "application/json": {}
                         }
@@ -314,7 +400,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -356,13 +442,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Category not found",
                         "content": {
                             "application/json": {}
                         }
@@ -374,7 +460,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -421,13 +507,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Category not found",
                         "content": {
                             "application/json": {}
                         }
@@ -439,7 +525,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -474,13 +560,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Category not found",
                         "content": {
                             "application/json": {}
                         }
@@ -492,7 +578,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -514,13 +600,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Contact not found",
                         "content": {
                             "application/json": {}
                         }
@@ -532,7 +618,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -610,8 +696,29 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Contact not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -643,13 +750,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Contact not found",
                         "content": {
                             "application/json": {}
                         }
@@ -661,7 +768,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -683,13 +790,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Event not found",
                         "content": {
                             "application/json": {}
                         }
@@ -701,7 +808,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -776,8 +883,29 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Event not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -835,7 +963,7 @@
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Event not found",
                         "content": {
                             "application/json": {}
                         }
@@ -847,7 +975,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server",
                         "content": {
                             "application/json": {}
                         }
@@ -882,13 +1010,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Event not found",
                         "content": {
                             "application/json": {}
                         }
@@ -900,7 +1028,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -921,13 +1049,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Expertise not found",
                         "content": {
                             "application/json": {}
                         }
@@ -939,7 +1067,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1002,8 +1130,29 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Expertise not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -1043,13 +1192,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Expertise not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1061,7 +1210,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1096,13 +1245,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Expertise not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1114,7 +1263,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1135,13 +1284,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Explore not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1153,7 +1302,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1216,8 +1365,29 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Explore not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -1310,13 +1480,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Explore not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1328,7 +1498,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1344,20 +1514,34 @@
                 "summary": "Get list of faqs",
                 "operationId": "App\\Http\\Controllers\\FaqController::index",
                 "responses": {
-                    "422": {
-                        "description": "Wrong credentials response",
+                    "200": {
+                        "description": "OK",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Sorry, wrong . Please try again"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Faq not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
                         }
                     }
                 }
@@ -1377,13 +1561,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "HotNeed not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1395,7 +1579,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1472,13 +1656,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "HotNeed not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1490,7 +1674,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1533,13 +1717,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "HotNeed not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1551,7 +1735,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1586,13 +1770,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "HotNeed not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1604,7 +1788,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1625,13 +1809,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Local conext not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1643,7 +1827,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1707,13 +1891,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Local conext not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1725,7 +1909,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1768,13 +1952,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Local conext not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1786,7 +1970,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1821,13 +2005,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Local conext not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1839,7 +2023,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1862,13 +2046,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Term and policy not found",
                         "content": {
                             "application/json": {}
                         }
@@ -1880,7 +2064,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -1888,14 +2072,62 @@
                 }
             }
         },
-        "/api/users": {
+        "/api/auth/users": {
             "get": {
                 "tags": [
                     "Users"
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "businessType": {
+                                        "type": "string"
+                                    },
+                                    "expertise": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "businessType": 1,
+                                    "expertise": 1
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "Display a listing of users."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Users not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -1986,8 +2218,29 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Users not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -2058,13 +2311,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Users not found",
                         "content": {
                             "application/json": {}
                         }
@@ -2076,7 +2329,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -2111,13 +2364,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Users not found",
                         "content": {
                             "application/json": {}
                         }
@@ -2129,7 +2382,44 @@
                         }
                     },
                     "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user-random": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "operationId": "App\\Http\\Controllers\\UserController::getUserRandom",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing random of users."
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Users not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
                         "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -2150,13 +2440,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Voucher not found",
                         "content": {
                             "application/json": {}
                         }
@@ -2168,7 +2458,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -2244,13 +2534,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Voucher not found",
                         "content": {
                             "application/json": {}
                         }
@@ -2262,7 +2552,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -2317,13 +2607,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Voucher not found",
                         "content": {
                             "application/json": {}
                         }
@@ -2335,7 +2625,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -2370,13 +2660,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Voucher not found",
                         "content": {
                             "application/json": {}
                         }
@@ -2388,7 +2678,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -2409,13 +2699,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Workplace not found",
                         "content": {
                             "application/json": {}
                         }
@@ -2427,7 +2717,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -2498,8 +2788,29 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Workplace not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "500": {
-                        "description": "OH no Oh no no no no"
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -2547,13 +2858,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Workplace not found",
                         "content": {
                             "application/json": {}
                         }
@@ -2565,7 +2876,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }
@@ -2600,13 +2911,13 @@
                         }
                     },
                     "400": {
-                        "description": "OK",
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {}
                         }
                     },
                     "404": {
-                        "description": "Pet not found",
+                        "description": "Workplace not found",
                         "content": {
                             "application/json": {}
                         }
@@ -2618,7 +2929,7 @@
                         }
                     },
                     "500": {
-                        "description": "Validation exception",
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {}
                         }

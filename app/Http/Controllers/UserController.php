@@ -12,8 +12,68 @@ class UserController extends Controller
      *
      * @OA\Get(
      *     tags={"Users"},
-     *     path="/api/users",
-     *     @OA\Response(response="200", description="Display a listing of users.")
+     *     path="/api/auth/users",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="businessType",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="expertise",
+     *                     type="string"
+     *                 ),
+     *                 example={"businessType": 1, "expertise": 1}
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),     
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Users not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     )  
      * )
      */
     /**
@@ -40,7 +100,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Post(
      *     tags={"Users"},
      *     path="/api/admin/users",
@@ -124,9 +184,41 @@ class UserController extends Controller
      *         }
      *     ),
      *     @OA\Response(
-     *          response=500,
-     *          description="OH no Oh no no no no",
-     *      )
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Users not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     )
      * )
      */
     public function store(UserRequest $request)
@@ -154,7 +246,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-            /**
+    /**
      * @OA\Put(
      *     path="/api/admin/users/{id}",
      *     tags={"Users"},
@@ -219,7 +311,7 @@ class UserController extends Controller
      *     ),
      *     @OA\Response(
      *         response=400,
-     *         description="OK",
+     *         description="Bad Request",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -228,7 +320,7 @@ class UserController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Pet not found",
+     *         description="Users not found",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -246,13 +338,13 @@ class UserController extends Controller
      *     ),
      *     @OA\Response(
      *         response=500,
-     *         description="Validation exception",
+     *         description="Internal Server Error",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ),
+     *     )
      * )
      */
     public function update(Request $request, $id)
@@ -267,7 +359,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Delete(path="api/admin/users/{id}",
      *   tags={"Users"},
      *   summary="Delete users",
@@ -292,7 +384,7 @@ class UserController extends Controller
      *     ),
      *     @OA\Response(
      *         response=400,
-     *         description="OK",
+     *         description="Bad Request",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -301,7 +393,7 @@ class UserController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Pet not found",
+     *         description="Users not found",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -319,7 +411,7 @@ class UserController extends Controller
      *     ),
      *     @OA\Response(
      *         response=500,
-     *         description="Validation exception",
+     *         description="Internal Server Error",
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
@@ -332,7 +424,50 @@ class UserController extends Controller
     {
         return $this->userService->delete($id);
     }
-
+    /**
+     *
+     * @OA\Get(
+     *     tags={"Users"},
+     *     path="/api/user-random",
+     *     @OA\Response(response="200", description="Display a listing random of users."),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Users not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     )  
+     * )
+     */
     public function getUserRandom()
     {
         return $this->userService->getUserRandom();
