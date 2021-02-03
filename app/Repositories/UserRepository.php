@@ -10,23 +10,15 @@ class UserRepository implements UserRepositoryInterface
 {
     public function getUsers($businessType, $expertise)
     {
-        if (!empty($businessType) && !empty($expertise)){
-            return User::where('business_type_id', $businessType)
-            ->where('expertise_id', $expertise)
-            ->join('business_types', 'users.business_type_id','=', 'business_types.id')
-            ->join('expertises', 'users.expertise_id', '=', 'expertises.id')
-            ->select('users.*','business_types.name as business-type', 'expertises.name as expertise')->get();
-        } elseif (!empty($expertise)){
-            return User::where('expertise_id', $expertise)
-            ->join('expertises', 'users.expertise_id', '=', 'expertises.id')
-            ->select('users.*', 'expertises.name as expertise')->get();
-        } elseif (!empty($businessType)){
-            return User::where('business_type_id', $businessType)
-            ->join('business_types', 'users.business_type_id','=', 'business_types.id')
-            ->select('users.*','business_types.name as business-type')->get();
-        } else{
-            return User::all();
-        }
+        $users = User::with(['businessType', 'expertise'])
+            ->when($businessType, function ($userByBusiness) use ($businessType) {
+                $userByBusiness->where('business_type_id', $businessType);
+            })
+            ->when($expertise, function ($userByExpertise) use ($expertise) {
+                $userByExpertise->where('expertise_id', $expertise);
+            })
+            ->get();
+        return response($users, 200);
     }
 
     public function store($input)
@@ -53,7 +45,9 @@ class UserRepository implements UserRepositoryInterface
             );
         
             User::create($data);
-            return true;
+            return response()->json([
+                'message' => "User created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }
@@ -61,8 +55,8 @@ class UserRepository implements UserRepositoryInterface
 
     public function getUser($id)
     {
-        return User::where('users.id', '=', $id)->join('business_types', 'users.business_type_id', '=', 'business_types.id')->join('expertises', 'users.expertise_id', '=', 'expertises.id')
-        ->select('users.*', 'business_types.name as business-type', 'expertises.name as expertise')->get();
+        $user =  User::with(['businessType', 'expertise'])->where('users.id', '=', $id)->get();
+        return response($user, 200);
     }
     
     public function update($input, $id)
@@ -88,7 +82,9 @@ class UserRepository implements UserRepositoryInterface
                 'local_conext_id' =>$input->local_conext_id,
             );
             User::find($id)->update($data);
-            return true;
+            return response()->json([
+                'message' => "User updated successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }

@@ -16,7 +16,9 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         try{
             Category::create($input);
-            return true;
+            return response()->json([
+                'message' => "Category created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }
@@ -30,7 +32,9 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         try{
             Category::find($id)->update($input);
-            return true;
+            return  response()->json([
+                'message' => "Category updated successfully"
+            ]);
         } catch(\Exception $e){
            return $e;
         }

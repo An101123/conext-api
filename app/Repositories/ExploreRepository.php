@@ -16,7 +16,9 @@ class ExploreRepository implements ExploreRepositoryInterface
     {
         try{
             Explore::create($input);
-            return true;
+            return response()->json([
+                'message' => "Explore type created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }
@@ -25,13 +27,21 @@ class ExploreRepository implements ExploreRepositoryInterface
 
     public function getExplore($id)
     {
+        if (!empty(Explore::find($id))) {
         return Explore::find($id);
+        } else {
+            return response()->json([
+                'message' => 'Explore not found'
+            ]);
+        }
     }
     public function update($input, $id)
     {
         try{
             Explore::find($id)->update($input);
-            return true;
+            return response()->json([
+                'message' => "Explore type updated successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }

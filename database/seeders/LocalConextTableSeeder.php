@@ -15,9 +15,9 @@ class LocalConextTableSeeder extends Seeder
     public function run()
     {
         DB::table('local_conexts')->insert([
-            'name' => 'Ha Noi',
-            'name' => 'Da Nang',
-            'name' => 'Ho Chi Minh',
+            ['name' => 'Ha Noi'],
+            ['name' => 'Da Nang'],
+            ['name' => 'Ho Chi Minh'],
         ]);
     }
 }

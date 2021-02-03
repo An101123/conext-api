@@ -18,7 +18,9 @@ class ContactRepository implements ContactRepositoryInterface
     {
         try{
             Contact::create($input);
-            return true;
+            return response()->json([
+                'message' => "Contact created successfully"
+            ]);;
         } catch(\Exception $e){
             return $e;
         }

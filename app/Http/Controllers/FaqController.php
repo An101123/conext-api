@@ -68,7 +68,11 @@ class FaqController extends Controller
 
     public function index()
     {
-        return Faqs::all();
+        $data = Faqs::all();
+        return response()->json([
+            'code' => 200,
+            'data' => $data
+        ]);
     }
 
     /**
