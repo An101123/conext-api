@@ -19,38 +19,39 @@ services:
     networks:
       - web-network
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    environment:
-      - "PMA_HOST=mysql"
-      - "MYSQL_ROOT_PASSWORD=htactive"
-    links:
-      - mysql:db
-    ports:
-      - "81:80"
-    networks:
-      - web-network
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin:latest
+  #   environment:
+  #     - "PMA_HOST=mysql"
+  #     - "MYSQL_ROOT_PASSWORD=htactive"
+  #   links:
+  #     - mysql:db
+  #   ports:
+  #     - "81:80"
+  #   networks:
+  #     - web-network
 
-  nginx:
-    build:
-      context: ./nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./:/var/www
-      - ./nginx/conf.d:/etc/nginx/conf.d
-    networks:
-      - web-network
-    depends_on:
-      - "mysql"
+  # nginx:
+  #   build:
+  #     context: ./nginx
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ./:/var/www
+  #     - ./nginx/conf.d:/etc/nginx/conf.d
+  #   networks:
+  #     - web-network
+  #   depends_on:
+  #     - "mysql"
 
   php-fpm:
     build:
       context: ./php-fpm
-
+    ports:
+      - "80:80"
     volumes:
-      - ./:/var/www/
-    working_dir: /var/www
+      - ./:/var/www/html/
+    working_dir: /var/www/html
     networks:
       - web-network
     depends_on:

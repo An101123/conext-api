@@ -209,7 +209,10 @@ class EventController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ) 
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function store(EventRequest $request)
@@ -312,7 +315,10 @@ class EventController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )  
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function update(Request $request, $id)
@@ -385,7 +391,10 @@ class EventController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ) 
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function destroy($id)

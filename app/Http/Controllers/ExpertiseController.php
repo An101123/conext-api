@@ -80,7 +80,7 @@ class ExpertiseController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )     
+     *     ),     
      * )
      */
     /**
@@ -94,6 +94,61 @@ class ExpertiseController extends Controller
     {
         $this->expertiseService = $expertiseService;
     }
+        /**
+     *
+     * @OA\Get(
+     *     tags={"Expertises"},
+     *     path="/api/admin/expertises",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Expertise not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ), 
+     *     security={
+     *         {"bearer": {}}
+     *     }
+     * )
+     */
     public function index()
     {
         return $this->expertiseService->getExpertises();
@@ -189,7 +244,10 @@ class ExpertiseController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ) 
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function store(Request $request)

@@ -1,8 +1,12 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "CONEXT API",
-        "version": "0.3"
+        "title": "CLONE CONEXT",
+        "description": "Clone conext document api",
+        "contact": {
+            "email": "nguyentichduy10a15cmg@gmail.com"
+        },
+        "version": "1.0.0"
     },
     "paths": {
         "/api/abouts": {
@@ -127,7 +131,10 @@
                                     "example": {
                                         "errcode": 1,
                                         "errmsg": "ok",
-                                        "data": []
+                                        "data": {
+                                            "email": "thian200298@gmail.com",
+                                            "password": "123123123"
+                                        }
                                     }
                                 }
                             }
@@ -158,6 +165,57 @@
                         }
                     }
                 }
+            }
+        },
+        "/api/auth/logout": {
+            "get": {
+                "tags": [
+                    "Logout"
+                ],
+                "summary": "Logout",
+                "operationId": "App\\Http\\Controllers\\Auth\\AuthController::logout",
+                "requestBody": {
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Business not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/business-types": {
@@ -193,6 +251,11 @@
                                         "name": "Startups",
                                         "created_at": null,
                                         "updated_at": null
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": {
+                                            "name": "name bussiness nha"
+                                        }
                                     }
                                 }
                             }
@@ -226,6 +289,50 @@
             }
         },
         "/api/admin/business-types": {
+            "get": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Get list of contact",
+                "operationId": "App\\Http\\Controllers\\BusinessTypeController::index",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Business not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Business"
@@ -304,7 +411,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/business-types/{id}": {
@@ -365,7 +477,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/business-types/{id}": {
@@ -418,10 +535,15 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
-        "/api/admin/categories": {
+        "/api/categories": {
             "get": {
                 "tags": [
                     "Categories"
@@ -459,6 +581,52 @@
                         }
                     }
                 }
+            }
+        },
+        "/api/admin/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get list of contact",
+                "operationId": "App\\Http\\Controllers\\CategoryController::index",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Category not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -518,7 +686,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/categories/{id}": {
@@ -583,7 +756,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/categories/{id}": {
@@ -636,7 +814,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/contacts": {
@@ -773,7 +956,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/contact/{id}": {
@@ -826,7 +1014,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/events": {
@@ -992,7 +1185,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/events/{id}": {
@@ -1065,7 +1263,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/events/{id}": {
@@ -1118,7 +1321,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/expertises": {
@@ -1186,6 +1394,49 @@
             }
         },
         "/api/admin/expertises": {
+            "get": {
+                "tags": [
+                    "Expertises"
+                ],
+                "operationId": "App\\Http\\Controllers\\ExpertiseController::index",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Expertise not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Expertises"
@@ -1264,7 +1515,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/expertises/{id}": {
@@ -1447,6 +1703,51 @@
                 }
             }
         },
+        "/api/admin/explores": {
+            "get": {
+                "tags": [
+                    "Explore"
+                ],
+                "operationId": "App\\Http\\Controllers\\ExploreController::index",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Explore not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/api/admin/explore": {
             "post": {
                 "tags": [
@@ -1526,7 +1827,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/explore/{id}": {
@@ -1587,7 +1893,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/explore/{id}": {
@@ -1640,7 +1951,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/faqs": {
@@ -1789,20 +2105,51 @@
                 }
             }
         },
-        "/api/my-hot-needs": {
+        "/api/admin/hot-needs": {
             "get": {
                 "tags": [
                     "Hot-needs"
                 ],
-                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
+                "summary": "Get list of hot-needs",
+                "operationId": "App\\Http\\Controllers\\HotNeedController::index",
                 "responses": {
                     "200": {
-                        "description": "Display a listing of hot-needs."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "HotNeed not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
-                }
-            }
-        },
-        "/api/admin/hot-needs": {
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Hot-needs"
@@ -1881,6 +2228,24 @@
                             "application/json": {}
                         }
                     }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/my-hot-needs": {
+            "get": {
+                "tags": [
+                    "Hot-needs"
+                ],
+                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of hot-needs."
+                    }
                 }
             }
         },
@@ -1942,7 +2307,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/hot-needs/{id}": {
@@ -1995,7 +2365,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/local-conexts": {
@@ -2065,6 +2440,49 @@
             }
         },
         "/api/admin/local-conexts": {
+            "get": {
+                "tags": [
+                    "Local-conexts"
+                ],
+                "operationId": "App\\Http\\Controllers\\LocalConextController::index",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Local conext not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Local-conexts"
@@ -2143,7 +2561,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/local-conexts/{id}": {
@@ -2204,7 +2627,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/local-conexts/{id}": {
@@ -2257,7 +2685,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/term-and-policies": {
@@ -2334,6 +2767,46 @@
                 "tags": [
                     "Users"
                 ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Users not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "operationId": "App\\Http\\Controllers\\UserController::index",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -2386,10 +2859,13 @@
                             "application/json": {}
                         }
                     }
-                }
-            }
-        },
-        "/api/admin/users": {
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Users"
@@ -2499,7 +2975,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/users/{id}": {
@@ -2591,7 +3072,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/users/{id}": {
@@ -2644,7 +3130,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/user-random": {
@@ -2681,7 +3172,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/vouchers": {
@@ -2756,6 +3252,49 @@
             }
         },
         "/api/admin/vouchers": {
+            "get": {
+                "tags": [
+                    "Vouchers"
+                ],
+                "operationId": "App\\Http\\Controllers\\VoucherController::index",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Voucher not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Vouchers"
@@ -2846,7 +3385,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/vouchers/{id}": {
@@ -2919,7 +3463,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/vouchers/{id}": {
@@ -2972,7 +3521,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/work-places": {
@@ -3050,6 +3604,103 @@
             }
         },
         "/api/admin/work-places": {
+            "get": {
+                "tags": [
+                    "Work-places"
+                ],
+                "operationId": "App\\Http\\Controllers\\WorkPlaceController::index",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "zone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "name workplace nha",
+                                    "price": 12000,
+                                    "0": "address nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": {
+                                            "id": 1,
+                                            "name": "Campus K Coworking Space",
+                                            "price": 50000,
+                                            "address": "15th Floor, Tower B, Song Da Building, Pham Hung, My Dinh 1, Nam Tu Liem, Hanoi",
+                                            "image": "https://storage.googleapis.com/conext-production/99935659_55835531_17331773_75997746.png",
+                                            "local_conext_id": 1,
+                                            "local_conext": {
+                                                "id": 1,
+                                                "name": "Ha Noi"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Workplace not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Work-places"
@@ -3106,7 +3757,11 @@
                                     "example": {
                                         "errcode": 1,
                                         "errmsg": "ok",
-                                        "data": []
+                                        "data": {
+                                            "0": "address nha",
+                                            "name": "name workplace nha",
+                                            "price": 12000
+                                        }
                                     }
                                 }
                             }
@@ -3136,7 +3791,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/work-places/{id}": {
@@ -3205,7 +3865,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/work-places/{id}": {
@@ -3258,7 +3923,68 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/location": {
+            "get": {
+                "tags": [
+                    "Work-places"
+                ],
+                "operationId": "App\\Http\\Controllers\\WorkPlaceController::location",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Workplace not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "type": "http",
+                "description": "Authorization token obtained from logging in.",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "bearer"
             }
         }
     },

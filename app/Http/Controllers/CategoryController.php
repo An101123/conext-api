@@ -13,7 +13,7 @@ class CategoryController extends Controller
      * @OA\Get(
      *     tags={"Categories"},
      *     summary="Get list of contact",
-     *     path="/api/admin/categories",
+     *     path="/api/categories",
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -73,6 +73,61 @@ class CategoryController extends Controller
     {
         $this->categoryService = $categoryService;
     }
+        /**
+     * @OA\Get(
+     *     tags={"Categories"},
+     *     summary="Get list of contact",
+     *     path="/api/admin/categories",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Category not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
+     * )
+     */
     public function index()
     {
         return $this->categoryService->getCategories();
@@ -149,7 +204,10 @@ class CategoryController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function store(Request $request)
@@ -246,7 +304,10 @@ class CategoryController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function update(Request $request, $id)
@@ -320,7 +381,10 @@ class CategoryController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function destroy($id)

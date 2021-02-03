@@ -14,6 +14,69 @@ class UserController extends Controller
      * @OA\Get(
      *     tags={"Users"},
      *     path="/api/auth/users",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),     
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Users not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     )  
+     * )
+     */
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected $userService;
+
+    public function __construct(UserServiceInterface $userService)
+    {
+        return $this->userService = $userService;
+    }
+        /**
+     *
+     * @OA\Get(
+     *     tags={"Users"},
+     *     path="/api/admin/users",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -74,20 +137,12 @@ class UserController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )  
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     } 
      * )
      */
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected $userService;
-
-    public function __construct(UserServiceInterface $userService)
-    {
-        return $this->userService = $userService;
-    }
     public function index(Request $request)
     {
         $businessType = $request->businessType;
@@ -219,7 +274,10 @@ class UserController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function store(UserRequest $request)
@@ -345,7 +403,10 @@ class UserController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function update(Request $request)
@@ -419,7 +480,10 @@ class UserController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     } 
      * )
      */
     public function destroy($id)
@@ -467,7 +531,10 @@ class UserController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )  
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function getUserRandom()

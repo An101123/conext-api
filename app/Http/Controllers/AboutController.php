@@ -6,6 +6,17 @@ use App\Models\About;
 // use App\Services\AboutServiceInterface;
 // use Illuminate\Http\Request;
 
+/**
+ * @OA\Info(
+ *      version="1.0.0",
+ *      title="CLONE CONEXT",
+ *      description="Clone conext document api",
+ *      @OA\Contact(
+ *          email="nguyentichduy10a15cmg@gmail.com"
+ *      ),
+ * )
+ */
+
 class AboutController extends Controller
 {
     /** 
@@ -19,9 +30,9 @@ class AboutController extends Controller
     // {
     //     $this->aboutService = $aboutService;
     // }
+
     /**
-     * @OA\Info(title="CONEXT API", version="0.3")
-     *
+     * 
      * @OA\Get(
      *     tags={"About"},
      *     summary="Get list of about",

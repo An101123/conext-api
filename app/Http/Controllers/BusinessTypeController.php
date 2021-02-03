@@ -44,6 +44,10 @@ class BusinessTypeController extends Controller
                                 "created_at": null,
                                 "updated_at": null
      *                      }
+     *                         "errcode": 1,
+     *                         "errmsg": "ok",
+     *                         "data": {"name": "name bussiness nha"}
+     *                     }
      *                 )
      *             )
      *         }
@@ -97,6 +101,62 @@ class BusinessTypeController extends Controller
     {
         $this->businessTypeService = $businessTypeService;
     }
+        /**
+     *
+     * @OA\Get(
+     *     tags={"Business"},
+     *     summary="Get list of contact",
+     *     path="/api/admin/business-types",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Business not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
+     * )
+     */
     public function index()
     {
         return $this->businessTypeService->getBusinessTypes();
@@ -192,7 +252,10 @@ class BusinessTypeController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function store(Request $request)
@@ -285,7 +348,10 @@ class BusinessTypeController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function update(Request $request, $id)
@@ -358,7 +424,10 @@ class BusinessTypeController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function destroy($id)
