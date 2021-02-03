@@ -19,6 +19,40 @@ class WorkPlaceController extends Controller
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                         "errcode": 1,
+     *                         "errmsg": "ok",
+     *                         "data": { 
+     *                            "id": 1,
+     *                            "name": "Campus K Coworking Space",
+     *                            "price": 50000,
+     *                            "address": "15th Floor, Tower B, Song Da Building, Pham Hung, My Dinh 1, Nam Tu Liem, Hanoi",
+     *                            "image": "https://storage.googleapis.com/conext-production/99935659_55835531_17331773_75997746.png",
+     *                            "local_conext_id": 1,
+     *                            "local_conext": {
+     *                                "id": 1,
+     *                                "name": "Ha Noi"
+     *                             }
+     *                          }
+     *                      }
+     *                 )
      *             )
      *         }
      *     ),

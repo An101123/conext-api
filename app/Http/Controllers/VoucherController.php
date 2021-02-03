@@ -18,6 +18,37 @@ class VoucherController extends Controller
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                          "current_page": 1,
+                                "data":{
+                                    "id": 1,
+                                    "title": "[BeansWorkspace] GET FREE 2-DAY PASS TICKETS for CoNextor",
+                                    "image": "https://storage.googleapis.com/conext-production/19108943_99406985_35790756_17780126.png",
+                                    "type": null,
+                                    "expired_on": "2020-12-31 00:00:00",
+                                    "description": "<p>Welcome CoNextor to BeansWorkspace</p><p>Beans offers customers <strong>2-day free</strong> for using Workspace.</p><p>Applicable Conditions:</p><ul><li>- Be member of CoNextor</li><li>- Still charge for drinks of The Local Beans.</li><li>- Use code voucher got from Conext.asia.</li></ul><p>Application time: From Now - December 31, 2020.</p><p>-------------------------------</p><p><strong>B E A N S W O R K S P A C E</strong></p><p><strong>Location:</strong></p><ul><li>- 3rd Floor, 56A Le Hong Phong, Phuoc Ninh, Hai Chau District, Da Nang City.</li><li>- 3rd Floor, 84 Chau Thi Vinh Te, My An, Ngu Hanh Son District, Da Nang City.</li></ul><p><strong>Facebook</strong>: @BeansWorkspace</p><p><strong>Phone</strong>: 0784 117 944</p><p><strong>Email</strong>:&nbsp; workspace@thelocalbeans.com</p>",
+                                    "created_at": null,
+                                    "updated_at": null
+                                },
+     *                      }
+     *                 )
      *             )
      *         }
      *     ),

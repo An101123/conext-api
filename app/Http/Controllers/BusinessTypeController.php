@@ -21,6 +21,30 @@ class BusinessTypeController extends Controller
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                          "id": 1,
+                                "name": "Startups",
+                                "created_at": null,
+                                "updated_at": null
+     *                      }
+     *                 )
      *             )
      *         }
      *     ),
