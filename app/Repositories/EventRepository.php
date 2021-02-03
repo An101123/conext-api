@@ -10,13 +10,7 @@ class EventRepository implements EventRepositoryInterface
 {  
     public function getEvents($active)
     {
-        if ($active == 1){
-            return Event::where('end_time', '>=', Carbon::now())->orderBy('start_time', 'asc')->paginate(6);
-        } elseif($active == 2){
-            return Event::where('end_time', '<', Carbon::now())->orderBy('end_time', 'desc')->paginate(6);
-        } else {
         return Event::paginate(6);
-        }
     }
     public function store($input)
     {

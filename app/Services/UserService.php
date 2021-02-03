@@ -38,4 +38,8 @@ class UserService implements UserServiceInterface
     {
         return $this->userRepository->getUserRandom();
     }
+    public function profile()
+    {
+        return $this->userRepository->profile();
+    }
 }
