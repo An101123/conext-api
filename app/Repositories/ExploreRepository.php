@@ -27,7 +27,13 @@ class ExploreRepository implements ExploreRepositoryInterface
 
     public function getExplore($id)
     {
+        if (!empty(Explore::find($id))) {
         return Explore::find($id);
+        } else {
+            return response()->json([
+                'message' => 'Explore not found'
+            ]);
+        }
     }
     public function update($input, $id)
     {
