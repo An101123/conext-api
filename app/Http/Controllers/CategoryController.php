@@ -340,7 +340,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/categories/{id}",
+     * @OA\Delete(path="/api/admin/categories/{id}",
      *   tags={"Categories"},
      *   summary="Delete category",
      *   description="This can only be done by the logged in user.",

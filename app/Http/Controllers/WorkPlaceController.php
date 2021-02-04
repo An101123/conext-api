@@ -456,7 +456,7 @@ class WorkPlaceController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/work-places/{id}",
+     * @OA\Delete(path="/api/admin/work-places/{id}",
      *   tags={"Work-places"},
      *   summary="Delete work-places",
      *   description="This can only be done by the logged in user.",

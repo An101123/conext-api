@@ -235,14 +235,19 @@ class EventController extends Controller
      *                     type="DateTime"
      *                 ),
      *                 @OA\Property(
+     *                     property="end_time",
+     *                     type="DateTime"
+     *                 ),
+     *                 @OA\Property(
      *                     property="description",
      *                     type="string"
      *                 ),
      *                 example={"title": "title event nha",
-  "image": "image.png",
-  "start_time": "2021-02-15",
-"end_time": "2021-05-06",
-  "description": "hihi"}
+     *                      "image": "image.png",
+     *                      "start_time": "2021-02-15",
+     *                      "end_time": "2021-05-06",
+     *                      "description": "hihi"
+     *                  }
      *             )
      *         ),
      *     ),
@@ -362,7 +367,7 @@ class EventController extends Controller
      *         description="Events object that needs to be added to the store",
      *         @OA\MediaType(
      *            mediaType="application/json",
-     *             @OA\Schema(
+    *             @OA\Schema(
      *                 @OA\Property(
      *                     property="title",
      *                     type="string"
@@ -376,12 +381,21 @@ class EventController extends Controller
      *                     type="DateTime"
      *                 ),
      *                 @OA\Property(
+     *                     property="end_time",
+     *                     type="DateTime"
+     *                 ),
+     *                 @OA\Property(
      *                     property="description",
      *                     type="string"
      *                 ),
-     *                 example={"title": "title event nha", "image": "image.png", "start_time": "12-3-2019 4:1:1", "description": "hihi"}
+     *                 example={"title": "title event nha",
+     *                      "image": "image.png",
+     *                      "start_time": "2021-02-15",
+     *                      "end_time": "2021-05-06",
+     *                      "description": "hihi"
+     *                  }
      *             )
-     *         )
+     *          )
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -446,7 +460,7 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/events/{id}",
+     * @OA\Delete(path="/api/admin/events/{id}",
      *   tags={"Events"},
      *   summary="Delete events",
      *   description="This can only be done by the logged in user.",

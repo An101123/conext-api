@@ -123,62 +123,7 @@ class HotNeedController extends Controller
     {
         $this->hotNeedService = $hotNeedService;
     }
-    /**
-     * 
-     * @OA\Get(
-     *     tags={"Hot-needs"},
-     *     summary="Get list of hot-needs",
-     *     path="/api/admin/hot-needs",
-     *     @OA\Response(
-     *         response=200,
-     *         description="OK",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="Bad Request",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="HotNeed not found",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=405,
-     *         description="Validation exception",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal Server Error",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }
-     * )
-     */
+
     public function index(Request $request)
     {
         $category = $request->category;
@@ -304,23 +249,49 @@ class HotNeedController extends Controller
     /**
      * @OA\Post(
      *     tags={"Hot-needs"},
-     *     path="/api/admin/hot-needs",
+     *     path="/api/hot-needs",
      *     summary="Adds a new hot-needs",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="name",
+     *                     property="topic",
      *                     type="string"
      *                 ),
-     *                 example={"topic": "Hot Need 1", 
-     *                         "city": "Da Nang",
-     *                          "category_id: 5,
-     *                          "expected_deadline": "2020-05-31",
-     *                             "brief_description": "hahah",
-     *                              "full_description": "hihihi,
-     *                              "user_id" : 1 }
+     *                 @OA\Property(
+     *                     property="city",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="category_id",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="expected_deadline",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="brief_description",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="full_description",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="user_id",
+     *                     type="integer"
+     *                 ),
+     *                 example={
+     *                      "topic": "Hot Need 1", 
+     *                      "city": "Da Nang",
+     *                      "category_id": 5,
+     *                      "expected_deadline": "2020-05-31",
+     *                      "brief_description": "hahah",
+     *                      "full_description": "hihihi",
+     *                      "user_id" : 1 
+     *                  }
      *             )
      *         ),
      *     ),
@@ -427,7 +398,7 @@ class HotNeedController extends Controller
      */
     /**
      * @OA\Put(
-     *     path="/api/admin/hot-needs/{id}",
+     *     path="/api/hot-needs/{id}",
      *     tags={"Hot-needs"},
      *     summary="Update an existing hot-needs",
      *     description="",
@@ -517,7 +488,7 @@ class HotNeedController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/hot-needs/{id}",
+     * @OA\Delete(path="/api/hot-needs/{id}",
      *   tags={"Hot-needs"},
      *   summary="Delete hot-needs",
      *   description="This can only be done by the logged in user.",

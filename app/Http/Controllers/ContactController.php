@@ -314,7 +314,7 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/contacts/{id}",
+     * @OA\Delete(path="/api/admin/contacts/{id}",
      *   tags={"Contact"},
      *   summary="Delete contact",
      *   description="This can only be done by the logged in user.",

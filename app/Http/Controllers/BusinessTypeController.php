@@ -375,7 +375,7 @@ class BusinessTypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/business-types/{id}",
+     * @OA\Delete(path="/api/admin/business-types/{id}",
      *   tags={"Business"},
      *   summary="Delete business-types",
      *   description="This can only be done by the logged in user.",

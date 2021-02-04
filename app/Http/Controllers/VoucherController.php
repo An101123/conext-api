@@ -419,7 +419,7 @@ class VoucherController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/vouchers/{id}",
+     * @OA\Delete(path="/api/admin/vouchers/{id}",
      *   tags={"Vouchers"},
      *   summary="Delete vouchers",
      *   description="This can only be done by the logged in user.",
