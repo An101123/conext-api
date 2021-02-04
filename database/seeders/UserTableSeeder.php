@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
             DB::table('users')->insert([
                 [
                     'name' => $name[$i],
-                    'email' => 'user'.$i.'@gmail.com',
+                    'email' => 'user'.$i.'@gmail.com', 
                     'password' => Hash::make('123123123'),
                     'business_type_id' => rand(1,8),
                     'expertise_id' => rand(1,8),
