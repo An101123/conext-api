@@ -426,6 +426,16 @@
                 "summary": "Update an existing bussiness",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\BusinessTypeController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Bussiness object that needs to be added to the store",
                     "required": true,
@@ -499,7 +509,7 @@
                         "description": "The business-types that needs to be deleted",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
                         }
                     }
                 ],
@@ -598,6 +608,15 @@
                 ],
                 "summary": "Get list of contact",
                 "operationId": "App\\Http\\Controllers\\CategoryController::index",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -649,15 +668,11 @@
                                 "properties": {
                                     "category_name": {
                                         "type": "string"
-                                    },
-                                    "quantity": {
-                                        "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "category_name": "category nha",
-                                    "quantity": "quantity nha"
+                                    "category_name": "category nha"
                                 }
                             }
                         }
@@ -885,7 +900,6 @@
                     "Contact"
                 ],
                 "summary": "Adds a new contacts",
-                "operationId": "App\\Http\\Controllers\\ContactController::store",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -909,10 +923,11 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "email": "email contact nha",
+                                    "email": "hihi@gmail.com",
                                     "name": "name contact nha",
                                     "subject": "subject contact nha",
-                                    "content": "content nha"
+                                    "content": "content nha",
+                                    "phone_number": "098765432"
                                 }
                             }
                         }
@@ -987,6 +1002,7 @@
                     "Contact"
                 ],
                 "summary": "Adds a new contacts",
+                "operationId": "App\\Http\\Controllers\\ContactController::store",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1010,10 +1026,11 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "email": "email contact nha",
+                                    "email": "hihi@gmail.com",
                                     "name": "name contact nha",
                                     "subject": "subject contact nha",
-                                    "content": "content nha"
+                                    "content": "content nha",
+                                    "phone_number": "098765432"
                                 }
                             }
                         }
@@ -1074,12 +1091,7 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         },
         "api/admin/contacts/{id}": {
@@ -1413,6 +1425,16 @@
                 "summary": "Update an existing events",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\EventController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Events object that needs to be added to the store",
                     "required": true,
@@ -3660,12 +3682,7 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         },
         "/api/auth/profile": {
@@ -3715,7 +3732,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/vouchers": {
@@ -4562,12 +4584,7 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         }
     },

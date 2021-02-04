@@ -290,6 +290,14 @@ class BusinessTypeController extends Controller
      *     tags={"Business"},
      *     summary="Update an existing bussiness",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Bussiness object that needs to be added to the store",
@@ -377,7 +385,7 @@ class BusinessTypeController extends Controller
      *     description="The business-types that needs to be deleted",
      *     required=true,
      *     @OA\Schema(
-     *         type="string"
+     *         type="integer"
      *     )
      *   ),
      *     @OA\Response(

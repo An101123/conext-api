@@ -345,6 +345,14 @@ class EventController extends Controller
      *     tags={"Events"},
      *     summary="Update an existing events",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Events object that needs to be added to the store",

@@ -91,7 +91,7 @@ class ContactController extends Controller
     /**
      * @OA\Post(
      *     tags={"Contact"},
-     *     path="/api/contacts",
+     *     path="/api/admin/contacts",
      *     summary="Adds a new contacts",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -117,8 +117,8 @@ class ContactController extends Controller
      *                     property="content",
      *                     type="string"
      *                 ),
-     *                 example={"email": "email contact nha", "name": "name contact nha",
-     *                      "subject": "subject contact nha", "content": "content nha"
+     *                 example={"email": "hihi@gmail.com", "name": "name contact nha",
+     *                      "subject": "subject contact nha", "content": "content nha", "phone_number": "098765432"
      *                  }
      *             )
      *         ),
@@ -199,7 +199,7 @@ class ContactController extends Controller
         /**
      * @OA\Post(
      *     tags={"Contact"},
-     *     path="/api/admin/contacts",
+     *     path="/api/contacts",
      *     summary="Adds a new contacts",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -225,8 +225,8 @@ class ContactController extends Controller
      *                     property="content",
      *                     type="string"
      *                 ),
-     *                 example={"email": "email contact nha", "name": "name contact nha",
-     *                      "subject": "subject contact nha", "content": "content nha"
+     *                 example={"email": "hihi@gmail.com", "name": "name contact nha",
+     *                      "subject": "subject contact nha", "content": "content nha", "phone_number": "098765432"
      *                  }
      *             )
      *         ),
@@ -299,9 +299,6 @@ class ContactController extends Controller
      *             )
      *         }
      *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }
      * )
      */
     public function store(ContactRequest $request)
