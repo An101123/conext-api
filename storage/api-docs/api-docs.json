@@ -426,6 +426,16 @@
                 "summary": "Update an existing bussiness",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\BusinessTypeController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Bussiness object that needs to be added to the store",
                     "required": true,
@@ -482,9 +492,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/business-types/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Business"
@@ -499,7 +507,7 @@
                         "description": "The business-types that needs to be deleted",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
                         }
                     }
                 ],
@@ -598,6 +606,15 @@
                 ],
                 "summary": "Get list of contact",
                 "operationId": "App\\Http\\Controllers\\CategoryController::index",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -649,15 +666,11 @@
                                 "properties": {
                                     "category_name": {
                                         "type": "string"
-                                    },
-                                    "quantity": {
-                                        "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "category_name": "category nha",
-                                    "quantity": "quantity nha"
+                                    "category_name": "category nha"
                                 }
                             }
                         }
@@ -776,9 +789,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/categories/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Categories"
@@ -885,7 +896,6 @@
                     "Contact"
                 ],
                 "summary": "Adds a new contacts",
-                "operationId": "App\\Http\\Controllers\\ContactController::store",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -909,10 +919,11 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "email": "email contact nha",
+                                    "email": "hihi@gmail.com",
                                     "name": "name contact nha",
                                     "subject": "subject contact nha",
-                                    "content": "content nha"
+                                    "content": "content nha",
+                                    "phone_number": "098765432"
                                 }
                             }
                         }
@@ -987,6 +998,7 @@
                     "Contact"
                 ],
                 "summary": "Adds a new contacts",
+                "operationId": "App\\Http\\Controllers\\ContactController::store",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1010,10 +1022,11 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "email": "email contact nha",
+                                    "email": "hihi@gmail.com",
                                     "name": "name contact nha",
                                     "subject": "subject contact nha",
-                                    "content": "content nha"
+                                    "content": "content nha",
+                                    "phone_number": "098765432"
                                 }
                             }
                         }
@@ -1074,15 +1087,10 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         },
-        "api/admin/contacts/{id}": {
+        "/api/admin/contacts/{id}": {
             "delete": {
                 "tags": [
                     "Contact"
@@ -1327,6 +1335,9 @@
                                     "start_time": {
                                         "type": "DateTime"
                                     },
+                                    "end_time": {
+                                        "type": "DateTime"
+                                    },
                                     "description": {
                                         "type": "string"
                                     }
@@ -1335,7 +1346,8 @@
                                 "example": {
                                     "title": "title event nha",
                                     "image": "image.png",
-                                    "start_time": "12-3-2019 4:1:1",
+                                    "start_time": "2021-02-15",
+                                    "end_time": "2021-05-06",
                                     "description": "hihi"
                                 }
                             }
@@ -1413,6 +1425,16 @@
                 "summary": "Update an existing events",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\EventController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Events object that needs to be added to the store",
                     "required": true,
@@ -1429,6 +1451,9 @@
                                     "start_time": {
                                         "type": "DateTime"
                                     },
+                                    "end_time": {
+                                        "type": "DateTime"
+                                    },
                                     "description": {
                                         "type": "string"
                                     }
@@ -1437,7 +1462,8 @@
                                 "example": {
                                     "title": "title event nha",
                                     "image": "image.png",
-                                    "start_time": "12-3-2019 4:1:1",
+                                    "start_time": "2021-02-15",
+                                    "end_time": "2021-05-06",
                                     "description": "hihi"
                                 }
                             }
@@ -1481,9 +1507,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/events/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Events"
@@ -1809,9 +1833,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/expertises/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Expertises"
@@ -1990,13 +2012,17 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
                                         "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "name explore nha"
+                                    "title": "name explore nha",
+                                    "image": "anh.png"
                                 }
                             }
                         }
@@ -2065,7 +2091,7 @@
                 ]
             }
         },
-        "/api/admin/explore/{id}": {
+        "/api/admin/explores/{id}": {
             "put": {
                 "tags": [
                     "Explore"
@@ -2090,13 +2116,17 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
                                         "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "name explore nha"
+                                    "title": "name explore nha",
+                                    "image": "anh.png"
                                 }
                             }
                         }
@@ -2139,9 +2169,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/explore/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Explore"
@@ -2359,6 +2387,115 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Hot-needs"
+                ],
+                "summary": "Adds a new hot-needs",
+                "operationId": "App\\Http\\Controllers\\HotNeedController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "topic": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "string"
+                                    },
+                                    "expected_deadline": {
+                                        "type": "string"
+                                    },
+                                    "brief_description": {
+                                        "type": "string"
+                                    },
+                                    "full_description": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "topic": "Hot Need 1",
+                                    "city": "Da Nang",
+                                    "category_id": 5,
+                                    "expected_deadline": "2020-05-31",
+                                    "brief_description": "hahah",
+                                    "full_description": "hihihi",
+                                    "user_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "HotNeed not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/my-hot-needs": {
@@ -2367,7 +2504,6 @@
                     "Hot-needs"
                 ],
                 "summary": "Get list of hot-needs",
-                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
                 "parameters": [
                     {
                         "name": "page",
@@ -2459,30 +2595,36 @@
                 ]
             }
         },
-        "/api/admin/hot-needs": {
-            "post": {
+        "/api/hot-needs/{id}": {
+            "get": {
                 "tags": [
                     "Hot-needs"
                 ],
-                "summary": "Adds a new hot-needs",
-                "operationId": "App\\Http\\Controllers\\HotNeedController::store",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "name": "name not need nha"
-                                }
-                            }
+                "summary": "Get list of hot-needs",
+                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -2506,9 +2648,21 @@
                                     },
                                     "type": "object",
                                     "example": {
-                                        "errcode": 1,
-                                        "errmsg": "ok",
-                                        "data": []
+                                        "id": 1,
+                                        "topic": "Off road trails in/around Danang for bicycling",
+                                        "city": "Da Nang",
+                                        "category_id": 5,
+                                        "expected_deadline": "2020-05-31 00:00:00",
+                                        "brief_description": "I am planning to move to Danang from Thailand and am trying to figure out where I can find off-road cycling trails around Danang to ride my mountain bike.",
+                                        "full_description": "Hi folks,<br></br>I am planning to move to Danang from Thailand and am trying to figure out where I can find off-road cycling trails around Danang to ride my mountain bike.<br></br>We have many of them here in Chiang Mai, and I know they probably exists around Danang too, probably up around Thọ Quang, since I see a lot of trails up there on topo maps, but I cant find any information about trails that are suitable for a mountain bike when I google.<br></br>I really like off-road trails as opposed to paved roads, so I would appreciate any help/advice someone might be able to offer.<br></br>Thanks!",
+                                        "user_id": 1,
+                                        "created_at": null,
+                                        "updated_at": null,
+                                        "user": {
+                                            "id": 1,
+                                            "name": "Super Admin",
+                                            "avatar": "https://storage.googleapis.com/conext-develop/avatar1.png"
+                                        }
                                     }
                                 }
                             }
@@ -2538,15 +2692,8 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            }
-        },
-        "/api/admin/hot-needs/{id}": {
+                }
+            },
             "put": {
                 "tags": [
                     "Hot-needs"
@@ -2571,13 +2718,37 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
+                                    "topic": {
                                         "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "string"
+                                    },
+                                    "expected_deadline": {
+                                        "type": "string"
+                                    },
+                                    "brief_description": {
+                                        "type": "string"
+                                    },
+                                    "full_description": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "name not need nha"
+                                    "topic": "Hot Need 1",
+                                    "city": "Da Nang",
+                                    "category_id": 5,
+                                    "expected_deadline": "2020-05-31",
+                                    "brief_description": "hahah",
+                                    "full_description": "hihihi",
+                                    "user_id": 1
                                 }
                             }
                         }
@@ -2620,9 +2791,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/hot-needs/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Hot-needs"
@@ -2949,9 +3118,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/local-conexts/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Local-conexts"
@@ -3566,9 +3733,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/users/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Users"
@@ -3660,12 +3825,7 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         },
         "/api/auth/profile": {
@@ -3674,16 +3834,6 @@
                     "Users"
                 ],
                 "operationId": "App\\Http\\Controllers\\UserController::profile",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -3715,7 +3865,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/vouchers": {
@@ -3726,6 +3881,13 @@
                 "parameters": [
                     {
                         "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "type",
                         "in": "query",
                         "schema": {
                             "type": "integer"
@@ -4035,9 +4197,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/vouchers/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Vouchers"
@@ -4465,9 +4625,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/work-places/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Work-places"
@@ -4562,12 +4720,7 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         }
     },

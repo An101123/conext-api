@@ -601,7 +601,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/users/{id}",
+     * @OA\Delete(path="/api/admin/users/{id}",
      *   tags={"Users"},
      *   summary="Delete users",
      *   description="This can only be done by the logged in user.",
@@ -710,9 +710,6 @@ class UserController extends Controller
      *             )
      *         }
      *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }
      * )
      */
     public function getUserRandom()
@@ -724,14 +721,6 @@ class UserController extends Controller
      * @OA\Get(
      *     tags={"Users"},
      *     path="/api/auth/profile",
-     *     @OA\Parameter(
-     *       name="id",
-     *       in="query",
-     *       required=true,
-     *       @OA\Schema(
-     *           type="integer"
-     *       )
-     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -776,7 +765,10 @@ class UserController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )  
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }   
      * )
      */
     public function profile()

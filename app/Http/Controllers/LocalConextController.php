@@ -366,7 +366,7 @@ class LocalConextController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/local-conexts/{id}",
+     * @OA\Delete(path="/api/admin/local-conexts/{id}",
      *   tags={"Local-conexts"},
      *   summary="Delete local-conexts",
      *   description="This can only be done by the logged in user.",

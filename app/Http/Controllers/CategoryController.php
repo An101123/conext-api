@@ -94,6 +94,13 @@ class CategoryController extends Controller
      *             )
      *         }
      *     ),
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=400,
      *         description="Bad Request",
@@ -159,11 +166,7 @@ class CategoryController extends Controller
      *                     property="category_name",
      *                     type="string"
      *                 ),
-     *                 @OA\Property(
-     *                     property="quantity",
-     *                     type="string"
-     *                 ),
-     *                 example={"category_name": "category nha", "quantity": "quantity nha"}
+     *                 example={"category_name": "category nha"}
      *             )
      *         )
      *     ),
@@ -337,7 +340,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/categories/{id}",
+     * @OA\Delete(path="/api/admin/categories/{id}",
      *   tags={"Categories"},
      *   summary="Delete category",
      *   description="This can only be done by the logged in user.",
@@ -350,54 +353,54 @@ class CategoryController extends Controller
      *         type="string"
      *     )
      *   ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="OK",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="Bad Request",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="Category not found",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=405,
-     *         description="Validation exception",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal Server Error",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }
+     *   @OA\Response(
+     *       response=200,
+     *       description="OK",
+     *       content={
+     *           @OA\MediaType(
+     *               mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   @OA\Response(
+     *       response=400,
+     *       description="Bad Request",
+     *       content={
+     *           @OA\MediaType(
+     *               mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   @OA\Response(
+     *       response=404,
+     *       description="Category not found",
+     *       content={
+     *          @OA\MediaType(
+     *               mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   @OA\Response(
+     *       response=405,
+     *       description="Validation exception",
+     *       content={
+     *           @OA\MediaType(
+     *              mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   @OA\Response(
+     *       response=500,
+     *       description="Internal Server Error",
+     *       content={
+     *           @OA\MediaType(
+     *               mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   security={
+     *       {"bearer": {}}
+     *   }
      * )
      */
     public function destroy($id)
