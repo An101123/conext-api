@@ -534,6 +534,22 @@ class WorkPlaceController extends Controller
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="price",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="address",
+     *                              type="string"
+     *                          ),
+     *                  example={    "id": 1,
+     *                          "address": "15th Floor, Tower B, Song Da Building, Pham Hung, My Dinh 1, Nam Tu Liem, Hanoi"}
+     *              )
      *             )
      *         }
      *     ),
