@@ -10,7 +10,6 @@ class WorkPlaceRepository implements WorkPlaceRepositoryInterface
 {
     public function getWorkPlaces($zone)
     {
-        // dd(WorkPlace::all());
         $workPlaces = WorkPlace::with(['localConext'])
         ->when($zone, function ($data) use($zone){
             $data->where('local_conext_id', $zone);

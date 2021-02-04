@@ -9,7 +9,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     public function getCategories()
     {
-        return Category::all();
+        return Category::withCount(['hotNeed'])->get();
     }
 
     public function store($input)

@@ -1,7 +1,8 @@
 version: "3"
 
 networks:
-  web-network:
+  proxy:
+    external: true
 
 services:
   mysql:
@@ -17,7 +18,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - web-network
+      - proxy
 
   # phpmyadmin:
   #   image: phpmyadmin/phpmyadmin:latest
@@ -53,6 +54,6 @@ services:
     ports:
       - "80:80"
     networks:
-      - web-network
+      - proxy
     depends_on:
       - "mysql"

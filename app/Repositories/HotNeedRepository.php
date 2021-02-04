@@ -13,11 +13,12 @@ class HotNeedRepository implements HotNeedRepositoryInterface
 {
     public function getHotNeeds($category)
     {
-        $hotNeeds = HotNeed::with(['user'])
+
+        $hotNeeds = HotNeed::with(['user', 'category'])
         ->when($category, function($data) use($category){
-            $data->where('category_id', $category)->paginate(6);
+            $data->where('category_id', $category);
         })
-        ->get();
+        ->paginate(6);
         return $hotNeeds;
     }
 
