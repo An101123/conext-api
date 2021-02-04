@@ -13,6 +13,14 @@ class WorkPlaceController extends Controller
      * @OA\Get(
      *     tags={"Work-places"},
      *     path="/api/work-places",
+     *     @OA\Parameter(
+     *       name="zone",
+     *       in="query",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -110,6 +118,14 @@ class WorkPlaceController extends Controller
      * @OA\Get(
      *     tags={"Work-places"},
      *     path="/api/admin/work-places",
+     *     @OA\Parameter(
+     *       name="zone",
+     *       in="query",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",

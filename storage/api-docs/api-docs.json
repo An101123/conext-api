@@ -247,14 +247,13 @@
                                     },
                                     "type": "object",
                                     "example": {
-                                        "id": 1,
-                                        "name": "Startups",
-                                        "created_at": null,
-                                        "updated_at": null
                                         "errcode": 1,
                                         "errmsg": "ok",
                                         "data": {
-                                            "name": "name bussiness nha"
+                                            "id": 1,
+                                            "name": "Startups",
+                                            "created_at": null,
+                                            "updated_at": null
                                         }
                                     }
                                 }
@@ -822,7 +821,7 @@
                 ]
             }
         },
-        "/api/contacts": {
+        "/api/admin/contacts": {
             "get": {
                 "tags": [
                     "Contact"
@@ -859,7 +858,113 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/contact": {
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Adds a new contacts",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "phone_number": {
+                                        "type": "string"
+                                    },
+                                    "subject": {
+                                        "type": "string"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "email contact nha",
+                                    "name": "name contact nha",
+                                    "subject": "subject contact nha",
+                                    "content": "content nha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Contact not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/admin/contact": {
@@ -1028,6 +1133,16 @@
                     "Events"
                 ],
                 "summary": "Get list of events",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -1095,6 +1210,92 @@
             }
         },
         "/api/admin/events": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Get list of events",
+                "operationId": "App\\Http\\Controllers\\EventController::index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "current_page": 1,
+                                        "data": {
+                                            "id": 1,
+                                            "title": "[Webinar] Let’s Help Startups Series: Tips to Make Your Startup Stand Out",
+                                            "image": "https://storage.googleapis.com/conext-production/detail/67646647_71324239_35429499_80603001.png",
+                                            "start_time": "2021-04-02 10:00:00",
+                                            "end_time": "2021-04-02 12:45:00",
+                                            "description": "<p>In 2021, OVHcloud Startup Program Asia Pacific is going to run a series of webinars to share ideas, tips and guides from the subject matter experts to support startups in the ecosystem.</p><br></br><p>Join us in the panel discussion to learn from our guest speakers who will share ideas on how to market your business, the importance of networking and tips to make your startup stand out among the crowd.</p>",
+                                            "created_at": null,
+                                            "updated_at": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Event not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Events"
@@ -1581,7 +1782,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "api/admin/expertises/{id}": {
@@ -1634,7 +1840,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/explores": {
@@ -2105,51 +2316,20 @@
                 }
             }
         },
-        "/api/admin/hot-needs": {
+        "/api/my-hot-needs": {
             "get": {
                 "tags": [
                     "Hot-needs"
                 ],
-                "summary": "Get list of hot-needs",
-                "operationId": "App\\Http\\Controllers\\HotNeedController::index",
+                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "404": {
-                        "description": "HotNeed not found",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "405": {
-                        "description": "Validation exception",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {}
-                        }
+                        "description": "Display a listing of hot-needs."
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            },
+                }
+            }
+        },
+        "/api/admin/hot-needs": {
             "post": {
                 "tags": [
                     "Hot-needs"
@@ -2234,19 +2414,6 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/api/my-hot-needs": {
-            "get": {
-                "tags": [
-                    "Hot-needs"
-                ],
-                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
-                "responses": {
-                    "200": {
-                        "description": "Display a listing of hot-needs."
-                    }
-                }
             }
         },
         "/api/admin/hot-needs/{id}": {
@@ -2762,10 +2929,28 @@
                 }
             }
         },
-        "/api/auth/users": {
+        "/api/users": {
             "get": {
                 "tags": [
                     "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "businessType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "expertise",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -2807,6 +2992,24 @@
                     "Users"
                 ],
                 "operationId": "App\\Http\\Controllers\\UserController::index",
+                "parameters": [
+                    {
+                        "name": "businessType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "expertise",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -2898,7 +3101,13 @@
                                     "business_type_id": {
                                         "type": "integer"
                                     },
+                                    "avatar": {
+                                        "type": "string"
+                                    },
                                     "expertise_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
                                         "type": "string"
                                     },
                                     "local_conext_id": {
@@ -2914,7 +3123,9 @@
                                     "workplace": "workplace nha",
                                     "business_type_id": 1,
                                     "expertise_id": 1,
-                                    "local_conext_id": 1
+                                    "local_conext_id": 1,
+                                    "name": "name nha",
+                                    "avatar": "avatar.png"
                                 }
                             }
                         }
@@ -2981,6 +3192,126 @@
                         "bearer": []
                     }
                 ]
+            }
+        },
+        "/api/resigter": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Adds a new users",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "gender": {
+                                        "type": "integer"
+                                    },
+                                    "introduce": {
+                                        "type": "string"
+                                    },
+                                    "workplace": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "business_type_id": {
+                                        "type": "integer"
+                                    },
+                                    "avatar": {
+                                        "type": "string"
+                                    },
+                                    "expertise_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "local_conext_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "email@gmail.com",
+                                    "address": "address nha",
+                                    "gender": 2,
+                                    "introduce": "introduce nha",
+                                    "workplace": "workplace nha",
+                                    "business_type_id": 1,
+                                    "expertise_id": 1,
+                                    "local_conext_id": 1,
+                                    "name": "name nha",
+                                    "avatar": "avatar.png"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Users not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
             }
         },
         "/api/admin/users/{id}": {
@@ -3180,10 +3511,70 @@
                 ]
             }
         },
+        "/api/auth/profile": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "operationId": "App\\Http\\Controllers\\UserController::profile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Users not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "/api/vouchers": {
             "get": {
                 "tags": [
                     "Vouchers"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -3257,6 +3648,16 @@
                     "Vouchers"
                 ],
                 "operationId": "App\\Http\\Controllers\\VoucherController::index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -3534,6 +3935,16 @@
                 "tags": [
                     "Work-places"
                 ],
+                "parameters": [
+                    {
+                        "name": "zone",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -3609,6 +4020,16 @@
                     "Work-places"
                 ],
                 "operationId": "App\\Http\\Controllers\\WorkPlaceController::index",
+                "parameters": [
+                    {
+                        "name": "zone",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {

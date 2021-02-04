@@ -5,7 +5,7 @@ networks:
 
 services:
   mysql:
-    image: mysql:5.6
+    image: mysql:latest
     # volumes:
     #   - ./dbdata:/var/lib/mysql
     #   - ./dbbackup:/var/lib/mysql-db-backup
@@ -47,11 +47,11 @@ services:
   php-fpm:
     build:
       context: ./php-fpm
-    ports:
-      - "80:80"
     volumes:
       - ./:/var/www/html/
     working_dir: /var/www/html
+    ports:
+      - "80:80"
     networks:
       - web-network
     depends_on:
