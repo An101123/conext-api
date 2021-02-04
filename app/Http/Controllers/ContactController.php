@@ -15,7 +15,7 @@ class ContactController extends Controller
      * @OA\Get(
      *     tags={"Contact"},
      *     summary="Get list of contact",
-     *     path="/api/contacts",
+     *     path="/api/admin/contacts",
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -61,7 +61,9 @@ class ContactController extends Controller
      *             )
      *         }
      *     ),
-     *   
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
 
@@ -87,6 +89,114 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
+     * @OA\Post(
+     *     tags={"Contact"},
+     *     path="/api/contact",
+     *     summary="Adds a new contacts",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="phone_number",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="subject",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="content",
+     *                     type="string"
+     *                 ),
+     *                 example={"email": "email contact nha", "name": "name contact nha",
+     *                      "subject": "subject contact nha", "content": "content nha"
+     *                  }
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                         "errcode": 1,
+     *                         "errmsg": "ok",
+     *                         "data": {}
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Contact not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
+     * )
+     */
+        /**
      * @OA\Post(
      *     tags={"Contact"},
      *     path="/api/admin/contact",
