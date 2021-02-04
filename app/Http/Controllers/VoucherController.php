@@ -19,6 +19,13 @@ class VoucherController extends Controller
      *           type="integer"
      *       )
      *     ),
+     *     @OA\Parameter(
+     *       name="type",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
