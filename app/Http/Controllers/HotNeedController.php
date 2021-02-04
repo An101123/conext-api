@@ -109,7 +109,7 @@ class HotNeedController extends Controller
     {
         $this->hotNeedService = $hotNeedService;
     }
-        /**
+    /**
      * 
      * @OA\Get(
      *     tags={"Hot-needs"},
@@ -203,7 +203,13 @@ class HotNeedController extends Controller
      *                     property="name",
      *                     type="string"
      *                 ),
-     *                 example={"name": "name not need nha"}
+     *                 example={"topic": "Hot Need 1", 
+     *                         "city": "Da Nang",
+     *                          "category_id: 5,
+     *                          "expected_deadline": "2020-05-31",
+     *                             "brief_description": "hahah",
+     *                              "full_description": "hihihi,
+     *                              "user_id" : 1 }
      *             )
      *         ),
      *     ),
@@ -308,7 +314,7 @@ class HotNeedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Put(
      *     path="/api/admin/hot-needs/{id}",
      *     tags={"Hot-needs"},
@@ -324,7 +330,8 @@ class HotNeedController extends Controller
      *                     property="name",
      *                     type="string"
      *                 ),
-     *                 example={"name": "name not need nha"}
+     *                 example={"name": "name not need nha",
+     *                          }
      *             )
      *         )
      *     ),
@@ -390,7 +397,7 @@ class HotNeedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Delete(path="api/admin/hot-needs/{id}",
      *   tags={"Hot-needs"},
      *   summary="Delete hot-needs",

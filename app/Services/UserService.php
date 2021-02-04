@@ -13,9 +13,9 @@ class UserService implements UserServiceInterface
         return $this->userRepository = $userRepository;
     }
 
-    public function getUsers($businessType, $expertise)
+    public function getUsers($businessType, $expertise, $localConext)
     {
-        return $this->userRepository->getUsers($businessType, $expertise);
+        return $this->userRepository->getUsers($businessType, $expertise, $localConext);
     }
 
     public function store($input)

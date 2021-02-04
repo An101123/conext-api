@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
 {
-    public function getUsers($businessType, $expertise)
+    public function getUsers($businessType, $expertise, $localConext)
     {
-        $users = User::with(['businessType', 'expertise'])
+        $users = User::with(['businessType', 'expertise', 'localConext'])
+            ->when($localConext, function($userByLocal) use ($localConext){
+            $userByLocal->where('local_conext_id', $localConext);
+        })
             ->when($businessType, function ($userByBusiness) use ($businessType) {
                 $userByBusiness->where('business_type_id', $businessType);
             })
@@ -109,6 +112,6 @@ class UserRepository implements UserRepositoryInterface
     public function profile()
     {
         $id = Auth::user()->id;
-        return User::find($id);
+        return User::with(['businessType', 'expertise', 'localConext'])->find($id);
     }
 }

@@ -13,7 +13,6 @@ class HotNeedRepository implements HotNeedRepositoryInterface
 {
     public function getHotNeeds($category)
     {
-
         $hotNeeds = HotNeed::with(['user', 'category'])
         ->when($category, function($data) use($category){
             $data->where('category_id', $category);
