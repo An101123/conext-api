@@ -16,7 +16,6 @@ class EventController extends Controller
      *     @OA\Parameter(
      *       name="page",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )
@@ -117,7 +116,6 @@ class EventController extends Controller
      *     @OA\Parameter(
      *       name="page",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )

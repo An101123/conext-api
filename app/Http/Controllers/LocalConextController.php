@@ -282,6 +282,13 @@ class LocalConextController extends Controller
      *     tags={"Local-conexts"},
      *     summary="Update an existing local-conexts",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Local-conexts object that needs to be added to the store",

@@ -165,7 +165,7 @@ class ExploreController extends Controller
         /**
      * @OA\Post(
      *     tags={"Explore"},
-     *     path="/api/admin/explore",
+     *     path="/api/admin/explores",
      *     summary="Adds a new business-types",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -282,6 +282,14 @@ class ExploreController extends Controller
      *     tags={"Explore"},
      *     summary="Update an existing explore",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Explore object that needs to be added to the store",
