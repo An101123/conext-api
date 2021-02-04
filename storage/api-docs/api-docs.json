@@ -3261,7 +3261,6 @@
                     {
                         "name": "expertise",
                         "in": "query",
-                        "required": true,
                         "schema": {
                             "type": "integer"
                         }
@@ -3318,33 +3317,11 @@
                     {
                         "name": "expertise",
                         "in": "query",
-                        "required": true,
                         "schema": {
                             "type": "integer"
                         }
                     }
                 ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "businessType": {
-                                        "type": "string"
-                                    },
-                                    "expertise": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "businessType": 1,
-                                    "expertise": 1
-                                }
-                            }
-                        }
-                    }
-                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -3439,7 +3416,8 @@
                                     "expertise_id": 1,
                                     "local_conext_id": 1,
                                     "name": "name nha",
-                                    "avatar": "avatar.png"
+                                    "avatar": "avatar.png",
+                                    "password": "123456"
                                 }
                             }
                         }
@@ -3564,7 +3542,8 @@
                                     "expertise_id": 1,
                                     "local_conext_id": 1,
                                     "name": "name nha",
-                                    "avatar": "avatar.png"
+                                    "avatar": "avatar.png",
+                                    "password": "123456"
                                 }
                             }
                         }
@@ -3679,6 +3658,9 @@
                                     },
                                     "local_conext_id": {
                                         "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
                                     }
                                 },
                                 "type": "object",
@@ -3690,7 +3672,9 @@
                                     "workplace": "workplace nha",
                                     "business_type_id": 1,
                                     "expertise_id": 1,
-                                    "local_conext_id": 1
+                                    "local_conext_id": 1,
+                                    "password": "123456",
+                                    "name": "duy"
                                 }
                             }
                         }
@@ -4693,7 +4677,26 @@
                     "200": {
                         "description": "OK",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "price": {
+                                            "type": "string"
+                                        },
+                                        "address": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "address": "15th Floor, Tower B, Song Da Building, Pham Hung, My Dinh 1, Nam Tu Liem, Hanoi"
+                                    }
+                                }
+                            }
                         }
                     },
                     "400": {
