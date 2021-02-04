@@ -4,7 +4,7 @@ namespace App\Services;
 
 interface UserServiceInterface
 {
-    public function getUsers($businessType, $expertise);
+    public function getUsers($businessType, $expertise, $localConext);
     public function store($input);
     public function getUser($id);
     public function update($input, $id);

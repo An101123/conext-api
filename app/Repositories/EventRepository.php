@@ -30,7 +30,7 @@ class EventRepository implements EventRepositoryInterface
         else {
             return response()->json([
                 'message' => 'Error'
-            ]);
+            ], 400);
         }
     }
     public function update($input, $id)

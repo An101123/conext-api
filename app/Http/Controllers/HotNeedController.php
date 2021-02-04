@@ -123,6 +123,62 @@ class HotNeedController extends Controller
     {
         $this->hotNeedService = $hotNeedService;
     }
+    /**
+     * 
+     * @OA\Get(
+     *     tags={"Hot-needs"},
+     *     summary="Get list of hot-needs",
+     *     path="/api/admin/hot-needs",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="HotNeed not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
+     * )
+     */
     public function index(Request $request)
     {
         $category = $request->category;
@@ -258,7 +314,13 @@ class HotNeedController extends Controller
      *                     property="name",
      *                     type="string"
      *                 ),
-     *                 example={"name": "name not need nha"}
+     *                 example={"topic": "Hot Need 1", 
+     *                         "city": "Da Nang",
+     *                          "category_id: 5,
+     *                          "expected_deadline": "2020-05-31",
+     *                             "brief_description": "hahah",
+     *                              "full_description": "hihihi,
+     *                              "user_id" : 1 }
      *             )
      *         ),
      *     ),
@@ -363,7 +425,7 @@ class HotNeedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Put(
      *     path="/api/admin/hot-needs/{id}",
      *     tags={"Hot-needs"},
@@ -387,7 +449,8 @@ class HotNeedController extends Controller
      *                     property="name",
      *                     type="string"
      *                 ),
-     *                 example={"name": "name not need nha"}
+     *                 example={"name": "name not need nha",
+     *                          }
      *             )
      *         )
      *     ),
@@ -453,7 +516,7 @@ class HotNeedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-        /**
+    /**
      * @OA\Delete(path="api/admin/hot-needs/{id}",
      *   tags={"Hot-needs"},
      *   summary="Delete hot-needs",

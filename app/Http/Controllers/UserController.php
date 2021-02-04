@@ -177,7 +177,8 @@ class UserController extends Controller
     {
         $businessType = $request->businessType;
         $expertise = $request->expertise;
-        return $this->userService->getUsers($businessType, $expertise);
+        $localConext = $request->localConext;
+        return $this->userService->getUsers($businessType, $expertise, $localConext);
     }
 
     /**
@@ -452,8 +453,7 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $validated =
-            $input = $request;
+        $input = $request;
         return $this->userService->store($input);
     }
 

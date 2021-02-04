@@ -238,7 +238,11 @@ class EventController extends Controller
      *                     property="description",
      *                     type="string"
      *                 ),
-     *                 example={"title": "title event nha", "image": "image.png", "start_time": "12-3-2019 4:1:1", "description": "hihi"}
+     *                 example={"title": "title event nha",
+  "image": "image.png",
+  "start_time": "2021-02-15",
+"end_time": "2021-05-06",
+  "description": "hihi"}
      *             )
      *         ),
      *     ),
