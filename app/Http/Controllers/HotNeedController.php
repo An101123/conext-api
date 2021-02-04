@@ -16,6 +16,20 @@ class HotNeedController extends Controller
      *     tags={"Hot-needs"},
      *     summary="Get list of hot-needs",
      *     path="/api/hot-needs",
+     *     @OA\Parameter(
+     *       name="page",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="category",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -171,11 +185,108 @@ class HotNeedController extends Controller
         return $this->hotNeedService->getHotNeeds($category);
     }
     /**
-     *
+     * 
      * @OA\Get(
      *     tags={"Hot-needs"},
+     *     summary="Get list of hot-needs",
      *     path="/api/my-hot-needs",
-     *     @OA\Response(response="200", description="Display a listing of hot-needs.")
+     *     @OA\Parameter(
+     *       name="page",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="category",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                          "id": 1,
+                                "topic": "Off road trails in/around Danang for bicycling",
+                                "city": "Da Nang",
+                                "category_id": 5,
+                                "expected_deadline": "2020-05-31 00:00:00",
+                                "brief_description": "I am planning to move to Danang from Thailand and am trying to figure out where I can find off-road cycling trails around Danang to ride my mountain bike.",
+                                "full_description": "Hi folks,<br></br>I am planning to move to Danang from Thailand and am trying to figure out where I can find off-road cycling trails around Danang to ride my mountain bike.<br></br>We have many of them here in Chiang Mai, and I know they probably exists around Danang too, probably up around Thọ Quang, since I see a lot of trails up there on topo maps, but I cant find any information about trails that are suitable for a mountain bike when I google.<br></br>I really like off-road trails as opposed to paved roads, so I would appreciate any help/advice someone might be able to offer.<br></br>Thanks!",
+                                "user_id": 1,
+                                "created_at": null,
+                                "updated_at": null,
+                                "user": {
+                                "id": 1,
+                                "name": "Super Admin",
+                                "avatar": "https://storage.googleapis.com/conext-develop/avatar1.png"
+                                }
+     *                      }
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="HotNeed not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function getHotNeedByUser()
@@ -320,6 +431,14 @@ class HotNeedController extends Controller
      *     tags={"Hot-needs"},
      *     summary="Update an existing hot-needs",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Hot-needs object that needs to be added to the store",

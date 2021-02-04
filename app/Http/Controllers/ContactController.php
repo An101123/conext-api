@@ -91,7 +91,7 @@ class ContactController extends Controller
     /**
      * @OA\Post(
      *     tags={"Contact"},
-     *     path="/api/contact",
+     *     path="/api/contacts",
      *     summary="Adds a new contacts",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -199,7 +199,7 @@ class ContactController extends Controller
         /**
      * @OA\Post(
      *     tags={"Contact"},
-     *     path="/api/admin/contact",
+     *     path="/api/admin/contacts",
      *     summary="Adds a new contacts",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -317,7 +317,7 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/contact/{id}",
+     * @OA\Delete(path="api/admin/contacts/{id}",
      *   tags={"Contact"},
      *   summary="Delete contact",
      *   description="This can only be done by the logged in user.",
