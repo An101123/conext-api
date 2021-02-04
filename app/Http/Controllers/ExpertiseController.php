@@ -365,7 +365,7 @@ class ExpertiseController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/expertises/{id}",
+     * @OA\Delete(path="/api/admin/expertises/{id}",
      *   tags={"Expertises"},
      *   summary="Delete expertises",
      *   description="This can only be done by the logged in user.",

@@ -24,7 +24,6 @@ class UserController extends Controller
      *     @OA\Parameter(
      *       name="expertise",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )
@@ -102,26 +101,9 @@ class UserController extends Controller
      *     @OA\Parameter(
      *       name="expertise",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )
-     *     ),
-     *     @OA\RequestBody(
-     *         @OA\MediaType(
-     *             mediaType="application/json",
-     *             @OA\Schema(
-     *                 @OA\Property(
-     *                     property="businessType",
-     *                     type="string"
-     *                 ),
-     *                 @OA\Property(
-     *                     property="expertise",
-     *                     type="string"
-     *                 ),
-     *                 example={"businessType": 1, "expertise": 1}
-     *             )
-     *         ),
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -242,7 +224,7 @@ class UserController extends Controller
      *                 ),
      *                 example={"email": "email@gmail.com", "address": "address nha", "gender": 2, "introduce": "introduce nha",
      *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1, "local_conext_id": 1,
-     *                      "name": "name nha", "avatar": "avatar.png"                      
+     *                      "name": "name nha", "avatar": "avatar.png" , "password": "123456"                     
      *                 }
      *             )
      *         ),
@@ -372,7 +354,7 @@ class UserController extends Controller
      *                 ),
      *                 example={"email": "email@gmail.com", "address": "address nha", "gender": 2, "introduce": "introduce nha",
      *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1, "local_conext_id": 1,
-     *                      "name": "name nha", "avatar": "avatar.png"                      
+     *                      "name": "name nha", "avatar": "avatar.png" , "password": "123456"                     
      *                 }
      *             )
      *         ),
@@ -531,8 +513,13 @@ class UserController extends Controller
      *                     property="local_conext_id",
      *                     type="string"
      *                 ),
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
      *                 example={"email": "email@gmail.com", "address": "address nha", "gender": 2, "introduce": "introduce nha",
-     *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1, "local_conext_id": 1                      
+     *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1,
+     *                      "local_conext_id": 1, "password": "123456" , "name": "duy"                     
      *                 }
      *             )
      *         )
@@ -601,7 +588,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/users/{id}",
+     * @OA\Delete(path="/api/admin/users/{id}",
      *   tags={"Users"},
      *   summary="Delete users",
      *   description="This can only be done by the logged in user.",
@@ -710,9 +697,6 @@ class UserController extends Controller
      *             )
      *         }
      *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }
      * )
      */
     public function getUserRandom()
@@ -724,14 +708,6 @@ class UserController extends Controller
      * @OA\Get(
      *     tags={"Users"},
      *     path="/api/auth/profile",
-     *     @OA\Parameter(
-     *       name="id",
-     *       in="query",
-     *       required=true,
-     *       @OA\Schema(
-     *           type="integer"
-     *       )
-     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -776,7 +752,10 @@ class UserController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     )  
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }   
      * )
      */
     public function profile()

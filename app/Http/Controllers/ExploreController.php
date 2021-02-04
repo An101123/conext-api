@@ -172,10 +172,15 @@ class ExploreController extends Controller
      *             mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="name",
+     *                     property="title",
      *                     type="string"
      *                 ),
-     *                 example={"name": "name explore nha"}
+     *                 @OA\Property(
+     *                     property="image",
+     *                     type="string"
+     *                 ),
+     *                 example={  "title": "name explore nha",
+     *                      "image": "anh.png"}
      *             )
      *         ),
      *     ),
@@ -278,7 +283,7 @@ class ExploreController extends Controller
      */
         /**
      * @OA\Put(
-     *     path="/api/admin/explore/{id}",
+     *     path="/api/admin/explores/{id}",
      *     tags={"Explore"},
      *     summary="Update an existing explore",
      *     description="",
@@ -297,10 +302,15 @@ class ExploreController extends Controller
      *            mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="name",
+     *                     property="title",
      *                     type="string"
      *                 ),
-     *                 example={"name": "name explore nha"}
+     *                 @OA\Property(
+     *                     property="image",
+     *                     type="string"
+     *                 ),
+     *                 example={  "title": "name explore nha",
+     *                      "image": "anh.png"}
      *             )
      *         )
      *     ),
@@ -367,7 +377,7 @@ class ExploreController extends Controller
      * @return \Illuminate\Http\Response
      */
         /**
-     * @OA\Delete(path="api/admin/explore/{id}",
+     * @OA\Delete(path="/api/admin/explores/{id}",
      *   tags={"Explore"},
      *   summary="Delete explore",
      *   description="This can only be done by the logged in user.",

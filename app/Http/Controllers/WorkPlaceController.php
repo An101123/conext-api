@@ -456,7 +456,7 @@ class WorkPlaceController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/work-places/{id}",
+     * @OA\Delete(path="/api/admin/work-places/{id}",
      *   tags={"Work-places"},
      *   summary="Delete work-places",
      *   description="This can only be done by the logged in user.",
@@ -534,6 +534,22 @@ class WorkPlaceController extends Controller
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="price",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="address",
+     *                              type="string"
+     *                          ),
+     *                  example={    "id": 1,
+     *                          "address": "15th Floor, Tower B, Song Da Building, Pham Hung, My Dinh 1, Nam Tu Liem, Hanoi"}
+     *              )
      *             )
      *         }
      *     ),
@@ -572,10 +588,7 @@ class WorkPlaceController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }   
+     *     ), 
      * )
      */
     public function location()

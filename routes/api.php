@@ -68,7 +68,7 @@ Route::post('register', [UserController::class, 'store']);
 Route::get('abouts', [AboutController::class, 'index']);
 Route::get('faqs', [FaqController::class, 'index']);
 Route::get('term-and-policies', [TermAndPolicyController::class, 'index']);
-Route::apiResource('hot-needs', HotNeedController::class)->only('store', 'update', 'detroy')->middleware('auth:api');
+Route::apiResource('hot-needs', HotNeedController::class)->only('store', 'update', 'destroy')->middleware('auth:api');
 Route::apiResource('hot-needs', HotNeedController::class)->only('index', 'show');
 Route::get('my-hot-needs', [HotNeedController::class, 'getHotNeedByUser'])->middleware('auth:api');
 
