@@ -14,6 +14,13 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     summary="Get list of contact",
      *     path="/api/categories",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -73,7 +80,7 @@ class CategoryController extends Controller
     {
         $this->categoryService = $categoryService;
     }
-        /**
+    /**
      * @OA\Get(
      *     tags={"Categories"},
      *     summary="Get list of contact",
@@ -210,6 +217,7 @@ class CategoryController extends Controller
      *     }
      * )
      */
+
     public function store(Request $request)
     {
         // dd('hahaha');
@@ -224,6 +232,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         return $this->categoryService->getCategory($id);
@@ -242,6 +251,14 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     summary="Update an existing categories",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Categories object that needs to be added to the store",
@@ -252,11 +269,7 @@ class CategoryController extends Controller
      *                     property="category_name",
      *                     type="string"
      *                 ),
-     *                 @OA\Property(
-     *                     property="quantity",
-     *                     type="string"
-     *                 ),
-     *                 example={"category_name": "category nha", "quantity": "quantity nha"}
+     *                 example={"category_name": "category nha"}
      *             )
      *         )
      *     ),

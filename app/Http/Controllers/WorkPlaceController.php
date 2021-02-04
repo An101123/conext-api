@@ -16,7 +16,6 @@ class WorkPlaceController extends Controller
      *     @OA\Parameter(
      *       name="zone",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )
@@ -121,7 +120,6 @@ class WorkPlaceController extends Controller
      *     @OA\Parameter(
      *       name="zone",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )
@@ -365,6 +363,14 @@ class WorkPlaceController extends Controller
      *     tags={"Work-places"},
      *     summary="Update an existing work-places",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Work-places object that needs to be added to the store",

@@ -17,7 +17,6 @@ class UserController extends Controller
      *     @OA\Parameter(
      *       name="businessType",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )
@@ -96,7 +95,6 @@ class UserController extends Controller
      *     @OA\Parameter(
      *       name="businessType",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )
@@ -483,6 +481,14 @@ class UserController extends Controller
      *     tags={"Users"},
      *     summary="Update an existing users",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Users object that needs to be added to the store",

@@ -15,7 +15,6 @@ class VoucherController extends Controller
      *     @OA\Parameter(
      *       name="page",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )
@@ -117,7 +116,6 @@ class VoucherController extends Controller
      *     @OA\Parameter(
      *       name="page",
      *       in="query",
-     *       required=true,
      *       @OA\Schema(
      *           type="integer"
      *       )
@@ -320,6 +318,14 @@ class VoucherController extends Controller
      *     tags={"Vouchers"},
      *     summary="Update an existing vouchers",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Vouchers object that needs to be added to the store",

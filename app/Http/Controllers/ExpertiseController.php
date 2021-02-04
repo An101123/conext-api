@@ -280,6 +280,14 @@ class ExpertiseController extends Controller
      *     tags={"Expertises"},
      *     summary="Update an existing expertises",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Expertises object that needs to be added to the store",
