@@ -51,13 +51,8 @@ services:
     volumes:
       - ./:/var/www/html/
     working_dir: /var/www/html
-    #    ports:
-    #  - "80:80"
-    labels:
-      traefik.enable: true
-      traefik.http.routers.web.rule: Host(`clone-conext.stunited.vn`)
-      traefik.http.routers.web.entrypoints: websecure
-      traefik.http.routers.web.tls.certresolver: myresolver
+    ports:
+      - "80:80"
     networks:
       - proxy
     depends_on:
