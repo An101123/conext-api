@@ -13,7 +13,21 @@ class UserController extends Controller
      *
      * @OA\Get(
      *     tags={"Users"},
-     *     path="/api/auth/users",
+     *     path="/api/users",
+     *     @OA\Parameter(
+     *       name="businessType",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="expertise",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -72,26 +86,24 @@ class UserController extends Controller
     {
         return $this->userService = $userService;
     }
-        /**
+    /**
      *
      * @OA\Get(
      *     tags={"Users"},
      *     path="/api/admin/users",
-     *     @OA\RequestBody(
-     *         @OA\MediaType(
-     *             mediaType="application/json",
-     *             @OA\Schema(
-     *                 @OA\Property(
-     *                     property="businessType",
-     *                     type="string"
-     *                 ),
-     *                 @OA\Property(
-     *                     property="expertise",
-     *                     type="string"
-     *                 ),
-     *                 example={"businessType": 1, "expertise": 1}
-     *             )
-     *         ),
+     *     @OA\Parameter(
+     *       name="businessType",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="expertise",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -147,7 +159,8 @@ class UserController extends Controller
     {
         $businessType = $request->businessType;
         $expertise = $request->expertise;
-        return $this->userService->getUsers($businessType, $expertise);
+        $localConext = $request->localConext;
+        return $this->userService->getUsers($businessType, $expertise, $localConext);
     }
 
     /**
@@ -155,6 +168,136 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     */
+    /**
+     * @OA\Post(
+     *     tags={"Users"},
+     *     path="/api/resigter",
+     *     summary="Adds a new users",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="address",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="gender",
+     *                     type="integer"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="introduce",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="workplace",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="business_type_id",
+     *                     type="integer"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="avatar",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="expertise_id",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="local_conext_id",
+     *                     type="string"
+     *                 ),
+     *                 example={"email": "email@gmail.com", "address": "address nha", "gender": 2, "introduce": "introduce nha",
+     *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1, "local_conext_id": 1,
+     *                      "name": "name nha", "avatar": "avatar.png" , "password": "123456"                     
+     *                 }
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errcode",
+     *                         type="integer",
+     *                         description="The response code"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="errmsg",
+     *                         type="string",
+     *                         description="The response message"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="The response data",
+     *                         @OA\Items
+     *                     ),
+     *                     example={
+     *                         "errcode": 1,
+     *                         "errmsg": "ok",
+     *                         "data": {}
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Users not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     * )
      */
     /**
      * @OA\Post(
@@ -194,7 +337,15 @@ class UserController extends Controller
      *                     type="integer"
      *                 ),
      *                 @OA\Property(
+     *                     property="avatar",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
      *                     property="expertise_id",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="name",
      *                     type="string"
      *                 ),
      *                 @OA\Property(
@@ -202,7 +353,8 @@ class UserController extends Controller
      *                     type="string"
      *                 ),
      *                 example={"email": "email@gmail.com", "address": "address nha", "gender": 2, "introduce": "introduce nha",
-     *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1, "local_conext_id": 1                      
+     *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1, "local_conext_id": 1,
+     *                      "name": "name nha", "avatar": "avatar.png" , "password": "123456"                     
      *                 }
      *             )
      *         ),
@@ -280,10 +432,10 @@ class UserController extends Controller
      *     }
      * )
      */
+
     public function store(UserRequest $request)
     {
-        $validated =
-            $input = $request;
+        $input = $request;
         return $this->userService->store($input);
     }
 
@@ -311,6 +463,14 @@ class UserController extends Controller
      *     tags={"Users"},
      *     summary="Update an existing users",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Users object that needs to be added to the store",
@@ -353,8 +513,13 @@ class UserController extends Controller
      *                     property="local_conext_id",
      *                     type="string"
      *                 ),
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
      *                 example={"email": "email@gmail.com", "address": "address nha", "gender": 2, "introduce": "introduce nha",
-     *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1, "local_conext_id": 1                      
+     *                      "workplace": "workplace nha", "business_type_id": 1, "expertise_id": 1,
+     *                      "local_conext_id": 1, "password": "123456" , "name": "duy"                     
      *                 }
      *             )
      *         )
@@ -423,7 +588,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/users/{id}",
+     * @OA\Delete(path="/api/admin/users/{id}",
      *   tags={"Users"},
      *   summary="Delete users",
      *   description="This can only be done by the logged in user.",
@@ -532,16 +697,67 @@ class UserController extends Controller
      *             )
      *         }
      *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }
      * )
      */
     public function getUserRandom()
     {
         return $this->userService->getUserRandom();
     }
-
+    /**
+     *
+     * @OA\Get(
+     *     tags={"Users"},
+     *     path="/api/auth/profile",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),     
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Users not found",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *             )
+     *         }
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }   
+     * )
+     */
     public function profile()
     {
         return $this->userService->profile();

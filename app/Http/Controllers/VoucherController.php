@@ -12,6 +12,20 @@ class VoucherController extends Controller
      * @OA\Get(
      *     tags={"Vouchers"},
      *     path="/api/vouchers",
+     *     @OA\Parameter(
+     *       name="page",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="type",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -106,6 +120,13 @@ class VoucherController extends Controller
      * @OA\Get(
      *     tags={"Vouchers"},
      *     path="/api/admin/vouchers",
+     *     @OA\Parameter(
+     *       name="page",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -304,6 +325,14 @@ class VoucherController extends Controller
      *     tags={"Vouchers"},
      *     summary="Update an existing vouchers",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Vouchers object that needs to be added to the store",
@@ -397,7 +426,7 @@ class VoucherController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/vouchers/{id}",
+     * @OA\Delete(path="/api/admin/vouchers/{id}",
      *   tags={"Vouchers"},
      *   summary="Delete vouchers",
      *   description="This can only be done by the logged in user.",

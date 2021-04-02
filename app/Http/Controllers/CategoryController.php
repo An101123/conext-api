@@ -14,6 +14,13 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     summary="Get list of contact",
      *     path="/api/categories",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -73,7 +80,7 @@ class CategoryController extends Controller
     {
         $this->categoryService = $categoryService;
     }
-        /**
+    /**
      * @OA\Get(
      *     tags={"Categories"},
      *     summary="Get list of contact",
@@ -86,6 +93,13 @@ class CategoryController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
+     *     ),
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
      *     ),
      *     @OA\Response(
      *         response=400,
@@ -152,11 +166,7 @@ class CategoryController extends Controller
      *                     property="category_name",
      *                     type="string"
      *                 ),
-     *                 @OA\Property(
-     *                     property="quantity",
-     *                     type="string"
-     *                 ),
-     *                 example={"category_name": "category nha", "quantity": "quantity nha"}
+     *                 example={"category_name": "category nha"}
      *             )
      *         )
      *     ),
@@ -210,6 +220,7 @@ class CategoryController extends Controller
      *     }
      * )
      */
+
     public function store(Request $request)
     {
         // dd('hahaha');
@@ -224,6 +235,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         return $this->categoryService->getCategory($id);
@@ -242,6 +254,14 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     summary="Update an existing categories",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Categories object that needs to be added to the store",
@@ -252,11 +272,7 @@ class CategoryController extends Controller
      *                     property="category_name",
      *                     type="string"
      *                 ),
-     *                 @OA\Property(
-     *                     property="quantity",
-     *                     type="string"
-     *                 ),
-     *                 example={"category_name": "category nha", "quantity": "quantity nha"}
+     *                 example={"category_name": "category nha"}
      *             )
      *         )
      *     ),
@@ -324,7 +340,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/categories/{id}",
+     * @OA\Delete(path="/api/admin/categories/{id}",
      *   tags={"Categories"},
      *   summary="Delete category",
      *   description="This can only be done by the logged in user.",
@@ -337,54 +353,54 @@ class CategoryController extends Controller
      *         type="string"
      *     )
      *   ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="OK",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="Bad Request",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="Category not found",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=405,
-     *         description="Validation exception",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal Server Error",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *             )
-     *         }
-     *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }
+     *   @OA\Response(
+     *       response=200,
+     *       description="OK",
+     *       content={
+     *           @OA\MediaType(
+     *               mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   @OA\Response(
+     *       response=400,
+     *       description="Bad Request",
+     *       content={
+     *           @OA\MediaType(
+     *               mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   @OA\Response(
+     *       response=404,
+     *       description="Category not found",
+     *       content={
+     *          @OA\MediaType(
+     *               mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   @OA\Response(
+     *       response=405,
+     *       description="Validation exception",
+     *       content={
+     *           @OA\MediaType(
+     *              mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   @OA\Response(
+     *       response=500,
+     *       description="Internal Server Error",
+     *       content={
+     *           @OA\MediaType(
+     *               mediaType="application/json",
+     *           )
+     *       }
+     *   ),
+     *   security={
+     *       {"bearer": {}}
+     *   }
      * )
      */
     public function destroy($id)

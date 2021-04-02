@@ -280,6 +280,14 @@ class ExpertiseController extends Controller
      *     tags={"Expertises"},
      *     summary="Update an existing expertises",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Expertises object that needs to be added to the store",
@@ -338,7 +346,10 @@ class ExpertiseController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ) 
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function update(Request $request, $id)
@@ -354,7 +365,7 @@ class ExpertiseController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/expertises/{id}",
+     * @OA\Delete(path="/api/admin/expertises/{id}",
      *   tags={"Expertises"},
      *   summary="Delete expertises",
      *   description="This can only be done by the logged in user.",
@@ -411,7 +422,10 @@ class ExpertiseController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ) 
+     *     ),
+     *     security={
+     *         {"bearer": {}}
+     *     }
      * )
      */
     public function destroy($id)

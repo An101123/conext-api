@@ -282,6 +282,13 @@ class LocalConextController extends Controller
      *     tags={"Local-conexts"},
      *     summary="Update an existing local-conexts",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Local-conexts object that needs to be added to the store",
@@ -359,7 +366,7 @@ class LocalConextController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/local-conexts/{id}",
+     * @OA\Delete(path="/api/admin/local-conexts/{id}",
      *   tags={"Local-conexts"},
      *   summary="Delete local-conexts",
      *   description="This can only be done by the logged in user.",

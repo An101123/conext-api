@@ -13,6 +13,13 @@ class WorkPlaceController extends Controller
      * @OA\Get(
      *     tags={"Work-places"},
      *     path="/api/work-places",
+     *     @OA\Parameter(
+     *       name="zone",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -110,6 +117,13 @@ class WorkPlaceController extends Controller
      * @OA\Get(
      *     tags={"Work-places"},
      *     path="/api/admin/work-places",
+     *     @OA\Parameter(
+     *       name="zone",
+     *       in="query",
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -349,6 +363,14 @@ class WorkPlaceController extends Controller
      *     tags={"Work-places"},
      *     summary="Update an existing work-places",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Work-places object that needs to be added to the store",
@@ -434,7 +456,7 @@ class WorkPlaceController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/work-places/{id}",
+     * @OA\Delete(path="/api/admin/work-places/{id}",
      *   tags={"Work-places"},
      *   summary="Delete work-places",
      *   description="This can only be done by the logged in user.",
@@ -512,6 +534,22 @@ class WorkPlaceController extends Controller
      *         content={
      *             @OA\MediaType(
      *                 mediaType="application/json",
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="price",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="address",
+     *                              type="string"
+     *                          ),
+     *                  example={    "id": 1,
+     *                          "address": "15th Floor, Tower B, Song Da Building, Pham Hung, My Dinh 1, Nam Tu Liem, Hanoi"}
+     *              )
      *             )
      *         }
      *     ),
@@ -550,10 +588,7 @@ class WorkPlaceController extends Controller
      *                 mediaType="application/json",
      *             )
      *         }
-     *     ),
-     *     security={
-     *         {"bearer": {}}
-     *     }   
+     *     ), 
      * )
      */
     public function location()

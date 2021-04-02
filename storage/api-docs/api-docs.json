@@ -247,14 +247,13 @@
                                     },
                                     "type": "object",
                                     "example": {
-                                        "id": 1,
-                                        "name": "Startups",
-                                        "created_at": null,
-                                        "updated_at": null
                                         "errcode": 1,
                                         "errmsg": "ok",
                                         "data": {
-                                            "name": "name bussiness nha"
+                                            "id": 1,
+                                            "name": "Startups",
+                                            "created_at": null,
+                                            "updated_at": null
                                         }
                                     }
                                 }
@@ -427,6 +426,16 @@
                 "summary": "Update an existing bussiness",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\BusinessTypeController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Bussiness object that needs to be added to the store",
                     "required": true,
@@ -483,9 +492,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/business-types/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Business"
@@ -500,7 +507,7 @@
                         "description": "The business-types that needs to be deleted",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
                         }
                     }
                 ],
@@ -549,6 +556,15 @@
                     "Categories"
                 ],
                 "summary": "Get list of contact",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -590,6 +606,15 @@
                 ],
                 "summary": "Get list of contact",
                 "operationId": "App\\Http\\Controllers\\CategoryController::index",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -641,15 +666,11 @@
                                 "properties": {
                                     "category_name": {
                                         "type": "string"
-                                    },
-                                    "quantity": {
-                                        "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "category_name": "category nha",
-                                    "quantity": "quantity nha"
+                                    "category_name": "category nha"
                                 }
                             }
                         }
@@ -702,6 +723,16 @@
                 "summary": "Update an existing categories",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\CategoryController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Categories object that needs to be added to the store",
                     "required": true,
@@ -711,15 +742,11 @@
                                 "properties": {
                                     "category_name": {
                                         "type": "string"
-                                    },
-                                    "quantity": {
-                                        "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "category_name": "category nha",
-                                    "quantity": "quantity nha"
+                                    "category_name": "category nha"
                                 }
                             }
                         }
@@ -762,9 +789,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/categories/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Categories"
@@ -822,7 +847,7 @@
                 ]
             }
         },
-        "/api/contacts": {
+        "/api/admin/contacts": {
             "get": {
                 "tags": [
                     "Contact"
@@ -859,16 +884,18 @@
                             "application/json": {}
                         }
                     }
-                }
-            }
-        },
-        "/api/admin/contact": {
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Contact"
                 ],
                 "summary": "Adds a new contacts",
-                "operationId": "App\\Http\\Controllers\\ContactController::store",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -892,10 +919,11 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "email": "email contact nha",
+                                    "email": "hihi@gmail.com",
                                     "name": "name contact nha",
                                     "subject": "subject contact nha",
-                                    "content": "content nha"
+                                    "content": "content nha",
+                                    "phone_number": "098765432"
                                 }
                             }
                         }
@@ -964,7 +992,105 @@
                 ]
             }
         },
-        "api/admin/contact/{id}": {
+        "/api/contacts": {
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Adds a new contacts",
+                "operationId": "App\\Http\\Controllers\\ContactController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "phone_number": {
+                                        "type": "string"
+                                    },
+                                    "subject": {
+                                        "type": "string"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "hihi@gmail.com",
+                                    "name": "name contact nha",
+                                    "subject": "subject contact nha",
+                                    "content": "content nha",
+                                    "phone_number": "098765432"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Contact not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/contacts/{id}": {
             "delete": {
                 "tags": [
                     "Contact"
@@ -1028,6 +1154,15 @@
                     "Events"
                 ],
                 "summary": "Get list of events",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -1095,6 +1230,91 @@
             }
         },
         "/api/admin/events": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Get list of events",
+                "operationId": "App\\Http\\Controllers\\EventController::index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "current_page": 1,
+                                        "data": {
+                                            "id": 1,
+                                            "title": "[Webinar] Let’s Help Startups Series: Tips to Make Your Startup Stand Out",
+                                            "image": "https://storage.googleapis.com/conext-production/detail/67646647_71324239_35429499_80603001.png",
+                                            "start_time": "2021-04-02 10:00:00",
+                                            "end_time": "2021-04-02 12:45:00",
+                                            "description": "<p>In 2021, OVHcloud Startup Program Asia Pacific is going to run a series of webinars to share ideas, tips and guides from the subject matter experts to support startups in the ecosystem.</p><br></br><p>Join us in the panel discussion to learn from our guest speakers who will share ideas on how to market your business, the importance of networking and tips to make your startup stand out among the crowd.</p>",
+                                            "created_at": null,
+                                            "updated_at": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Event not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Events"
@@ -1115,6 +1335,9 @@
                                     "start_time": {
                                         "type": "DateTime"
                                     },
+                                    "end_time": {
+                                        "type": "DateTime"
+                                    },
                                     "description": {
                                         "type": "string"
                                     }
@@ -1123,7 +1346,8 @@
                                 "example": {
                                     "title": "title event nha",
                                     "image": "image.png",
-                                    "start_time": "12-3-2019 4:1:1",
+                                    "start_time": "2021-02-15",
+                                    "end_time": "2021-05-06",
                                     "description": "hihi"
                                 }
                             }
@@ -1201,6 +1425,16 @@
                 "summary": "Update an existing events",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\EventController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Events object that needs to be added to the store",
                     "required": true,
@@ -1217,6 +1451,9 @@
                                     "start_time": {
                                         "type": "DateTime"
                                     },
+                                    "end_time": {
+                                        "type": "DateTime"
+                                    },
                                     "description": {
                                         "type": "string"
                                     }
@@ -1225,7 +1462,8 @@
                                 "example": {
                                     "title": "title event nha",
                                     "image": "image.png",
-                                    "start_time": "12-3-2019 4:1:1",
+                                    "start_time": "2021-02-15",
+                                    "end_time": "2021-05-06",
                                     "description": "hihi"
                                 }
                             }
@@ -1269,9 +1507,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/events/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Events"
@@ -1531,6 +1767,16 @@
                 "summary": "Update an existing expertises",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\ExpertiseController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Expertises object that needs to be added to the store",
                     "required": true,
@@ -1581,10 +1827,13 @@
                             "application/json": {}
                         }
                     }
-                }
-            }
-        },
-        "api/admin/expertises/{id}": {
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "delete": {
                 "tags": [
                     "Expertises"
@@ -1634,7 +1883,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/api/explores": {
@@ -1746,9 +2000,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/api/admin/explore": {
+            },
             "post": {
                 "tags": [
                     "Explore"
@@ -1760,13 +2012,17 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
                                         "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "name explore nha"
+                                    "title": "name explore nha",
+                                    "image": "anh.png"
                                 }
                             }
                         }
@@ -1835,7 +2091,7 @@
                 ]
             }
         },
-        "/api/admin/explore/{id}": {
+        "/api/admin/explores/{id}": {
             "put": {
                 "tags": [
                     "Explore"
@@ -1843,6 +2099,16 @@
                 "summary": "Update an existing explore",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\ExploreController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Explore object that needs to be added to the store",
                     "required": true,
@@ -1850,13 +2116,17 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
                                         "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "name explore nha"
+                                    "title": "name explore nha",
+                                    "image": "anh.png"
                                 }
                             }
                         }
@@ -1899,9 +2169,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/explore/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Explore"
@@ -2035,6 +2303,22 @@
                     "Hot-needs"
                 ],
                 "summary": "Get list of hot-needs",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -2103,52 +2387,6 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/admin/hot-needs": {
-            "get": {
-                "tags": [
-                    "Hot-needs"
-                ],
-                "summary": "Get list of hot-needs",
-                "operationId": "App\\Http\\Controllers\\HotNeedController::index",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "404": {
-                        "description": "HotNeed not found",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "405": {
-                        "description": "Validation exception",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
             },
             "post": {
                 "tags": [
@@ -2161,13 +2399,37 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
+                                    "topic": {
                                         "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "string"
+                                    },
+                                    "expected_deadline": {
+                                        "type": "string"
+                                    },
+                                    "brief_description": {
+                                        "type": "string"
+                                    },
+                                    "full_description": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "name not need nha"
+                                    "topic": "Hot Need 1",
+                                    "city": "Da Nang",
+                                    "category_id": 5,
+                                    "expected_deadline": "2020-05-31",
+                                    "brief_description": "hahah",
+                                    "full_description": "hihihi",
+                                    "user_id": 1
                                 }
                             }
                         }
@@ -2241,15 +2503,197 @@
                 "tags": [
                     "Hot-needs"
                 ],
-                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
+                "summary": "Get list of hot-needs",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Display a listing of hot-needs."
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "topic": "Off road trails in/around Danang for bicycling",
+                                        "city": "Da Nang",
+                                        "category_id": 5,
+                                        "expected_deadline": "2020-05-31 00:00:00",
+                                        "brief_description": "I am planning to move to Danang from Thailand and am trying to figure out where I can find off-road cycling trails around Danang to ride my mountain bike.",
+                                        "full_description": "Hi folks,<br></br>I am planning to move to Danang from Thailand and am trying to figure out where I can find off-road cycling trails around Danang to ride my mountain bike.<br></br>We have many of them here in Chiang Mai, and I know they probably exists around Danang too, probably up around Thọ Quang, since I see a lot of trails up there on topo maps, but I cant find any information about trails that are suitable for a mountain bike when I google.<br></br>I really like off-road trails as opposed to paved roads, so I would appreciate any help/advice someone might be able to offer.<br></br>Thanks!",
+                                        "user_id": 1,
+                                        "created_at": null,
+                                        "updated_at": null,
+                                        "user": {
+                                            "id": 1,
+                                            "name": "Super Admin",
+                                            "avatar": "https://storage.googleapis.com/conext-develop/avatar1.png"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "HotNeed not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
-        "/api/admin/hot-needs/{id}": {
+        "/api/hot-needs/{id}": {
+            "get": {
+                "tags": [
+                    "Hot-needs"
+                ],
+                "summary": "Get list of hot-needs",
+                "operationId": "App\\Http\\Controllers\\HotNeedController::getHotNeedByUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "topic": "Off road trails in/around Danang for bicycling",
+                                        "city": "Da Nang",
+                                        "category_id": 5,
+                                        "expected_deadline": "2020-05-31 00:00:00",
+                                        "brief_description": "I am planning to move to Danang from Thailand and am trying to figure out where I can find off-road cycling trails around Danang to ride my mountain bike.",
+                                        "full_description": "Hi folks,<br></br>I am planning to move to Danang from Thailand and am trying to figure out where I can find off-road cycling trails around Danang to ride my mountain bike.<br></br>We have many of them here in Chiang Mai, and I know they probably exists around Danang too, probably up around Thọ Quang, since I see a lot of trails up there on topo maps, but I cant find any information about trails that are suitable for a mountain bike when I google.<br></br>I really like off-road trails as opposed to paved roads, so I would appreciate any help/advice someone might be able to offer.<br></br>Thanks!",
+                                        "user_id": 1,
+                                        "created_at": null,
+                                        "updated_at": null,
+                                        "user": {
+                                            "id": 1,
+                                            "name": "Super Admin",
+                                            "avatar": "https://storage.googleapis.com/conext-develop/avatar1.png"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "HotNeed not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
             "put": {
                 "tags": [
                     "Hot-needs"
@@ -2257,6 +2701,16 @@
                 "summary": "Update an existing hot-needs",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\HotNeedController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Hot-needs object that needs to be added to the store",
                     "required": true,
@@ -2264,13 +2718,37 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
+                                    "topic": {
                                         "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "string"
+                                    },
+                                    "expected_deadline": {
+                                        "type": "string"
+                                    },
+                                    "brief_description": {
+                                        "type": "string"
+                                    },
+                                    "full_description": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "name not need nha"
+                                    "topic": "Hot Need 1",
+                                    "city": "Da Nang",
+                                    "category_id": 5,
+                                    "expected_deadline": "2020-05-31",
+                                    "brief_description": "hahah",
+                                    "full_description": "hihihi",
+                                    "user_id": 1
                                 }
                             }
                         }
@@ -2313,9 +2791,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/hot-needs/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Hot-needs"
@@ -2577,6 +3053,15 @@
                 "summary": "Update an existing local-conexts",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\LocalConextController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Local-conexts object that needs to be added to the store",
                     "required": true,
@@ -2633,9 +3118,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/local-conexts/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Local-conexts"
@@ -2762,10 +3245,26 @@
                 }
             }
         },
-        "/api/auth/users": {
+        "/api/users": {
             "get": {
                 "tags": [
                     "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "businessType",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "expertise",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -2807,27 +3306,22 @@
                     "Users"
                 ],
                 "operationId": "App\\Http\\Controllers\\UserController::index",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "businessType": {
-                                        "type": "string"
-                                    },
-                                    "expertise": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "businessType": 1,
-                                    "expertise": 1
-                                }
-                            }
+                "parameters": [
+                    {
+                        "name": "businessType",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "expertise",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -2898,7 +3392,13 @@
                                     "business_type_id": {
                                         "type": "integer"
                                     },
+                                    "avatar": {
+                                        "type": "string"
+                                    },
                                     "expertise_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
                                         "type": "string"
                                     },
                                     "local_conext_id": {
@@ -2914,7 +3414,10 @@
                                     "workplace": "workplace nha",
                                     "business_type_id": 1,
                                     "expertise_id": 1,
-                                    "local_conext_id": 1
+                                    "local_conext_id": 1,
+                                    "name": "name nha",
+                                    "avatar": "avatar.png",
+                                    "password": "123456"
                                 }
                             }
                         }
@@ -2983,6 +3486,127 @@
                 ]
             }
         },
+        "/api/resigter": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Adds a new users",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "gender": {
+                                        "type": "integer"
+                                    },
+                                    "introduce": {
+                                        "type": "string"
+                                    },
+                                    "workplace": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "business_type_id": {
+                                        "type": "integer"
+                                    },
+                                    "avatar": {
+                                        "type": "string"
+                                    },
+                                    "expertise_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "local_conext_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "email@gmail.com",
+                                    "address": "address nha",
+                                    "gender": 2,
+                                    "introduce": "introduce nha",
+                                    "workplace": "workplace nha",
+                                    "business_type_id": 1,
+                                    "expertise_id": 1,
+                                    "local_conext_id": 1,
+                                    "name": "name nha",
+                                    "avatar": "avatar.png",
+                                    "password": "123456"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errcode": {
+                                            "description": "The response code",
+                                            "type": "integer"
+                                        },
+                                        "errmsg": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "errcode": 1,
+                                        "errmsg": "ok",
+                                        "data": []
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Users not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "/api/admin/users/{id}": {
             "put": {
                 "tags": [
@@ -2991,6 +3615,16 @@
                 "summary": "Update an existing users",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\UserController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Users object that needs to be added to the store",
                     "required": true,
@@ -3024,6 +3658,9 @@
                                     },
                                     "local_conext_id": {
                                         "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
                                     }
                                 },
                                 "type": "object",
@@ -3035,7 +3672,9 @@
                                     "workplace": "workplace nha",
                                     "business_type_id": 1,
                                     "expertise_id": 1,
-                                    "local_conext_id": 1
+                                    "local_conext_id": 1,
+                                    "password": "123456",
+                                    "name": "duy"
                                 }
                             }
                         }
@@ -3078,9 +3717,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/users/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Users"
@@ -3172,6 +3809,46 @@
                             "application/json": {}
                         }
                     }
+                }
+            }
+        },
+        "/api/auth/profile": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "operationId": "App\\Http\\Controllers\\UserController::profile",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Users not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Validation exception",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 },
                 "security": [
                     {
@@ -3184,6 +3861,22 @@
             "get": {
                 "tags": [
                     "Vouchers"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -3257,6 +3950,15 @@
                     "Vouchers"
                 ],
                 "operationId": "App\\Http\\Controllers\\VoucherController::index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -3401,6 +4103,16 @@
                 "summary": "Update an existing vouchers",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\VoucherController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Vouchers object that needs to be added to the store",
                     "required": true,
@@ -3469,9 +4181,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/vouchers/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Vouchers"
@@ -3533,6 +4243,15 @@
             "get": {
                 "tags": [
                     "Work-places"
+                ],
+                "parameters": [
+                    {
+                        "name": "zone",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -3609,6 +4328,15 @@
                     "Work-places"
                 ],
                 "operationId": "App\\Http\\Controllers\\WorkPlaceController::index",
+                "parameters": [
+                    {
+                        "name": "zone",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -3807,6 +4535,16 @@
                 "summary": "Update an existing work-places",
                 "description": "",
                 "operationId": "App\\Http\\Controllers\\WorkPlaceController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "Work-places object that needs to be added to the store",
                     "required": true,
@@ -3871,9 +4609,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "api/admin/work-places/{id}": {
+            },
             "delete": {
                 "tags": [
                     "Work-places"
@@ -3941,7 +4677,26 @@
                     "200": {
                         "description": "OK",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "price": {
+                                            "type": "string"
+                                        },
+                                        "address": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "address": "15th Floor, Tower B, Song Da Building, Pham Hung, My Dinh 1, Nam Tu Liem, Hanoi"
+                                    }
+                                }
+                            }
                         }
                     },
                     "400": {
@@ -3968,12 +4723,7 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         }
     },

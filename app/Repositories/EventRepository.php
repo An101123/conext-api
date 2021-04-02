@@ -10,6 +10,12 @@ class EventRepository implements EventRepositoryInterface
 {  
     public function getEvents($active)
     {
+        if ($active == 1) {
+            return Event::where('end_time', '>=', Carbon::now())->paginate(6);
+        }
+        elseif ($active == 2) {
+            return Event::where('end_time', '<', Carbon::now())->paginate(6);
+        }
         return Event::paginate(6);
     }
     public function store($input)
@@ -30,7 +36,7 @@ class EventRepository implements EventRepositoryInterface
         else {
             return response()->json([
                 'message' => 'Error'
-            ]);
+            ], 400);
         }
     }
     public function update($input, $id)

@@ -16,7 +16,9 @@ class ExpertiseRepository implements ExpertiseRepositoryInterface
     {
         try{
             Expertise::create($input);
-            return true;
+            return response()->json([
+                'message' => "Expertise created successfully"
+            ]);
         } catch(\Exception $e){
             return $e;
         }

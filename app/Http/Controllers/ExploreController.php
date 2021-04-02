@@ -165,17 +165,22 @@ class ExploreController extends Controller
         /**
      * @OA\Post(
      *     tags={"Explore"},
-     *     path="/api/admin/explore",
+     *     path="/api/admin/explores",
      *     summary="Adds a new business-types",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="name",
+     *                     property="title",
      *                     type="string"
      *                 ),
-     *                 example={"name": "name explore nha"}
+     *                 @OA\Property(
+     *                     property="image",
+     *                     type="string"
+     *                 ),
+     *                 example={  "title": "name explore nha",
+     *                      "image": "anh.png"}
      *             )
      *         ),
      *     ),
@@ -278,10 +283,18 @@ class ExploreController extends Controller
      */
         /**
      * @OA\Put(
-     *     path="/api/admin/explore/{id}",
+     *     path="/api/admin/explores/{id}",
      *     tags={"Explore"},
      *     summary="Update an existing explore",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Explore object that needs to be added to the store",
@@ -289,10 +302,15 @@ class ExploreController extends Controller
      *            mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="name",
+     *                     property="title",
      *                     type="string"
      *                 ),
-     *                 example={"name": "name explore nha"}
+     *                 @OA\Property(
+     *                     property="image",
+     *                     type="string"
+     *                 ),
+     *                 example={  "title": "name explore nha",
+     *                      "image": "anh.png"}
      *             )
      *         )
      *     ),
@@ -359,7 +377,7 @@ class ExploreController extends Controller
      * @return \Illuminate\Http\Response
      */
         /**
-     * @OA\Delete(path="api/admin/explore/{id}",
+     * @OA\Delete(path="/api/admin/explores/{id}",
      *   tags={"Explore"},
      *   summary="Delete explore",
      *   description="This can only be done by the logged in user.",

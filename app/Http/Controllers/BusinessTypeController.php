@@ -39,14 +39,14 @@ class BusinessTypeController extends Controller
      *                         @OA\Items
      *                     ),
      *                     example={
-     *                          "id": 1,
-                                "name": "Startups",
-                                "created_at": null,
-                                "updated_at": null
-     *                      }
      *                         "errcode": 1,
      *                         "errmsg": "ok",
-     *                         "data": {"name": "name bussiness nha"}
+     *                         "data": {
+     *                              "id": 1,
+     *                              "name": "Startups",
+     *                              "created_at": null,
+     *                              "updated_at": null
+     *                          }
      *                     }
      *                 )
      *             )
@@ -290,6 +290,14 @@ class BusinessTypeController extends Controller
      *     tags={"Business"},
      *     summary="Update an existing bussiness",
      *     description="",
+     *     @OA\Parameter(
+     *       name="id",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *           type="integer"
+     *       )
+     *     ),
      *     @OA\RequestBody(
      *         required=true,
      *         description="Bussiness object that needs to be added to the store",
@@ -367,7 +375,7 @@ class BusinessTypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**
-     * @OA\Delete(path="api/admin/business-types/{id}",
+     * @OA\Delete(path="/api/admin/business-types/{id}",
      *   tags={"Business"},
      *   summary="Delete business-types",
      *   description="This can only be done by the logged in user.",
@@ -377,7 +385,7 @@ class BusinessTypeController extends Controller
      *     description="The business-types that needs to be deleted",
      *     required=true,
      *     @OA\Schema(
-     *         type="string"
+     *         type="integer"
      *     )
      *   ),
      *     @OA\Response(
