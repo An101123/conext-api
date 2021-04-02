@@ -11,14 +11,30 @@ use Illuminate\Support\Facades\Auth;
 
 class HotNeedRepository implements HotNeedRepositoryInterface
 {
-    public function getHotNeeds($category)
+    public function getHotNeeds($category, $search='')
     {
         $hotNeeds = HotNeed::with(['user', 'category'])
         ->when($category, function($data) use($category){
             $data->where('category_id', $category);
+            
         })
+        ->where('topic', 'LIKE', '%' . $search . '%')
         ->paginate(6);
         return $hotNeeds;
+    }
+
+    public function searchHotNeed(Request $request) {
+        $searchHotNeed = HotNeed::where([
+            ['topic', '!=', Null],
+            [function ($query) use ($request) {
+                if (($term = $request->item)) {
+                    $query->orWhere('topic', 'LIKE', '%' . $term . '%')->get();
+                }
+            }]
+        ])
+        ->orderBy('id', 'desc')
+        ->paginate(6);
+        return $searchHotNeed;
     }
 
     public function getHotNeedByUser($user_id)

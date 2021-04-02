@@ -6,7 +6,7 @@ use GuzzleHttp\Psr7\Request;
 
 interface HotNeedRepositoryInterface
 {
-    public function getHotNeeds($category);
+    public function getHotNeeds($category, $search);
     public function store($input);
     public function getHotNeed($id);
     public function update($input, $id);

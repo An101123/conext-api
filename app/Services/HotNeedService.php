@@ -11,9 +11,9 @@ class HotNeedService implements HotNeedServiceInterface
     {
         $this->categoryRepository = $categoryRepository;
     }
-    public function getHotNeeds($category)
+    public function getHotNeeds($category, $search = '')
     {
-        return $this->categoryRepository->getHotNeeds($category);
+        return $this->categoryRepository->getHotNeeds($category, $search);
     }
 
     public function getHotNeedByUser($user_id)

@@ -123,12 +123,6 @@ class HotNeedController extends Controller
     {
         $this->hotNeedService = $hotNeedService;
     }
-
-    public function index(Request $request)
-    {
-        $category = $request->category;
-        return $this->hotNeedService->getHotNeeds($category);
-    }
     /**
      * 
      * @OA\Get(
@@ -234,6 +228,13 @@ class HotNeedController extends Controller
      *     }
      * )
      */
+    public function index(Request $request)
+    {
+        $category = $request->category;
+        $search = $request->search;
+        return $this->hotNeedService->getHotNeeds($category,  $search);
+    }
+    
     /**
      * 
      * @OA\Get(
