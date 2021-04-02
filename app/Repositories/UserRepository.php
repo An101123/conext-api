@@ -44,7 +44,7 @@ class UserRepository implements UserRepositoryInterface
                 'expertise_id' =>$input->expertise_id,
                 'local_conext_id' =>$input->local_conext_id,
             );
-        
+       
             User::create($data);
             return response()->json([
                 'message' => "User created successfully"

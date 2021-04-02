@@ -168,7 +168,8 @@ class HotNeedController extends Controller
     public function index(Request $request)
     {
         $category = $request->category;
-        return $this->hotNeedService->getHotNeeds($category);
+        $search = $request->search;
+        return $this->hotNeedService->getHotNeeds($category,  $search);
     }
     /**
      *
