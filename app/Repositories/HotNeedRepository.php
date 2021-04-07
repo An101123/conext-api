@@ -67,7 +67,10 @@ class HotNeedRepository implements HotNeedRepositoryInterface
     {
         if (!empty(HotNeed::find($id)))
         {
-            return HotNeed::find($id);
+            $result= HotNeed::find($id);
+            $user = $result->user()->get();
+            $result['user'] = $user;
+            return $result;
         }
         else
         {
