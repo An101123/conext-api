@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\SocialRequest;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -120,9 +125,57 @@ class AuthController extends Controller
         if (!$token = JWTAuth::attempt($input)) {
             return response()->json(['message' => 'Invalid Email or Password'], 401);
         }
+        dd($token);
 
         return $this->createNewToken($token);
     }
+
+    public function social(SocialRequest $request, $provider)
+    {
+        if ($provider == 'google') {
+            // TODO
+            // return $this->checkGoogle($request->social_token);
+        }
+
+        if ($provider == 'facebook') {
+            return $this->checkFacebook($request->social_token);
+        }
+    }
+
+    public function checkFacebook($social_token)
+    {
+        $response = Http::get('https://graph.facebook.com/v3.1/me', [
+            'fields' => 'id,name,email',
+            'access_token' => $social_token,
+        ]);
+
+        if ($response->status() == 200) {
+            $responseFacebook = $response->json();
+            return $this->checkUserByEmail($responseFacebook);
+        } else {
+            return response()->json(['message' => 'Login failed!'], 401);
+        }
+    }
+
+    /**
+     * @param $profile
+     * @return void
+     */
+    public function checkUserByEmail($profile)
+    {
+        $user = User::where('email', $profile['email'])->first();
+        if (!$user) {
+            $user = User::create([
+                'name' => $profile['name'],
+                'email' => $profile['email'],
+                'password' =>Hash::make(Str::random(8)),
+            ]);
+            $user->save();
+        }
+        $token = JWTAuth::fromUser($user);
+        return $this->createNewToken($token);
+    }
+
     protected function createNewToken($token)
     {
         return response()->json([
