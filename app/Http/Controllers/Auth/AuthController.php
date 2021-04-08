@@ -125,7 +125,6 @@ class AuthController extends Controller
         if (!$token = JWTAuth::attempt($input)) {
             return response()->json(['message' => 'Invalid Email or Password'], 401);
         }
-        dd($token);
 
         return $this->createNewToken($token);
     }
