@@ -120,13 +120,16 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $input = $request->all();
-        $token = null;
-        if (!$token = JWTAuth::attempt($input)) {
-            return response()->json(['message' => 'Invalid Email or Password'], 401);
+        if ($request->provider == 'facebook') {
+            return $this->checkFacebook($request->social_token);
+        } else {
+            $input = $request->all();
+            $token = null;
+            if (!$token = JWTAuth::attempt($input)) {
+                return response()->json(['message' => 'Invalid Email or Password'], 401);
+            }
+            return $this->createNewToken($token);
         }
-
-        return $this->createNewToken($token);
     }
 
     public function social(SocialRequest $request, $provider)
